@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme System: Morning (Pastel Bright) / Evening (Galaxy Sky) */
+@layer base {
+  :root {
+    /* ===== Morning Theme (Pastel Bright) ===== */
+    --background: 34 53% 88%;
+    --foreground: 231 5% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 231 5% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 231 5% 25%;
+
+    --primary: 203 42% 74%;
+    --primary-foreground: 231 5% 20%;
+
+    --secondary: 33 71% 84%;
+    --secondary-foreground: 231 5% 20%;
+
+    --muted: 210 23% 83%;
+    --muted-foreground: 231 5% 28%;
+
+    --accent: 13 43% 76%;
+    --accent-foreground: 231 5% 22%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 23% 80%;
+    --input: 210 23% 80%;
+    --ring: 203 42% 74%;
+
+    --radius: 1rem;
+
+    --gradient-ocean: linear-gradient(135deg, hsl(206 38% 76%) 0%, hsl(33 96% 89%) 100%);
+    --gradient-sunset: linear-gradient(135deg, hsl(33 71% 84%) 0%, hsl(13 43% 76%) 100%);
+    --gradient-dreamy: linear-gradient(180deg, hsl(220 4% 52%) 0%, hsl(19 26% 62%) 100%);
+    --gradient-chel: linear-gradient(135deg, hsl(220 4% 52%) 0%, hsl(19 26% 62%) 100%);
+
+    --shadow-dreamy: 0 8px 32px hsla(203, 42%, 40%, 0.15);
+    --shadow-glow: 0 0 20px hsla(33, 71%, 60%, 0.3);
+    --shadow-float: 0 4px 16px hsla(206, 38%, 40%, 0.1);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar */
+    --sidebar-background: 33 96% 89%;
+    --sidebar-foreground: 231 5% 25%;
+    --sidebar-primary: 203 42% 74%;
+    --sidebar-primary-foreground: 231 5% 20%;
+    --sidebar-accent: 206 38% 76%;
+    --sidebar-accent-foreground: 231 5% 22%;
+    --sidebar-border: 210 23% 80%;
+    --sidebar-ring: 203 42% 74%;
+  }
+
+  /* ===== Evening Theme (Galaxy Sky / Nebula / Stars) ===== */
+  .dark {
+    --background: 230 35% 22%;          /* deep cosmic indigo */
+    --foreground: 50 100% 92%;          /* moonlight text */
+
+    --card: 230 35% 26%;
+    --card-foreground: 50 100% 92%;
+
+    --popover: 230 35% 26%;
+    --popover-foreground: 50 100% 92%;
+
+    --primary: 230 30% 74%;             /* periwinkle */
+    --primary-foreground: 228 33% 18%;
+
+    --secondary: 338 78% 83%;           /* pink cloud */
+    --secondary-foreground: 228 33% 18%;
+
+    --muted: 230 28% 40%;               /* indigo-muted */
+    --muted-foreground: 50 100% 88%;
+
+    --accent: 53 100% 86%;              /* pale star yellow */
+    --accent-foreground: 228 33% 22%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 25% 42%;
+    --input: 230 25% 42%;
+    --ring: 230 30% 74%;
+
+    --gradient-ocean: linear-gradient(180deg, hsl(230 35% 30%) 0%, hsl(260 35% 40%) 100%);
+    --gradient-sunset: linear-gradient(135deg, hsl(338 78% 83%) 0%, hsl(53 100% 86%) 100%);
+    --gradient-dreamy: linear-gradient(180deg, hsl(230 35% 28%) 0%, hsl(260 35% 45%) 100%);
+
+    --sidebar-background: 230 35% 26%;
+    --sidebar-foreground: 50 100% 92%;
+    --sidebar-primary: 230 30% 74%;
+    --sidebar-primary-foreground: 228 33% 18%;
+    --sidebar-accent: 230 28% 40%;
+    --sidebar-accent-foreground: 50 100% 92%;
+    --sidebar-border: 230 25% 42%;
+    --sidebar-ring: 230 30% 74%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  body {
+    @apply bg-background text-foreground font-quicksand;
+    scroll-behavior: smooth;
+    position: relative; /* for star layers */
+  }
+
+  h1, h2, h3, h4, h5, h6 { @apply font-quicksand font-semibold; }
+}
+
+/* === Galaxy Background for Dark Mode (visible stars + randomized comet every 10s) === */
+@layer utilities {
+  .font-handwritten { font-family: 'Pacifico', cursive; }
+  .font-signature { font-family: 'Satisfy', cursive; }
+  .font-quicksand { font-family: 'Quicksand', sans-serif; }
+
+  .gradient-ocean { background: var(--gradient-ocean); }
+  .gradient-sunset { background: var(--gradient-sunset); }
+  .gradient-dreamy { background: var(--gradient-dreamy); }
+
+  .shadow-dreamy { box-shadow: var(--shadow-dreamy); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-float { box-shadow: var(--shadow-float); }
+
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+
+  /* Base galaxy sky (keeps your palette) */
+  .galaxy-bg {
+    background: radial-gradient(
+      circle at 50% 80%,
+      hsl(260 40% 25%) 0%,
+      hsl(230 35% 22%) 60%,
+      hsl(228 33% 18%) 100%
+    );
+  }
+
+  /* Overlay host: only for star layers now (comet moved to its own element) */
+  .galaxy-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-blend-mode: screen;
+  }
+
+  /* Stars — two layers for depth (bigger + shinier) */
+  .galaxy-overlay::before,
+  .galaxy-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    will-change: opacity;
+  }
+
+  /* Layer 1: many stars (slightly bigger + halo) */
+  .galaxy-overlay::before {
+    background-size:
+      300px 300px, 360px 360px, 420px 420px, 480px 480px, 540px 540px, 600px 600px;
+    background-image:
+      radial-gradient(2px 2px at 8% 12%,  hsl(53 100% 94%) 60%, hsla(53,100%,94%,0.0) 61%),
+      radial-gradient(2px 2px at 45% 28%, hsl(230 30% 92%) 60%, hsla(230,30%,92%,0.0) 61%),
+      radial-gradient(2.2px 2.2px at 72% 48%, hsl(53 100% 92%) 60%, hsla(53,100%,92%,0.0) 61%),
+      radial-gradient(2px 2px at 20% 80%, hsl(230 30% 90%) 60%, hsla(230,30%,90%,0.0) 61%),
+      radial-gradient(2px 2px at 90% 22%, hsl(53 100% 96%) 60%, hsla(53,100%,96%,0.0) 61%),
+      radial-gradient(2px 2px at 65% 65%, hsl(230 30% 94%) 60%, hsla(230,30%,94%,0.0) 61%);
+    opacity: 0.8;
+    animation: starLayer1 12s ease-in-out infinite alternate;
+  }
+
+  /* Layer 2: brighter twinkles (slightly larger dots + stronger pulse) */
+  .galaxy-overlay::after {
+    background-size:
+      340px 340px, 400px 400px, 460px 460px, 520px 520px, 580px 580px;
+    background-image:
+      radial-gradient(2.4px 2.4px at 10% 20%, hsl(53 100% 98%) 55%, hsla(53,100%,98%,0.0) 56%),
+      radial-gradient(2.2px 2.2px at 50% 50%, hsl(230 30% 96%) 55%, hsla(230,30%,96%,0.0) 56%),
+      radial-gradient(2.4px 2.4px at 85% 30%, hsl(53 100% 96%) 55%, hsla(53,100%,96%,0.0) 56%),
+      radial-gradient(2.2px 2.2px at 35% 75%, hsl(230 30% 95%) 55%, hsla(230,30%,95%,0.0) 56%),
+      radial-gradient(2.2px 2.2px at 70% 15%, hsl(53 100% 94%) 55%, hsla(53,100%,94%,0.0) 56%);
+    opacity: 0.9;
+    animation: starLayer2 9s ease-in-out infinite alternate;
+  }
+
+  /* Optional soft nebula glow */
+  .galaxy-nebula {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(181,133,255,0.22), transparent 70%),
+      radial-gradient(ellipse at 70% 60%, rgba(255,173,214,0.18), transparent 70%);
+    filter: blur(80px);
+    animation: nebulaDrift 40s linear infinite alternate;
+  }
+
+  /* === Comet (own layer) === */
+  .comet-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1; /* above stars; increase if your content overlaps */
+    background-repeat: no-repeat, no-repeat;
+    background-image:
+      radial-gradient(8px 8px at center, hsla(53,100%,95%,0.95) 0%, hsla(53,100%,95%,0.2) 60%, transparent 70%), /* head */
+      linear-gradient(90deg, hsla(53,100%,95%,0.55) 0%, hsla(53,100%,95%,0.00) 70%); /* trail */
+    background-size: 8px 8px, 160px 2px;
+
+    /* CSS variables control the path (start/end) */
+    --x0: -12%;
+    --y0: 25%;
+    --x1: 120%;
+    --y1: 5%;
+    --trail-offset: 4%;
+    --comet-duration: 10s;
+
+    animation: cometFly var(--comet-duration) linear infinite;
+  }
+
+  /* Animations */
+  @keyframes starLayer1 { 0%,100%{opacity:.65} 50%{opacity:1} }
+  @keyframes starLayer2 { 0%,100%{opacity:.7}  50%{opacity:1} }
+
+  @keyframes cometFly {
+    0% {
+      opacity: 0;
+      background-position:
+        var(--x0) var(--y0),
+        calc(var(--x0) - var(--trail-offset)) var(--y0);
+    }
+    8% { opacity: 1; }
+    92% {
+      opacity: .12;
+      background-position:
+        var(--x1) var(--y1),
+        calc(var(--x1) - var(--trail-offset)) var(--y1);
+    }
+    100% { opacity: 0; }
+  }
+
+  @keyframes nebulaDrift {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-12px, 12px); }
+    100% { transform: translate(10px, -10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .galaxy-overlay,
+    .galaxy-overlay::before,
+    .galaxy-overlay::after,
+    .galaxy-nebula,
+    .comet-layer { animation: none !important; }
+  }
+}
+
+/* === Apply Galaxy Sky in Dark Mode === */
+.dark body { @apply galaxy-bg; }
+.dark body::before { content: ""; @apply galaxy-overlay; }
+.dark body::after  { content: ""; @apply galaxy-nebula; }
