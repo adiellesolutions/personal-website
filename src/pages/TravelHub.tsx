@@ -5,6 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, ArrowRight } from "lucide-react";
+import TimelineSection from "@/components/TravelTimelineSection";
+
 
 const TravelHub = () => {
   const destinations = [
@@ -71,6 +73,10 @@ const TravelHub = () => {
               Explore Europe with me - one adventure at a time! 🗺️✨
             </p>
           </div>
+
+          
+          {/* Call Timeline Section */}
+          <TimelineSection />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((destination) => (
