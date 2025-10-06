@@ -31,7 +31,7 @@ const Navigation = () => {
               to="/"
               className="font-pacifico text-2xl text-primary hover:text-secondary transition-smooth"
             >
-              Coastal Sanctuary
+              Life with Dary
             </Link>
             {/* toggle bar beside logo */}
             <ThemePillToggle />
