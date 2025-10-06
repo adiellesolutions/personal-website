@@ -18,6 +18,31 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@coastal_sanctuary" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- 1) Apply initial theme early to avoid flash -->
+   <!-- Detect theme early -->
+<script>
+  (function () {
+    try {
+      const storedTheme =
+        localStorage.getItem("theme") ||
+        localStorage.getItem("color-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = storedTheme
+        ? storedTheme === "dark"
+        : prefersDark;
+
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (e) {
+      console.warn("Theme detection failed:", e);
+    }
+  })();
+</script>
+
   </head>
 
   <body>
@@ -30,71 +55,89 @@
         </div>
         <p class="loading-text">Loading coastal vibes ✨</p>
       </div>
+      <!-- optional twinkly dots -->
+      <div class="stars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
     </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
     <style>
+      /* ========== LIGHT MODE (default) ========== */
       #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
+        position: fixed; inset: 0;
+        width: 100%; height: 100vh;
         background: linear-gradient(135deg, #E6F3F5 0%, #FFE8E8 50%, #F5E6FF 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
         z-index: 9999;
-        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        transition: opacity .5s ease-out, visibility .5s ease-out;
       }
-      
-      #loading-screen.hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-      
-      .loader-container {
-        text-align: center;
-      }
-      
-      .wave-loader {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-      
+      #loading-screen.hidden { opacity: 0; visibility: hidden; }
+
+      .loader-container { text-align: center; }
+
+      .wave-loader { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
       .wave {
-        width: 12px;
-        height: 40px;
+        width: 12px; height: 40px;
         background: linear-gradient(135deg, #9b87f5, #7E69AB);
-        border-radius: 10px;
-        animation: wave 1s ease-in-out infinite;
+        border-radius: 10px; animation: wave 1s ease-in-out infinite;
+        box-shadow: 0 6px 16px rgba(123, 97, 196, .25);
       }
-      
-      .wave:nth-child(2) {
-        animation-delay: 0.1s;
-      }
-      
-      .wave:nth-child(3) {
-        animation-delay: 0.2s;
-      }
-      
+      .wave:nth-child(2) { animation-delay: .1s; }
+      .wave:nth-child(3) { animation-delay: .2s; }
+
       @keyframes wave {
-        0%, 40%, 100% {
-          transform: scaleY(0.5);
-        }
-        20% {
-          transform: scaleY(1);
-        }
+        0%, 40%, 100% { transform: scaleY(.5); }
+        20% { transform: scaleY(1); }
       }
-      
+
       .loading-text {
         font-family: 'Pacifico', cursive;
         font-size: 1.5rem;
-        color: #9b87f5;
+        color: #7E69AB;
         margin: 0;
       }
+
+      /* optional star dots */
+      #loading-screen .stars { position: absolute; inset: 0; pointer-events: none; }
+      #loading-screen .stars span {
+        position: absolute; width: 3px; height: 3px; background: rgba(255,255,255,.6); border-radius: 9999px;
+        animation: twinkle 2.4s infinite ease-in-out;
+      }
+      #loading-screen .stars span:nth-child(1){ top:15%; left:12%; animation-delay: .1s; }
+      #loading-screen .stars span:nth-child(2){ top:8%; left:55%; animation-delay: .3s; }
+      #loading-screen .stars span:nth-child(3){ top:28%; left:78%; animation-delay: .6s; }
+      #loading-screen .stars span:nth-child(4){ bottom:20%; left:30%; animation-delay: .9s; }
+      #loading-screen .stars span:nth-child(5){ bottom:14%; right:12%; animation-delay: 1.2s; }
+      @keyframes twinkle {
+        0%,100%{ opacity:.2; transform: scale(.8);}
+        50%{ opacity:1; transform: scale(1);}
+      }
+
+      /* ========== DARK MODE OVERRIDES ========== */
+      .dark #loading-screen {
+        background:
+          radial-gradient(1200px 600px at 20% 20%, rgba(255,255,255,.06), transparent 60%),
+          radial-gradient(1000px 600px at 80% 80%, rgba(255,255,255,.04), transparent 60%),
+          linear-gradient(135deg, #0f1423 0%, #1b2136 45%, #241f3a 100%);
+      }
+      .dark #loading-screen .wave {
+        background: linear-gradient(135deg, hsl(230 30% 74%), hsl(230 55% 68%)); /* periwinkle family */
+        box-shadow: 0 8px 18px rgba(120, 145, 255, .28);
+      }
+      .dark #loading-screen .loading-text { color: hsl(50 100% 92%); } /* moonlight text */
+      .dark #loading-screen .stars span { background: rgba(255,255,255,.75); }
     </style>
+
+    <!-- 2) Hide loader once React is ready -->
+    <script>
+      // Call this from your React entry when app is mounted.
+      window.__hideLoader__ = function () {
+        const el = document.getElementById("loading-screen");
+        if (el) el.classList.add("hidden");
+      };
+    </script>
   </body>
 </html>

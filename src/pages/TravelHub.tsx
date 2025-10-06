@@ -6,9 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, ArrowRight } from "lucide-react";
 import TimelineSection from "@/components/TravelTimelineSection";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 
 const TravelHub = () => {
+  useScrollToTop(); 
   const destinations = [
     {
       id: 1,

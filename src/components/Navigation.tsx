@@ -37,47 +37,39 @@ const Navigation = () => {
             <ThemePillToggle />
           </div>
 
-          {/* RIGHT: Desktop navigation links */}
+          {/* ✅ RIGHT: Desktop navigation links with active highlight */}
           <div className="hidden md:flex items-center gap-6">
-            <Button variant="ghost" size="sm" onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-smooth">
-              <Sparkles className="w-4 h-4 mr-2" />
-              About
-            </Button>
-            <Button variant="ghost" size="sm" onClick={() => scrollToSection("blog")} className="text-foreground hover:text-primary transition-smooth">
-              <BookOpen className="w-4 h-4 mr-2" />
-              Blog
-            </Button>
-            <Button variant="ghost" size="sm" onClick={() => scrollToSection("shop")} className="text-foreground hover:text-primary transition-smooth">
-              <ShoppingBag className="w-4 h-4 mr-2" />
-              Shop
-            </Button>
-            <Button variant="ghost" size="sm" onClick={() => scrollToSection("courses")} className="text-foreground hover:text-primary transition-smooth">
-              <GraduationCap className="w-4 h-4 mr-2" />
-              Courses
-            </Button>
-            <Button variant="ghost" size="sm" onClick={() => scrollToSection("travel")} className="text-foreground hover:text-primary transition-smooth">
-              <Plane className="w-4 h-4 mr-2" />
-              Travel
-            </Button>
-            <Link to="/contact">
-              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary transition-smooth">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Contact
-              </Button>
-            </Link>
-            <Link to="/faq">
-              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary transition-smooth">
-                <HelpCircle className="w-4 h-4 mr-2" />
-                FAQ
-              </Button>
-            </Link>
+            {[
+              { to: "/about", label: "About", icon: Sparkles },
+              { to: "/blog", label: "Blog", icon: BookOpen },
+              { to: "/shop", label: "Shop", icon: ShoppingBag },
+              { to: "/travel", label: "Travel", icon: Plane },
+              { to: "/contact", label: "Contact", icon: MessageCircle },
+              { to: "/faq", label: "FAQ", icon: HelpCircle },
+            ].map(({ to, label, icon: Icon }) => {
+              const isActive = location.pathname.startsWith(to);
+              return (
+                <Link key={to} to={to}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={[
+                      "transition-smooth flex items-center relative",
+                      isActive
+                        ? "bg-primary/10 text-primary font-semibold after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-2/3 after:h-[2px] after:bg-primary after:rounded-full after:animate-pulse"
+                        : "text-foreground hover:text-primary hover:bg-primary/5",
+                    ].join(" ")}
+                  >
+                    <Icon className="w-4 h-4 mr-2" />
+                    {label}
+                  </Button>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile: toggle + menu icon */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemePillToggle />
-            <Shell className="w-6 h-6 text-primary" />
-          </div>
+          
         </div>
       </div>
     </nav>

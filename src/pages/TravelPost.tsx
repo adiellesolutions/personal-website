@@ -5,10 +5,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MapPin, Calendar, Clock, Heart } from "lucide-react";
+import useScrollToTop from "@/hooks/useScrollToTop";
+
+
 
 const TravelPost = () => {
   const { id } = useParams();
-
+  useScrollToTop(); 
   // Mock travel post data
   const post = {
     name: "Prague, Czech Republic 🏰",

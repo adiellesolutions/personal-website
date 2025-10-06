@@ -4,8 +4,9 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
-
+import useScrollToTop from "@/hooks/useScrollToTop";
 const BlogHub = () => {
+  useScrollToTop();
   const blogPosts = [
     {
       id: 1,
