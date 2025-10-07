@@ -6,8 +6,10 @@ import heroDark from "@/assets/hero-coastal2.jpg";
 import profilepic from "@/assets/pictest.jpg";
 
 const Hero = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [active, setActive] = useState(1); // middle card focused by default
+  const [isDark, setIsDark] = useState(
+    document.documentElement.classList.contains("dark")
+  );
+  const [active, setActive] = useState(1);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -67,12 +69,12 @@ const Hero = () => {
       {/* ===== Mode-Specific Overlays ===== */}
       {!isDark ? (
         <>
-          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#fffafd]/20 via-[#fffefe]/15 to-[#f7fdff]/20 backdrop-blur-[8px]" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#fffafd]/20 via-[#fffefe]/15 to-[#f7fdff]/20 backdrop-blur-[5px]" />
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(70%_50%_at_30%_25%,rgba(255,182,193,0.12),transparent)]" />
         </>
       ) : (
         <>
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f1a]/80 via-[#1c2233]/70 to-[#181627]/90 backdrop-blur-[8px]" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f1a]/80 via-[#1c2233]/70 to-[#181627]/90 backdrop-blur-[5px]" />
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(70%_50%_at_70%_70%,rgba(0,0,0,.45),transparent)]" />
         </>
       )}

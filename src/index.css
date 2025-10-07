@@ -292,3 +292,26 @@
 .dark body { @apply galaxy-bg; }
 .dark body::before { content: ""; @apply galaxy-overlay; }
 .dark body::after  { content: ""; @apply galaxy-nebula; }
+
+.show-scrollbar {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+.show-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.show-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(107,114,128,0.45);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+.dark .show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(148,163,184,0.35);
+}
+

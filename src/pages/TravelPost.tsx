@@ -42,10 +42,10 @@ export default function TravelPost() {
     rating: 4.9,
     readingMinutes: 8,
     gallery: [
-      "https://cdn.pixabay.com/photo/2016/11/21/12/59/prague-1845560_1280.jpg",
-      "https://cdn.pixabay.com/photo/2015/11/06/13/29/prague-1033647_1280.jpg",
-      "https://cdn.pixabay.com/photo/2016/11/23/00/33/prague-1854684_1280.jpg",
-      "https://cdn.pixabay.com/photo/2018/06/08/09/42/prague-3468552_1280.jpg",
+      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
     ],
     itinerary: [
       {
@@ -91,9 +91,9 @@ export default function TravelPost() {
       activities: "$40",
     },
     related: [
-      { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://cdn.pixabay.com/photo/2016/10/08/18/35/budapest-1725337_1280.jpg" },
-      { id: "vienna-2023", name: "Vienna, Austria", cover: "https://cdn.pixabay.com/photo/2014/07/10/16/25/vienna-389043_1280.jpg" },
-      { id: "prague-night", name: "Prague — Night Walks", cover: "https://cdn.pixabay.com/photo/2017/08/06/09/49/prague-2593199_1280.jpg" },
+      { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
+      { id: "vienna-2023", name: "Vienna, Austria", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
+      { id: "prague-night", name: "Prague — Night Walks", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
     ],
   };
 
@@ -281,32 +281,33 @@ export default function TravelPost() {
   );
 
   const Comments = () => (
-    <Card className="p-4">
+    <Card className="p-4 h-70">
       <h4 className="font-semibold mb-3">Comments</h4>
-      <div className="space-y-3">
-        <div className="flex gap-2">
-          <input
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
-            placeholder="Share a quick tip or question..."
-            className="flex-1 rounded-full px-4 py-2 border border-gray-200 dark:border-gray-700"
-          />
-          <Button onClick={addComment} className="rounded-full bg-pink-500 text-white">Post</Button>
+      <div className="space-y-3 h-2">
+
+        <div className="space-y-3">
+          <div className="space-y-2 h-55 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
+            {comments.map((c) => (
+              <div
+                key={c.id}
+                className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg"
+              >
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="font-semibold">{c.author}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {c.text}
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400">
+                    {new Date(c.id).toLocaleDateString()}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="space-y-2">
-          {comments.map((c) => (
-            <div key={c.id} className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-              <div className="flex justify-between items-start">
-                <div>
-                  <div className="font-semibold">{c.author}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{c.text}</div>
-                </div>
-                <div className="text-xs text-gray-400">{new Date(c.id).toLocaleDateString()}</div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </Card>
   );
@@ -351,7 +352,7 @@ export default function TravelPost() {
               <Calendar size={14} /> {post.date}
             </div>
           </div>
-          <h1 className="font-pacifico text-3xl md:text-5xl">{post.name}</h1>
+          <h1 className="font-pacifico text-3xl md:text-5xl pb-5">{post.name}</h1>
           <p className="mt-2 text-sm text-white/90 max-w-xl">{post.content}</p>
         </div>
       </div>
@@ -392,25 +393,35 @@ export default function TravelPost() {
             </div>
           </Card>
 
-          <RelatedCarousel />
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Comments />
 
-            <Card className="p-6">
+            <Card className="p-6 h-[18rem] md:h-[22rem] flex flex-col">
               <h4 className="font-semibold mb-3">Practical Info</h4>
-              <ul className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
-                <li>Currency: Czech koruna (CZK)</li>
-                <li>Language: Czech (English widely spoken in tourist areas)</li>
-                <li>Transport: Trams, metro — buy a 3-day pass for convenience</li>
-                <li>Plug type: Type E (230V)</li>
-              </ul>
+
+              {/* Scrollable content area */}
+              <div className="flex-1 overflow-y-auto pr-2 show-scrollbar">
+                <ul className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>Currency: Czech koruna (CZK)</li>
+                  <li>Language: Czech (English widely spoken in tourist areas)</li>
+                  <li>Transport: Trams, metro — buy a 3-day pass for convenience</li>
+                  <li>Plug type: Type E (230V)</li>
+                  {/* add more lines to test scrolling */}
+                  <li>Emergency: 112</li>
+                  <li>Time zone: CET (UTC+1)</li>
+                  <li>Best time to visit: April — October</li>
+                </ul>
+              </div>
 
               <div className="mt-4">
                 <Button className="bg-pink-500 text-white w-full">Download Printable Itinerary (PDF)</Button>
               </div>
             </Card>
+
           </div>
+
+          <RelatedCarousel />
+
         </div>
 
         {/* Sidebar */}
