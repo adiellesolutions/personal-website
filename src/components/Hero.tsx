@@ -104,7 +104,7 @@ const Hero = () => {
 
             {/* Headline with underline */}
             <div className="relative inline-block mb-6 pb-5">
-              <h1 className="font-pacifico text-5xl sm:text-6xl lg:text-7xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,.25)] leading-[1.1] relative z-10">
+              <h1 className="font-pacifico left-1 text-5xl sm:text-6xl lg:text-7xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,.25)] leading-[1.1] relative z-10">
                 Hi, I’m Dary 🌸
               </h1>
               <span className="absolute left-0 bottom-0 w-3/4 h-[6px] rounded-full bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 opacity-70" />
