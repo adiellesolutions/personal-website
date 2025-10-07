@@ -3,7 +3,7 @@ import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroLight from "@/assets/hero-coastal.jpg";
 import heroDark from "@/assets/hero-coastal2.jpg";
-
+import profilepic from "@/assets/pictest.jpg";
 const Hero = () => {
   const [isDark, setIsDark] = useState(false);
 
@@ -130,6 +130,22 @@ const Hero = () => {
               <ArrowDown className="ml-2 w-5 h-5 animate-bounce" />
             </Button>
           </div>
+
+            {/* RIGHT SIDE: Polaroid Frame */}
+            <div className="relative flex justify-center md:justify-end">
+              <div className="mx-auto w-full max-w-[560px] rounded-3xl bg-black/85 shadow-[0_25px_80px_rgba(0,0,0,.5)] p-4 md:p-5 transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-1 hover:shadow-glow">
+                <div className="rounded-2xl overflow-hidden border border-white/10 bg-black">
+                  <img
+                    src={profilepic}
+                    alt="Coastal sunrise"
+                    className="w-full h-[300px] md:h-[360px] object-cover transition-all duration-700"
+                  />
+                </div>
+                <p className="text-center text-secondary mt-3 font-pacifico text-lg">
+                  Your sanctuary awaits ✨
+                </p>
+              </div>
+            </div>
 
           {/* RIGHT SIDE: Polaroid Frame */}
           <div className="relative flex justify-center md:justify-end">
