@@ -4,8 +4,10 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Heart, Star } from "lucide-react";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const MoodboardPage = () => {
+  useScrollToTop();
   const quotes = [
     "Live in the sunshine, swim in the sea, drink the wild air ✨",
     "She believed she could, so she did 💫",
