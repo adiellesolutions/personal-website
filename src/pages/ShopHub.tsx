@@ -44,7 +44,7 @@ const Pill = ({ children, className = "", ...props }: any) => (
 );
 
 /* =========================================
-   Courses Section (styled to match)
+   Digital Products Section (unchanged)
 ========================================= */
 const CoursesSection = () => {
   const courses = [
@@ -88,10 +88,55 @@ const CoursesSection = () => {
 };
 
 /* =========================================
+   Segmented Toggle (NEW)
+========================================= */
+type ShopTab = "affiliate" | "digital";
+
+const SegmentedTabs = ({
+  value,
+  onChange,
+}: {
+  value: ShopTab;
+  onChange: (v: ShopTab) => void;
+}) => {
+  const isAffiliate = value === "affiliate";
+  return (
+    <div className="relative w-full max-w-[360px] mx-auto">
+      <div className="relative bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border border-white/30 dark:border-gray-700 rounded-full px-1 py-1 shadow-md flex">
+        <div
+          className={`absolute top-1 bottom-1 w-1/2 rounded-full bg-pink-400/90 dark:bg-pink-500/90 shadow transition-transform duration-300 ${
+            isAffiliate ? "translate-x-0" : "translate-x-full"
+          }`}
+        />
+        <button
+          onClick={() => onChange("affiliate")}
+          className={`relative z-10 flex-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            isAffiliate ? "text-white" : "text-pink-600 dark:text-pink-300"
+          }`}
+        >
+          Affiliate
+        </button>
+        <button
+          onClick={() => onChange("digital")}
+          className={`relative z-10 flex-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            !isAffiliate ? "text-white" : "text-pink-600 dark:text-pink-300"
+          }`}
+        >
+          Digital
+        </button>
+      </div>
+    </div>
+  );
+};
+
+/* =========================================
    Main Page
 ========================================= */
 const ShopHub = () => {
-  // ===== Data (using placeholders) =====
+  // === NEW: which tab is active
+  const [tab, setTab] = useState<ShopTab>("affiliate");
+
+  // ===== Data (using placeholders)
   const productsRaw = [
     { id: 1, name: "Aesthetic Study Desk Setup 📚", type: "Affiliate", price: 45, description: "All the cozy items that make my study space dreamy and productive!", image: PLACEHOLDER.studyDesk, category: "study", rating: 4.9, reviews: 127, labels: ["Featured", "Free Shipping"] },
     { id: 2, name: "My Everyday Jewelry Collection ✨", type: "Affiliate", price: 32, description: "Dainty, minimal pieces that I wear every single day. Simple elegance!", image: PLACEHOLDER.jewelry, category: "lifestyle", rating: 4.8, reviews: 89, labels: ["Best Seller"] },
@@ -101,7 +146,7 @@ const ShopHub = () => {
     { id: 6, name: "Tech & Productivity Gadgets 💻", type: "Affiliate", price: 89, description: "The tech that makes my student life easier and more organized!", image: PLACEHOLDER.gadgets, category: "study", rating: 4.9, reviews: 67, labels: ["Premium", "Course Included"] },
   ];
 
-  // ===== UI State =====
+  // ===== UI State
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<"all" | "lifestyle" | "study" | "travel">("all");
   const [priceBand, setPriceBand] = useState<"all" | "0-25" | "25-50" | "50-100" | "100+">("all");
@@ -111,7 +156,7 @@ const ShopHub = () => {
   const [showCompare, setShowCompare] = useState(false);
   const toastRef = useRef<HTMLDivElement | null>(null);
 
-  // ===== Derived list =====
+  // ===== Derived list (affiliate grid)
   const products = useMemo(() => {
     return productsRaw.filter((p) => {
       if (category !== "all" && p.category !== category) return false;
@@ -129,7 +174,7 @@ const ShopHub = () => {
     });
   }, [productsRaw, category, priceBand, search]);
 
-  // ===== Toast helper =====
+  // ===== Toast
   const showToast = (msg: string) => {
     if (!toastRef.current) return;
     toastRef.current.textContent = msg;
@@ -141,7 +186,7 @@ const ShopHub = () => {
     }, 2200);
   };
 
-  // ===== Effects for soft fade-in on grid =====
+  // ===== Soft fade-in
   useEffect(() => {
     const cards = document.querySelectorAll(".product-card-fade");
     cards.forEach((el, i) => {
@@ -153,9 +198,9 @@ const ShopHub = () => {
         (el as HTMLElement).style.transform = "translateY(0)";
       }, i * 80);
     });
-  }, [products.length, category, priceBand, search]);
+  }, [products.length, category, priceBand, search, tab]);
 
-  // ===== Wishlist / Compare =====
+  // ===== Wishlist / Compare
   const toggleWishlist = (id: number) => {
     setWishlist((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
     showToast(wishlist.includes(id) ? "Removed from wishlist" : "Added to wishlist 💕");
@@ -170,7 +215,6 @@ const ShopHub = () => {
 
   const removeCompare = (id: number) => setCompare((prev) => prev.filter((x) => x !== id));
 
-  // ===== Scroll helpers =====
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -178,7 +222,7 @@ const ShopHub = () => {
 
   return (
     <div className="min-h-screen bg-background text-text-primary relative">
-      {/* Keep your site nav if needed */}
+      {/* Nav */}
       <Navigation />
 
       {/* Quick link floating icons (right) */}
@@ -196,7 +240,6 @@ const ShopHub = () => {
 
       {/* ===== Hero ===== */}
       <section id="hero" className="relative pt-28 md:pt-32 pb-16 overflow-hidden">
-        {/* Background */}
         <div className="absolute inset-0 -z-10">
           <img
             src={PLACEHOLDER.hero}
@@ -210,13 +253,11 @@ const ShopHub = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20" />
         </div>
 
-        {/* Floating sparkles */}
         <Sparkle className="top-20 left-16 text-2xl">✨</Sparkle>
         <Sparkle className="top-28 right-24 text-xl">🛍️</Sparkle>
         <Sparkle className="bottom-16 left-12 text-lg">🌸</Sparkle>
         <Sparkle className="bottom-28 right-16 text-2xl">💎</Sparkle>
 
-        {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="font-accent text-5xl md:text-7xl text-primary mb-4 drop-shadow-sm">My Curated Shop</h1>
           <p className="font-quicksand text-xl md:text-2xl text-text-primary mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -236,7 +277,6 @@ const ShopHub = () => {
           </div>
         </div>
 
-        {/* Wave divider */}
         <div className="absolute bottom-0 left-0 w-full">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-16 fill-background">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
@@ -246,182 +286,234 @@ const ShopHub = () => {
         </div>
       </section>
 
-      {/* ===== Search & Filters ===== */}
-      <section className="py-12 bg-gradient-to-br from-surface to-secondary/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md">
-            <div className="flex flex-col lg:flex-row gap-6 items-center">
-              {/* Search */}
-              <div className="flex-1 relative w-full">
-                <input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search for coastal treasures..."
-                  className="w-full px-6 py-4 pl-12 rounded-full border border-border focus:outline-none focus:ring-2 focus:ring-primary/40"
-                />
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary">🔍</div>
-              </div>
+      {/* ===== Floating Toggle + (conditional) Filters ===== */}
+<section className="sticky top-[85px] z-[60] flex justify-center px-4">
+  <div className="bg-white/60 dark:bg-gray-900/70 backdrop-blur-xl shadow-lg border border-white/30 dark:border-gray-700 rounded-2xl w-full max-w-5xl transition-all duration-300">
+    {/* Segmented Tabs */}
+    <div className="px-4 pt-3 pb-2">
+      <SegmentedTabs value={tab} onChange={setTab} />
+    </div>
 
-              {/* Category pills */}
-              <div className="flex flex-wrap gap-3">
-                <Pill
-                  onClick={() => setCategory("all")}
-                  className={`${category === "all" ? "bg-primary text-white" : "bg-secondary text-text-primary hover:bg-secondary/80"}`}
-                >
-                  All Items
-                </Pill>
-                <Pill
-                  onClick={() => setCategory("lifestyle")}
-                  className={`${category === "lifestyle" ? "bg-primary text-white" : "bg-secondary text-text-primary hover:bg-secondary/80"}`}
-                >
-                  Lifestyle
-                </Pill>
-                <Pill
-                  onClick={() => setCategory("study")}
-                  className={`${category === "study" ? "bg-primary text-white" : "bg-secondary text-text-primary hover:bg-secondary/80"}`}
-                >
-                  Study
-                </Pill>
-                <Pill
-                  onClick={() => setCategory("travel")}
-                  className={`${category === "travel" ? "bg-primary text-white" : "bg-secondary text-text-primary hover:bg-secondary/80"}`}
-                >
-                  Travel
-                </Pill>
-              </div>
-
-              {/* Price range */}
-              <div className="flex items-center gap-3">
-                <span className="text-text-secondary font-medium">Price:</span>
-                <select
-                  value={priceBand}
-                  onChange={(e) => setPriceBand(e.target.value as any)}
-                  className="px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/40"
-                >
-                  <option value="all">All Prices</option>
-                  <option value="0-25">$0 - $25</option>
-                  <option value="25-50">$25 - $50</option>
-                  <option value="50-100">$50 - $100</option>
-                  <option value="100+">$100+</option>
-                </select>
-              </div>
+    {/* Affiliate Filters */}
+    {tab === "affiliate" && (
+      <div className="px-6 pb-4">
+        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 justify-between">
+          {/* Search */}
+          <div className="relative flex-1 w-full">
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search for coastal treasures..."
+              className="w-full px-6 py-3 pl-10 rounded-full text-sm border border-gray-200 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400"
+            />
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300 text-lg">
+              🔍
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ===== Featured Products ===== */}
-      <main id="featured" className="py-16 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">Featured Favorites 💕</h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Items I absolutely can’t live without — curated for a cozy coastal vibe.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((p) => (
-              <Card
-                key={p.id}
-                className="product-card-fade group bg-card/90 border border-primary/10 shadow-float hover:shadow-glow transition-smooth overflow-hidden h-full rounded-2xl"
+          {/* Category Pills */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {["all", "lifestyle", "study", "travel"].map((key) => (
+              <Pill
+                key={key}
+                onClick={() => setCategory(key as any)}
+                className={`text-xs sm:text-sm px-4 py-2 ${
+                  category === key
+                    ? "bg-pink-400 text-white shadow"
+                    : "bg-pink-100 text-pink-600 hover:bg-pink-200"
+                }`}
               >
-                {/* Image */}
-                <div className="relative overflow-hidden">
-                  <div className="aspect-[4/3] w-full">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* badges top-left */}
-                  {p.labels?.[0] && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-secondary text-text-primary px-3 py-1 rounded-full text-xs font-medium">
-                        {p.labels[0]}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* actions top-right */}
-                  <div className="absolute top-3 right-3 flex gap-2">
-                    <button
-                      onClick={() => toggleWishlist(p.id)}
-                      className="bg-white/90 p-2 rounded-full hover:bg-white transition"
-                      aria-label="Wishlist"
-                    >
-                      {wishlist.includes(p.id) ? "❤️" : "🤍"}
-                    </button>
-                    <button
-                      onClick={() => addCompare(p.id)}
-                      className="bg-white/90 p-2 rounded-full hover:bg-white transition"
-                      aria-label="Compare"
-                    >
-                      ⚖️
-                    </button>
-                  </div>
-
-                  {/* rating bottom-left */}
-                  <div className="absolute bottom-3 left-3">
-                    <span className="bg-success text-text-primary px-3 py-1 rounded-full text-xs font-medium">
-                      ⭐ {p.rating.toFixed(1)} ({p.reviews} reviews)
-                    </span>
-                  </div>
-
-                  {/* type badge */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-black/60 text-white border-white/30 backdrop-blur">{p.type}</Badge>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5">
-                  <h3 className="font-quicksand text-lg text-primary font-bold leading-tight">{p.name}</h3>
-                  <p className="text-muted-foreground mt-1 mb-4 line-clamp-3">{p.description}</p>
-
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-primary">${p.price}</span>
-                      {p.labels?.includes("Course Included") && (
-                        <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
-                          🎓 Course Included
-                        </span>
-                      )}
-                      {p.labels?.includes("Free Shipping") && (
-                        <span className="bg-success/10 text-success-700 px-2 py-1 rounded-full text-xs font-medium">
-                          🚚 Free Shipping
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <Link to={`/shop/${p.id}`} className="inline-flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform">
-                      View Details
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Link>
-                    <Button variant="secondary" onClick={() => showToast(`Price tracking enabled for ${p.name} 📊`)}>
-                      Track
-                    </Button>
-                  </div>
-                </div>
-              </Card>
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </Pill>
             ))}
           </div>
 
-          {/* Load more */}
-          <div className="text-center mt-12">
-            <Button variant="secondary" className="rounded-full px-8 py-4" onClick={() => showToast("Loading more coastal treasures… ✨")}>
-              Load More Treasures ✨
-            </Button>
+          {/* Price Dropdown */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Price:</span>
+            <select
+              value={priceBand}
+              onChange={(e) => setPriceBand(e.target.value as any)}
+              className="text-sm px-3 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 focus:outline-none"
+            >
+              <option value="all">All</option>
+              <option value="0-25">$0–25</option>
+              <option value="25-50">$25–50</option>
+              <option value="50-100">$50–100</option>
+              <option value="100+">$100+</option>
+            </select>
           </div>
         </div>
-      </main>
+      </div>
+    )}
 
-      {/* ===== Categories ===== */}
+    {/* Digital Filters (NEW) */}
+    {tab === "digital" && (
+      <div className="px-6 pb-4">
+        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 justify-between">
+          {/* Search */}
+          <div className="relative flex-1 w-full">
+            <input
+              placeholder="Search for guides, courses, or templates..."
+              className="w-full px-6 py-3 pl-10 rounded-full text-sm border border-gray-200 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400"
+            />
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300 text-lg">
+              🔍
+            </div>
+          </div>
+
+          {/* Type Pills */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {["All", "Guides", "Templates", "Courses"].map((t) => (
+              <Pill
+                key={t}
+                className={`text-xs sm:text-sm px-4 py-2 ${
+                  t === "All"
+                    ? "bg-pink-400 text-white shadow"
+                    : "bg-pink-100 text-pink-600 hover:bg-pink-200"
+                }`}
+              >
+                {t}
+              </Pill>
+            ))}
+          </div>
+
+          {/* Sort Dropdown */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Sort:</span>
+            <select
+              className="text-sm px-3 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 focus:outline-none"
+            >
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low → High</option>
+              <option value="high">Price: High → Low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+
+      {/* ===== Content area switches, other features stay ===== */}
+      {tab === "affiliate" ? (
+        <main id="featured" className="py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+          <div className="container mx-auto max-w-6xl px-4">
+            <div className="text-center mb-12">
+              <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">Featured Favorites 💕</h2>
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                Items I absolutely can’t live without — curated for a cozy coastal vibe.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((p) => (
+                <Card
+                  key={p.id}
+                  className="product-card-fade group bg-card/90 border border-primary/10 shadow-float hover:shadow-glow transition-smooth overflow-hidden h-full rounded-2xl"
+                >
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <div className="aspect-[4/3] w-full">
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* badges */}
+                    {p.labels?.[0] && (
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-secondary text-text-primary px-3 py-1 rounded-full text-xs font-medium">
+                          {p.labels[0]}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* actions */}
+                    <div className="absolute top-3 right-3 flex gap-2">
+                      <button
+                        onClick={() => toggleWishlist(p.id)}
+                        className="bg-white/90 p-2 rounded-full hover:bg-white transition"
+                        aria-label="Wishlist"
+                      >
+                        {wishlist.includes(p.id) ? "❤️" : "🤍"}
+                      </button>
+                      <button
+                        onClick={() => addCompare(p.id)}
+                        className="bg-white/90 p-2 rounded-full hover:bg-white transition"
+                        aria-label="Compare"
+                      >
+                        ⚖️
+                      </button>
+                    </div>
+
+                    {/* rating */}
+                    <div className="absolute bottom-3 left-3">
+                      <span className="bg-success text-text-primary px-3 py-1 rounded-full text-xs font-medium">
+                        ⭐ {p.rating.toFixed(1)} ({p.reviews} reviews)
+                      </span>
+                    </div>
+
+                    {/* type badge */}
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2">
+                      <Badge className="bg-black/60 text-white border-white/30 backdrop-blur">{p.type}</Badge>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="font-quicksand text-lg text-primary font-bold leading-tight">{p.name}</h3>
+                    <p className="text-muted-foreground mt-1 mb-4 line-clamp-3">{p.description}</p>
+
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl font-bold text-primary">${p.price}</span>
+                        {p.labels?.includes("Course Included") && (
+                          <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                            🎓 Course Included
+                          </span>
+                        )}
+                        {p.labels?.includes("Free Shipping") && (
+                          <span className="bg-success/10 text-success-700 px-2 py-1 rounded-full text-xs font-medium">
+                            🚚 Free Shipping
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <Link to={`/shop/${p.id}`} className="inline-flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform">
+                        View Details
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </Link>
+                      <Button variant="secondary" onClick={() => showToast(`Price tracking enabled for ${p.name} 📊`)}>
+                        Track
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Load more */}
+            <div className="text-center mt-12">
+              <Button variant="secondary" className="rounded-full px-8 py-4" onClick={() => showToast("Loading more coastal treasures… ✨")}>
+                Load More Treasures ✨
+              </Button>
+            </div>
+          </div>
+        </main>
+      ) : (
+        /* DIGITAL VIEW — reuse your existing section */
+        <CoursesSection />
+      )}
+
+      {/* ===== Categories (kept) ===== */}
       <section id="categories" className="py-20 bg-gradient-to-br from-secondary/10 to-primary/10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -454,7 +546,7 @@ const ShopHub = () => {
         </div>
       </section>
 
-      {/* ===== Trust Signals ===== */}
+      {/* ===== Trust Signals (kept) ===== */}
       <section className="py-16 bg-gradient-to-br from-surface to-primary/10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-md">
@@ -485,13 +577,10 @@ const ShopHub = () => {
         </div>
       </section>
 
-      {/* ===== Courses / Digital Products ===== */}
-      <CoursesSection />
-
-      {/* ===== Footer ===== */}
+      {/* Footer (kept) */}
       <Footer />
 
-      {/* ===== Wishlist Modal ===== */}
+      {/* ===== Wishlist Modal (kept) ===== */}
       {showWishlist && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-lg">
@@ -523,7 +612,7 @@ const ShopHub = () => {
         </div>
       )}
 
-      {/* ===== Comparison Modal ===== */}
+      {/* ===== Comparison Modal (kept) ===== */}
       {showCompare && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl p-8 max-w-2xl w-full shadow-lg">
