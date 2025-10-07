@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, GraduationCap, FileText, Calendar, Download, Heart, Scale, ArrowUp, Star, Scale3d } from "lucide-react";
+import { ExternalLink, GraduationCap, FileText, Calendar, Download, Heart, Scale, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /* =========================================
@@ -180,8 +180,6 @@ const ShopHub = () => {
     <div className="min-h-screen bg-background text-text-primary relative">
       {/* Keep your site nav if needed */}
       <Navigation />
-
-   
 
       {/* Quick link floating icons (right) */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col space-y-4">
@@ -456,40 +454,6 @@ const ShopHub = () => {
         </div>
       </section>
 
-      {/* ===== Testimonials ===== */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">What My Community Says 💕</h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Real reviews from beautiful souls who’ve transformed their spaces with these coastal treasures
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "Sarah M.", text: "The Journal Set transformed my mornings! Incredible quality and such a special touch. 🌊", when: "October 2025" },
-              { name: "Maya L.", text: "As a college student, the Study Planner Kit is a game-changer. Aesthetic + effective! ✨", when: "September 2025" },
-              { name: "Zoe K.", text: "The Travel Essentials kit made my road trip perfect—thoughtfully curated and so handy! 🏖️", when: "August 2025" },
-            ].map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center mr-4">
-                    <Star className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-quicksand text-lg text-primary">{t.name}</h4>
-                    <div className="flex text-accent text-sm">⭐⭐⭐⭐⭐</div>
-                  </div>
-                </div>
-                <p className="text-text-secondary leading-relaxed mb-4">“{t.text}”</p>
-                <div className="text-xs text-text-secondary">Verified Purchase • {t.when}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== Trust Signals ===== */}
       <section className="py-16 bg-gradient-to-br from-surface to-primary/10">
         <div className="max-w-6xl mx-auto px-4">
@@ -521,47 +485,11 @@ const ShopHub = () => {
         </div>
       </section>
 
-      {/* ===== Newsletter ===== */}
-      <section className="py-20 bg-gradient-to-br from-primary/80 to-primary/90 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-quicksand text-4xl md:text-5xl mb-4">Get Exclusive Shop Updates 💌</h2>
-          <p className="text-xl mb-8 text-primary-100">Be the first to know about new arrivals and special discounts</p>
-
-          <form
-            className="max-w-md mx-auto"
-            onSubmit={(e) => {
-              e.preventDefault();
-              (e.currentTarget.querySelector("input") as HTMLInputElement).value = "";
-              showToast("Thank you for subscribing! 🌊");
-            }}
-          >
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input type="email" placeholder="your@email.com" required className="flex-1 px-6 py-4 rounded-full text-text-primary focus:outline-none" />
-              <Button type="submit" variant="secondary" className="px-8 py-4 rounded-full font-medium">
-                Subscribe ✨
-              </Button>
-            </div>
-          </form>
-
-          <p className="text-sm text-primary-200 mt-4">Exclusive discounts, early access, and coastal shopping inspiration 🌊</p>
-        </div>
-      </section>
-
       {/* ===== Courses / Digital Products ===== */}
       <CoursesSection />
 
       {/* ===== Footer ===== */}
       <Footer />
-
-      {/* ===== Disclosure block (extra emphasis) ===== */}
-      <div className="container mx-auto max-w-6xl px-4">
-        <Card className="bg-gradient-to-br from-primary/80 to-accent/80 text-white shadow-glow p-8 md:p-12 mt-12 border-2 border-white/40 text-center rounded-2xl">
-          <h3 className="font-pacifico text-3xl mb-4">Disclosure 💕</h3>
-          <p className="text-white/95 text-lg max-w-2xl mx-auto">
-            Some links are affiliate links, which means I may earn a small commission at no extra cost to you. Your support helps me keep creating!
-          </p>
-        </Card>
-      </div>
 
       {/* ===== Wishlist Modal ===== */}
       {showWishlist && (
