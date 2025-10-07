@@ -1,16 +1,17 @@
-import { BookOpen, ShoppingBag, MessageCircle, Shell } from "lucide-react";
+import { BookOpen, ShoppingBag, MessageCircle, Shell, Star } from "lucide-react";
 
 const FloatingIcons = () => {
   const icons = [
     { Icon: BookOpen, label: "Blog", section: "blog", color: "bg-primary" },
     { Icon: ShoppingBag, label: "Shop", section: "shop", color: "bg-secondary" },
     { Icon: MessageCircle, label: "Contact", section: "contact", color: "bg-accent" },
+    { Icon: Star, label: "Reviews", section: "reviews", color: "bg-yellow-400" }, // ⭐ New icon
   ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -29,7 +30,8 @@ const FloatingIcons = () => {
           </span>
         </button>
       ))}
-      
+
+      {/* Decorative floating orb */}
       <div className="w-12 h-12 bg-muted/50 rounded-full flex items-center justify-center mt-2 animate-float">
         <Shell className="w-6 h-6 text-primary" />
       </div>
