@@ -11,8 +11,13 @@ function getInitialMode(): Mode {
 }
 
 function applyMode(mode: Mode) {
-  document.documentElement.classList.toggle("dark", mode === "evening");
-  localStorage.setItem("theme-pill", mode);
+  const isDark = mode === "evening";
+  const theme = isDark ? "dark" : "light";
+
+  document.documentElement.classList.toggle("dark", isDark);
+  localStorage.setItem("theme-pill", mode); // "morning" | "evening"
+  localStorage.setItem("theme", theme);     // "light" | "dark"
+  document.documentElement.setAttribute("data-user-theme", theme);
 }
 
 export default function ThemePillToggle() {
@@ -20,12 +25,17 @@ export default function ThemePillToggle() {
 
   useEffect(() => applyMode(mode), [mode]);
 
+  // optional: ensure attribute exists on first mount too
+  useEffect(() => {
+    const isDark = mode === "evening";
+    document.documentElement.setAttribute("data-user-theme", isDark ? "dark" : "light");
+  }, []); 
+
   const isEvening = mode === "evening";
 
-  // background gradients from your palette
   const trackBg = isEvening
-    ? "bg-[linear-gradient(135deg,hsl(203_42%_74%)_0%,hsl(206_38%_76%)_100%)]" // coastal blue night
-    : "bg-[linear-gradient(135deg,hsl(33_71%_84%)_0%,hsl(13_43%_76%)_100%)]"; // sunrise peach
+    ? "bg-[linear-gradient(135deg,hsl(203_42%_74%)_0%,hsl(206_38%_76%)_100%)]"
+    : "bg-[linear-gradient(135deg,hsl(33_71%_84%)_0%,hsl(13_43%_76%)_100%)]";
 
   return (
     <button
@@ -36,15 +46,13 @@ export default function ThemePillToggle() {
       title={isEvening ? "Evening (click for Morning)" : "Morning (click for Evening)"}
       className={[
         "relative inline-flex select-none items-center",
-        "w-16 h-8", // smaller pill size
-        "rounded-full p-[3px]",
+        "w-16 h-8 rounded-full p-[3px]",
         "shadow-[0_2px_6px_rgba(0,0,0,0.15)]",
         "transition-all duration-300 ease-out",
         trackBg,
         "ring-1 ring-inset ring-white/40 dark:ring-white/20",
       ].join(" ")}
     >
-      {/* ☀️ Morning icons */}
       <div
         className="pointer-events-none absolute right-2 flex items-center gap-0.5 text-white/95 transition-opacity duration-300"
         style={{ opacity: isEvening ? 0 : 1 }}
@@ -53,7 +61,6 @@ export default function ThemePillToggle() {
         <Sun className="w-3.5 h-3.5" />
       </div>
 
-      {/* 🌙 Evening icons */}
       <div
         className="pointer-events-none absolute left-2 flex items-center gap-0.5 text-white transition-opacity duration-300"
         style={{ opacity: isEvening ? 1 : 0 }}
@@ -62,7 +69,6 @@ export default function ThemePillToggle() {
         <span className="block w-[2px] h-[2px] bg-white/80 rounded-full" />
       </div>
 
-      {/* glossy knob */}
       <div
         className={[
           "relative z-10 h-6 w-6 rounded-full",
