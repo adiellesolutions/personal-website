@@ -46,7 +46,7 @@ const TimelineYear = ({ year, summary, details, children, isOpen, onToggle }) =>
 );
 
 export default function TimelineSection() {
-  const [openYear, setOpenYear] = useState("2024"); // default open year
+  const [openYear, setOpenYear] = useState(null);
 
   return (
     <section className="py-10">
@@ -67,7 +67,7 @@ export default function TimelineSection() {
             description="Witnessed breathtaking sunsets and explored ancient volcanic landscapes."
             rating="4.9"
             photos="127"
-            img="https://source.unsplash.com/100x100/?santorini"
+            img="https://cdn.pixabay.com/photo/2022/01/28/18/32/leaves-6975462_1280.png"
           />
           <TimelineEvent
             title="Kyoto"
@@ -77,7 +77,7 @@ export default function TimelineSection() {
             description="Cherry blossom season and traditional tea ceremonies in ancient temples."
             rating="4.8"
             photos="203"
-            img="https://source.unsplash.com/100x100/?kyoto"
+            img="https://cdn.pixabay.com/photo/2022/01/28/18/32/leaves-6975462_1280.png"
           />
         </TimelineYear>
 
@@ -97,7 +97,7 @@ export default function TimelineSection() {
             description="Explored the Eiffel Tower and indulged in pastries."
             rating="4.7"
             photos="88"
-            img="https://source.unsplash.com/100x100/?paris"
+            img="https://cdn.pixabay.com/photo/2022/01/28/18/32/leaves-6975462_1280.png"
           />
         </TimelineYear>
       </div>

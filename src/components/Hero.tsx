@@ -136,7 +136,7 @@ const Hero = () => {
             <div className="mx-auto w-full max-w-[560px] rounded-3xl bg-black/85 shadow-[0_25px_80px_rgba(0,0,0,.5)] p-4 md:p-5 transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-1 hover:shadow-glow">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-black">
                 <img
-                  src="https://i19.photobucket.com/albums/b159/armand_adventure/PORTRAI3.jpg"
+                  src="https://cdn.pixabay.com/photo/2022/01/28/18/32/leaves-6975462_1280.png"
                   alt="Coastal sunrise"
                   className="w-full h-[300px] md:h-[360px] object-cover transition-all duration-700"
                 />
