@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroLight from "@/assets/hero-coastal.jpg";
-import heroDark from "@/assets/hero-coastal.jpg";
+import heroDark from "@/assets/hero-coastal2.jpg";
 
 const Hero = () => {
   const [isDark, setIsDark] = useState(false);
@@ -11,25 +11,26 @@ const Hero = () => {
     const html = document.documentElement;
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const compute = () =>
-      html.classList.contains("dark") || mq.matches;
-
+    // Only use HTML class as the source of truth
+    const compute = () => html.classList.contains("dark");
     setIsDark(compute());
 
-    const mqListener = (e: MediaQueryListEvent) =>
-      setIsDark(e.matches || html.classList.contains("dark"));
-    mq.addEventListener("change", mqListener);
+    const handleClassChange = () => setIsDark(compute());
 
-    const obs = new MutationObserver(() => setIsDark(compute()));
-    obs.observe(html, { attributes: true, attributeFilter: ["class"] });
+    const observer = new MutationObserver(handleClassChange);
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+
+    // Optional: if system changes but site has no "dark" class, ignore
+    mq.addEventListener("change", () => {
+      if (!html.classList.contains("dark")) setIsDark(false);
+    });
 
     return () => {
-      mq.removeEventListener("change", mqListener);
-      obs.disconnect();
+      observer.disconnect();
+      mq.removeEventListener("change", () => {});
     };
   }, []);
 
-  const imageSrc = isDark ? heroDark : heroLight;
 
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
@@ -40,30 +41,46 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden font-quicksand transition-all duration-700"
     >
-      {/* ===== Background Image ===== */}
-      <div
-        className="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-700"
-        style={{
-          backgroundImage: `url(${imageSrc})`,
-          filter: isDark ? "brightness(0.9) contrast(1.05)" : "brightness(1.2) contrast(0.95)",
-        }}
-      />
+      {/* ===== Background Image (Crossfade) ===== */}
+      <div className="absolute inset-0 -z-10">
+        {/* Light Mode Image */}
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+            isDark ? "opacity-0" : "opacity-100"
+          }`}
+          style={{
+            backgroundImage: `url(${heroLight})`,
+            filter: "brightness(1.2) contrast(0.95)",
+          }}
+        ></div>
+
+        {/* Dark Mode Image */}
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+            isDark ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundImage: `url(${heroDark})`,
+            filter: "brightness(0.9) contrast(1.05)",
+          }}
+        ></div>
+      </div>
+
 
       {/* ===== Mode-Specific Overlays ===== */}
       {!isDark ? (
         <>
-          {/* Light mode pastel tint */}
-          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#ffe6f2]/80 via-[#fff4f9]/70 to-[#e4faff]/80 backdrop-blur-[2px]" />
-          {/* subtle warm glow */}
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_30%_20%,rgba(255,192,203,0.35),transparent)]" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#fffafd]/20 via-[#fffefe]/15 to-[#f7fdff]/20 backdrop-blur-[8px]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(70%_50%_at_30%_25%,rgba(255,182,193,0.12),transparent)]" />
         </>
       ) : (
         <>
           {/* Dark mode dreamy tone */}
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f1a]/80 via-[#1c2233]/70 to-[#181627]/90" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0b0f1a]/80 via-[#1c2233]/70 to-[#181627]/90 backdrop-blur-[8px]" />
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(70%_50%_at_70%_70%,rgba(0,0,0,.45),transparent)]" />
         </>
       )}
+
 
       {/* Floating sparkles (unchanged) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -85,14 +102,12 @@ const Hero = () => {
               <span className="text-sm">Welcome to my digital sanctuary</span>
             </div>
 
-            {/* Headline */}
-            <h1 className="font-pacifico text-5xl sm:text-6xl lg:text-7xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,.25)] mb-4 leading-[1.1]">
-              Hi, I’m Dary 🌸
-            </h1>
-
-            {/* Underline */}
-            <div className="relative mb-6 h-3">
-              <span className="absolute left-0 top-1 block w-48 sm:w-64 h-[6px] rounded-full bg-white/30" />
+            {/* Headline with underline */}
+            <div className="relative inline-block mb-6 pb-5">
+              <h1 className="font-pacifico text-5xl sm:text-6xl lg:text-7xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,.25)] leading-[1.1] relative z-10">
+                Hi, I’m Dary 🌸
+              </h1>
+              <span className="absolute left-0 bottom-0 w-3/4 h-[6px] rounded-full bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 opacity-70" />
             </div>
 
             {/* Subheadline */}
@@ -121,7 +136,7 @@ const Hero = () => {
             <div className="mx-auto w-full max-w-[560px] rounded-3xl bg-black/85 shadow-[0_25px_80px_rgba(0,0,0,.5)] p-4 md:p-5 transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-1 hover:shadow-glow">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-black">
                 <img
-                  src={imageSrc}
+                  src="https://i19.photobucket.com/albums/b159/armand_adventure/PORTRAI3.jpg"
                   alt="Coastal sunrise"
                   className="w-full h-[300px] md:h-[360px] object-cover transition-all duration-700"
                 />
