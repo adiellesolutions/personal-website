@@ -121,61 +121,81 @@ const TravelHub = () => {
           {/* Timeline Section */}
           <TimelineSection />
 
-          {/* Search + Filter Bar */}
-          <div className="sticky top-20 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-sm border border-pink-100 dark:border-gray-700 p-4 md:p-5 mb-10 transition-colors duration-500">
-            <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between">
-              {/* Search Bar */}
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 text-gray-400 dark:text-gray-300" size={18} />
-                <input
-                  type="text"
-                  placeholder="Search destinations..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 rounded-full border border-pink-200 dark:border-gray-700 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 bg-white dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200"
-                />
-              </div>
+{/* Search + Filter Bar */}
+<div className="sticky top-20 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-sm border border-pink-100 dark:border-gray-700 p-4 md:p-5 mb-10 transition-colors duration-500">
+  <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between w-full overflow-hidden">
 
-              {/* Filters */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2">
-                {filters.map((type) => (
-                  <Button
-                    key={type}
-                    size="sm"
-                    onClick={() => setFilter(type)}
-                    className={`rounded-full text-xs sm:text-sm px-3 py-1 ${
-                      filter === type
-                        ? "bg-pink-400 text-white shadow dark:bg-pink-500"
-                        : "bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 dark:bg-gray-800 dark:border-gray-700 dark:text-pink-300 dark:hover:bg-gray-700"
-                    }`}
-                  >
-                    {type}
-                  </Button>
-                ))}
-              </div>
+    {/* Search Bar */}
+    <div className="relative flex-1 min-w-[200px]">
+      <Search
+        className="absolute left-3 top-2.5 text-gray-400 dark:text-gray-300"
+        size={18}
+      />
+      <input
+        type="text"
+        placeholder="Search destinations..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full pl-9 pr-3 py-2 rounded-full border border-pink-200 dark:border-gray-700 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 bg-white dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200"
+      />
+    </div>
 
-              {/* Sort + View Toggle */}
-              <div className="flex items-center justify-center gap-2">
-                <select
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
-                  className="border border-pink-200 dark:border-gray-700 rounded-full text-sm py-2 px-3 bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200"
-                >
-                  <option value="Name">Name</option>
-                  <option value="Duration">Duration</option>
-                  <option value="Rating">Rating</option>
-                </select>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="rounded-full hover:bg-pink-100 dark:hover:bg-gray-700"
-                  onClick={() => setView(view === "grid" ? "list" : "grid")}
-                >
-                  {view === "grid" ? <List size={18} /> : <LayoutGrid size={18} />}
-                </Button>
-              </div>
-            </div>
-          </div>
+    {/* Filters */}
+    <div className="relative w-full lg:max-w-[500px] flex-shrink overflow-hidden">
+      <div
+        className="flex flex-nowrap gap-2 py-2 px-1 overflow-x-auto scrollbar-none"
+        style={{
+          scrollbarWidth: "none", // Firefox
+          msOverflowStyle: "none", // IE 10+
+        }}
+      >
+        {filters.map((type) => (
+          <Button
+            key={type}
+            size="sm"
+            onClick={() => setFilter(type)}
+            className={`flex-shrink-0 rounded-full text-xs sm:text-sm px-3 py-1 ${
+              filter === type
+                ? "bg-pink-400 text-white shadow dark:bg-pink-500"
+                : "bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 dark:bg-gray-800 dark:border-gray-700 dark:text-pink-300 dark:hover:bg-gray-700"
+            }`}
+          >
+            {type}
+          </Button>
+        ))}
+      </div>
+
+      {/* Left Shadow */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-2 bg-gradient-to-r rounded-full from-white dark:from-gray-900"></div>
+
+      {/* Right Shadow */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-2 bg-gradient-to-l rounded-full from-white dark:from-gray-900"></div>
+    </div>
+
+    {/* Sort + View Toggle */}
+    <div className="flex items-center justify-center gap-2 flex-shrink-0 ">
+      <select
+        value={sort}
+        onChange={(e) => setSort(e.target.value)}
+        className="border border-pink-200 dark:border-gray-700 rounded-full text-sm py-2 px-3 bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 hover:bg-white/90 dark:hover:bg-gray-800/90 focus:ring-0 focus:outline-none"
+      >
+        <option value="Name">Name</option>
+        <option value="Duration">Duration</option>
+        <option value="Rating">Rating</option>
+      </select>
+
+      <Button
+        size="icon"
+        variant="ghost"
+        className="rounded-full hover:bg-pink-100 dark:hover:bg-gray-700"
+        onClick={() => setView(view === "grid" ? "list" : "grid")}
+      >
+        {view === "grid" ? <List size={18} /> : <LayoutGrid size={18} />}
+      </Button>
+    </div>
+  </div>
+</div>
+
 
           {/* Destination Count */}
           <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">
