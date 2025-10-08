@@ -20,6 +20,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import BuyItinerarySection from "@/components/BuyItinerarySection";
 
 // =====================
 // TravelPost (static)
@@ -191,27 +192,9 @@ export default function TravelPost() {
 
   const Itinerary = () => (
     <div className="space-y-6">
-      <h2 className="font-quicksand text-2xl font-bold text-pink-700">Itinerary</h2>
-      <div className="grid gap-4">
-        {post.itinerary.map((day) => (
-          <article
-            key={day.id}
-            id={day.id}
-            ref={(el) => (tocRefs.current[day.id] = el)}
-            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-pink-50 dark:border-gray-700"
-          >
-            <h3 className="font-semibold text-lg mb-2">{day.title}</h3>
-            <div className="grid gap-2 sm:grid-cols-3">
-              {day.sections.map((s, idx) => (
-                <div key={idx} className="p-3 bg-pink-50 dark:bg-gray-900 rounded-lg">
-                  <div className="font-semibold text-sm text-pink-600">{s.when}</div>
-                  <div className="text-sm text-gray-700 dark:text-gray-300">{s.text}</div>
-                </div>
-              ))}
-            </div>
-          </article>
-        ))}
-      </div>
+
+    <BuyItinerarySection/>
+
     </div>
   );
 
