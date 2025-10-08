@@ -65,10 +65,7 @@ export default function BuyItinerarySection() {
               className="w-full sm:w-auto text-pink-600 border-pink-300 hover:bg-pink-50 dark:hover:bg-gray-700"
               onClick={() => setShowPreview(true)}
             >
-              <Eye size={16} className="mr-2" /> Preview Sample
-            </Button>
-            <Button className="w-full sm:w-auto bg-pink-500 hover:bg-pink-600 text-white font-semibold shadow-md hover:scale-[1.02] transition-transform">
-              💖 Buy Now
+              <Eye size={16} className="mr-2" /> Itinerary Preview
             </Button>
           </div>
         </div>
@@ -77,10 +74,6 @@ export default function BuyItinerarySection() {
         <div className="text-sm mt-3 flex items-center justify-between flex-wrap gap-2">
           <span className="flex items-center text-pink-500 dark:text-pink-400 gap-1">
             <Gift size={14} /> Includes 2 bonus mini-guides!
-          </span>
-          <span className="flex items-center text-gray-500 dark:text-gray-400 text-xs">
-            <Lock size={12} className="mr-1" />
-            Secure checkout • Instant download
           </span>
         </div>
 
@@ -112,7 +105,7 @@ export default function BuyItinerarySection() {
               ✖
             </button>
             <h4 className="font-semibold text-pink-600 dark:text-pink-400 mb-3 flex items-center gap-2">
-              <Eye size={18} /> Preview Sample
+              <Eye size={18} /> Itinerary Preview
             </h4>
             <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 text-sm text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
               <p className="font-semibold text-pink-500 mb-2">Day 1: Old Town Magic 🌉</p>
@@ -131,7 +124,7 @@ export default function BuyItinerarySection() {
               </p>
             </div>
             <Button className="w-full mt-5 bg-pink-500 hover:bg-pink-600 text-white font-semibold text-base">
-              💕 Get Full Itinerary for $9
+              Get Full Itinerary
             </Button>
           </div>
         </div>
