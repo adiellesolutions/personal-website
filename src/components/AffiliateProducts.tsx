@@ -133,7 +133,7 @@ function ProductCard({
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-primary">${p.price}</span>
+            <span className="text-2xl font-bold text-primary">€{p.price}</span>
             {p.labels?.includes("Course Included") && (
               <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">🎓 Course Included</span>
             )}
@@ -220,10 +220,10 @@ function AffiliateFilters({
                 className="text-sm px-3 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 focus:outline-none"
               >
                 <option value="all">All</option>
-                <option value="0-25">$0–25</option>
-                <option value="25-50">$25–50</option>
-                <option value="50-100">$50–100</option>
-                <option value="100+">$100+</option>
+                <option value="0-25">€0–25</option>
+                <option value="25-50">€25–50</option>
+                <option value="50-100">€50–100</option>
+                <option value="100+">€100+</option>
               </select>
             </div>
           </div>
@@ -389,7 +389,7 @@ export default function AffiliateProducts() {
                 <div key={id} className="flex items-center justify-between p-3 bg-surface rounded-lg">
                   <div>
                     <span className="text-text-primary font-medium">{item.name}</span>
-                    <span className="text-primary ml-2">${item.price}</span>
+                    <span className="text-primary ml-2">€{item.price}</span>
                   </div>
                   <button className="text-error-500 hover:text-error-700" onClick={() => removeCompare(id)}>
                     Remove

@@ -9,7 +9,7 @@ const CoursesSection = () => {
       title: "Ultimate Study Guide",
       icon: GraduationCap,
       description: "My complete system for acing exams and staying organized",
-      price: "$19",
+      price: "€19",
       gradient: "gradient-ocean",
     },
     {
@@ -17,7 +17,7 @@ const CoursesSection = () => {
       title: "Productivity Templates",
       icon: FileText,
       description: "Aesthetic Notion templates for planning your dream life",
-      price: "$12",
+      price: "€12",
       gradient: "gradient-sunset",
     },
     {
@@ -25,7 +25,7 @@ const CoursesSection = () => {
       title: "Travel Itinerary Pack",
       icon: Calendar,
       description: "Ready-to-use travel planners for your European adventures",
-      price: "$15",
+      price: "€15",
       gradient: "gradient-dreamy",
     },
   ];

@@ -86,10 +86,10 @@ export default function TravelPost() {
       "Pack layers — weather changes quickly",
     ],
     budget: {
-      flights: "$250",
-      accommodation: "$120 (3 nights)",
-      food: "$60",
-      activities: "$40",
+      flights: "€250",
+      accommodation: "€120 (3 nights)",
+      food: "€60",
+      activities: "€40",
     },
     related: [
       { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },

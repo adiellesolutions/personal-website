@@ -53,7 +53,7 @@ export default function BuyItinerarySection() {
         <div className="mt-6 bg-gradient-to-r from-pink-50 to-pink-100 dark:from-gray-900 dark:to-gray-800 border border-pink-200/60 dark:border-gray-700 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-left">
             <h4 className="font-bold text-lg text-pink-600 dark:text-pink-400">
-              $9 • Instant Access 💕
+              €9 • Instant Access 💕
             </h4>
             <p className="text-xs text-gray-600 dark:text-gray-400">
               One-time purchase • Lifetime updates

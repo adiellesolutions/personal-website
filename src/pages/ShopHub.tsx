@@ -24,9 +24,9 @@ const Sparkle = ({ className = "", children }: { className?: string; children: a
 ========================================= */
 const CoursesSection = () => {
   const courses = [
-    { id: 1, title: "Ultimate Study Guide", Icon: GraduationCap, description: "My complete system for acing exams and staying organized", price: "$19", gradient: "from-primary/90 via-primary/70 to-accent/80" },
-    { id: 2, title: "Productivity Templates", Icon: FileText, description: "Aesthetic Notion templates for planning your dream life", price: "$12", gradient: "from-secondary/90 via-secondary/70 to-accent/80" },
-    { id: 3, title: "Travel Itinerary Pack", Icon: Calendar, description: "Ready-to-use travel planners for your European adventures", price: "$15", gradient: "from-accent/90 via-accent/70 to-primary/80" },
+    { id: 1, title: "Ultimate Study Guide", Icon: GraduationCap, description: "My complete system for acing exams and staying organized", price: "€19", gradient: "from-primary/90 via-primary/70 to-accent/80" },
+    { id: 2, title: "Productivity Templates", Icon: FileText, description: "Aesthetic Notion templates for planning your dream life", price: "€12", gradient: "from-secondary/90 via-secondary/70 to-accent/80" },
+    { id: 3, title: "Travel Itinerary Pack", Icon: Calendar, description: "Ready-to-use travel planners for your European adventures", price: "€15", gradient: "from-accent/90 via-accent/70 to-primary/80" },
   ] as const;
 
   return (

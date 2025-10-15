@@ -138,14 +138,14 @@ const Hero = () => {
                   dot: "bg-yellow-300/80 dark:bg-amber-200/80",
                 },
                 {
-                  img: heroLight,
+                  img: "https://media.istockphoto.com/id/471926619/photo/moraine-lake-at-sunrise-banff-national-park-canada.jpg?s=612x612&w=0&k=20&c=mujiCtVk5QA697SD3d8V8BGmd91-8HlxCNHkolEA0Bo=",
                   caption: "Cozy cafe 💗",
                   tape: "bg-sky-200/90 dark:bg-cyan-200/90",
                   border: "border-sky-200/70 dark:border-cyan-100/60",
                   dot: "bg-sky-300/80 dark:bg-cyan-200/80",
                 },
                 {
-                  img: profilepic,
+                  img: "https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=",
                   caption: "Morning walk ☀️",
                   tape: "bg-pink-200/90 dark:bg-pink-300/90",
                   border: "border-pink-200/70 dark:border-pink-100/60",

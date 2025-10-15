@@ -7,15 +7,15 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 import profilePic from "@/assets/profile-pic.jpg";
-import journey1 from "@/assets/pictest.jpg";
-import journey2 from "@/assets/pictest.jpg";
-import journey3 from "@/assets/pictest.jpg";
-import journey4 from "@/assets/pictest.jpg";
-import journey5 from "@/assets/pictest.jpg";
-import journey6 from "@/assets/pictest.jpg";
-import polaroid1 from "@/assets/pictest.jpg";
-import polaroid2 from "@/assets/pictest.jpg";
-import polaroid3 from "@/assets/pictest.jpg";
+import journey1 from "@/assets/1.jpg";
+import journey2 from "@/assets/2.jpg";
+import journey3 from "@/assets/3.jpg";
+import journey4 from "@/assets/4.jpg";
+import journey5 from "@/assets/5.jpg";
+import journey6 from "@/assets/6.jpeg";
+import polaroid1 from "@/assets/7.jpg";
+import polaroid2 from "@/assets/8.jpg";
+import polaroid3 from "@/assets/9.jpg";
 
 const AboutPage = () => {
   // lightbox state for polaroids
@@ -86,7 +86,7 @@ const AboutPage = () => {
             <div className="grid md:grid-cols-2 items-center gap-10 md:gap-14">
               <div>
                 <h1 className="font-pacifico text-5xl md:text-6xl leading-tight mb-4">
-                  Hey, I’m <span className="text-secondary">Sarah</span>! 🌸
+                  Hey, I’m <span className="text-secondary">Dary</span>! 🌸
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground mb-6">
                   Welcome to my story of gentle growth and beautiful
