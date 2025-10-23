@@ -1,249 +1,322 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, GraduationCap, FileText, Calendar } from "lucide-react";
+import { Sparkles, Star, Download, Search, Filter } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import AffiliateProducts from "@/components/AffiliateProducts";
 
-/* =========================================
-   Local helpers & placeholders used in hero
-========================================= */
-const PLACEHOLDER = {
-  hero:
-    "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1920&q=80",
-} as const;
-
-const Sparkle = ({ className = "", children }: { className?: string; children: any }) => (
-  <div className={`absolute pointer-events-none ${className}`}>{children}</div>
-);
-
-/* =========================================
-   Courses Section (kept here so we only have 2 files)
-========================================= */
-const CoursesSection = () => {
-  const courses = [
-    { id: 1, title: "Ultimate Study Guide", Icon: GraduationCap, description: "My complete system for acing exams and staying organized", price: "€19", gradient: "from-primary/90 via-primary/70 to-accent/80" },
-    { id: 2, title: "Productivity Templates", Icon: FileText, description: "Aesthetic Notion templates for planning your dream life", price: "€12", gradient: "from-secondary/90 via-secondary/70 to-accent/80" },
-    { id: 3, title: "Travel Itinerary Pack", Icon: Calendar, description: "Ready-to-use travel planners for your European adventures", price: "€15", gradient: "from-accent/90 via-accent/70 to-primary/80" },
-  ] as const;
-
-  return (
-    <section id="courses" className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="font-pacifico text-4xl md:text-5xl text-center mb-4 text-primary">Digital Products</h2>
-        <p className="text-center text-muted-foreground mb-12 text-lg">Templates & guides to help you thrive 💕</p>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {courses.map((course) => (
-            <Card
-              key={course.id}
-              className="group border-2 border-accent/20 bg-white/80 backdrop-blur shadow-float hover:shadow-glow transition-smooth overflow-hidden rounded-2xl"
-            >
-              <div className={`bg-gradient-to-br ${course.gradient} p-8 text-center`}>
-                <course.Icon className="w-20 h-20 mx-auto text-white mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="font-quicksand font-bold text-2xl text-white">{course.title}</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-muted-foreground mb-4 min-h-[3rem]">{course.description}</p>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-3xl font-bold text-primary">{course.price}</span>
-                </div>
-                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground transition-transform active:scale-[.98]">
-                  Get This Template
-                  <Download className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* =========================================
-   Segmented Tabs (sticky; affiliate/digital)
-========================================= */
-type ShopTab = "affiliate" | "digital";
-const SegmentedTabs = ({ value, onChange }: { value: ShopTab; onChange: (v: ShopTab) => void }) => {
-  const isAffiliate = value === "affiliate";
-  return (
-    <div className="relative w-full max-w-[360px] mx-auto">
-      <div className="relative bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border border-white/30 dark:border-gray-700 rounded-full px-1 py-1 shadow-md flex">
-        <div
-          className={`absolute top-1 bottom-1 w-1/2 rounded-full bg-pink-400/90 dark:bg-pink-500/90 shadow transition-transform duration-300 ${
-            isAffiliate ? "translate-x-0" : "translate-x-full"
-          }`}
-        />
-        <button
-          onClick={() => onChange("affiliate")}
-          className={`relative z-10 flex-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            isAffiliate ? "text-white" : "text-pink-600 dark:text-pink-300"
-          }`}
-        >
-          Affiliate
-        </button>
-        <button
-          onClick={() => onChange("digital")}
-          className={`relative z-10 flex-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            !isAffiliate ? "text-white" : "text-pink-600 dark:text-pink-300"
-          }`}
-        >
-          Digital
-        </button>
-      </div>
-    </div>
-  );
-};
-
-/* =========================================
-   Main Page
-========================================= */
 export default function ShopHub() {
-  const [tab, setTab] = useState<ShopTab>("affiliate");
+  const [tab, setTab] = useState("affiliate");
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(3);
 
-  const scrollToId = (id: string) => {
+  const digitalItems = [
+    {
+      title: "✨ Study Organizer Template",
+      desc: "Plan smarter and prettier with this Notion-based template — designed for students who want both focus and flair!",
+      price: "₱249",
+      category: "student",
+      image:
+        "https://images.unsplash.com/photo-1602526219046-84e27f9dc9db?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "🧠 Productivity Dashboard",
+      desc: "Stay on top of your goals, tasks, and dreams with this clean but cute Notion setup.",
+      price: "₱199",
+      category: "productivity",
+      image:
+        "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "🎨 Creative Content Planner",
+      desc: "Ideal for content creators who want to stay organized while keeping aesthetics in check.",
+      price: "₱299",
+      category: "creator",
+      image:
+        "https://images.unsplash.com/photo-1612831816579-05ef7d1a4450?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "💰 Finance Tracker",
+      desc: "Track your savings and expenses in style — aesthetic budgeting made simple.",
+      price: "₱179",
+      category: "finance",
+      image:
+        "https://images.unsplash.com/photo-1605902711622-cfb43c4437d4?auto=format&fit=crop&w=600&q=80",
+    },
+  ];
+
+  const filteredItems = digitalItems
+    .filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    )
+    .filter((item) => (filter === "all" ? true : item.category === filter))
+    .slice(0, visibleCount);
+
+  // Smooth scroll to element
+  const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="min-h-screen bg-background text-text-primary relative">
-      {/* Nav */}
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 scroll-smooth">
       <Navigation />
 
-      {/* ===== Hero (kept) ===== */}
-      <section id="hero" className="relative pt-28 md:pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={PLACEHOLDER.hero}
-            alt="Curated Shop Background"
-            className="w-full h-full object-cover"
-            onError={(e: any) => {
-              e.currentTarget.src =
-                "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=2000&q=80";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20" />
-        </div>
-
-        <Sparkle className="top-20 left-16 text-2xl">✨</Sparkle>
-        <Sparkle className="top-28 right-24 text-xl">🛍️</Sparkle>
-        <Sparkle className="bottom-16 left-12 text-lg">🌸</Sparkle>
-        <Sparkle className="bottom-28 right-16 text-2xl">💎</Sparkle>
-
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <h1 className="font-accent text-5xl md:text-7xl text-primary mb-4 drop-shadow-sm">My Curated Shop</h1>
-          <p className="font-quicksand text-xl md:text-2xl text-text-primary mb-8 max-w-2xl mx-auto leading-relaxed">
-            Handpicked treasures that bring coastal magic to your everyday life ✨
+      {/* HERO SECTION */}
+      <section className="pt-28 pb-20 px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1 space-y-6 text-center md:text-left">
+          <h1 className="font-pacifico text-5xl md:text-6xl text-primary drop-shadow-sm">
+            Dary’s Curated Finds 🌷
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+            A cozy collection of affiliate favorites and digital goods — blending cuteness,
+            creativity, and calm energy ✨
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={() => scrollToId("featured")} className="text-lg px-8 py-6 rounded-full shadow-md">
-              Shop Featured Items 🌊
+
+          {/* TOGGLE BUTTONS */}
+          <div className="flex justify-center md:justify-start gap-4 bg-white/70 backdrop-blur-md rounded-full p-1 shadow-inner border border-pink-200 w-fit mx-auto md:mx-0">
+            <Button
+              onClick={() => setTab("affiliate")}
+              className={`rounded-full text-sm px-5 py-3 transition-all ${
+                tab === "affiliate"
+                  ? "bg-pink-400 text-white"
+                  : "bg-transparent text-primary hover:bg-pink-100"
+              }`}
+            >
+              Affiliate Finds 🛍️
             </Button>
             <Button
-              variant="secondary"
-              onClick={() => scrollToId("categories")}
-              className="text-lg px-8 py-6 rounded-full shadow-md"
+              onClick={() => setTab("digital")}
+              className={`rounded-full text-sm px-5 py-3 transition-all ${
+                tab === "digital"
+                  ? "bg-pink-400 text-white"
+                  : "bg-transparent text-primary hover:bg-pink-100"
+              }`}
             >
-              Browse Categories 📖
+              Digital Items 💾
             </Button>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-16 fill-background">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-          </svg>
+        {/* HERO IMAGE */}
+        <div className="flex-1 relative">
+          <div className="absolute -top-6 -left-8 w-24 h-24 bg-pink-200 rounded-full blur-2xl opacity-60"></div>
+          <img
+            src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
+            alt="Shop aesthetic"
+            className="rounded-3xl shadow-xl w-full object-cover"
+          />
         </div>
       </section>
 
-      {/* ===== Sticky Tabs (kept; now focused on switching views) ===== */}
-      <section className="sticky top-[85px] z-[60] flex justify-center px-4">
-        <div className="bg-white/60 dark:bg-gray-900/70 backdrop-blur-xl shadow-lg border border-white/30 dark:border-gray-700 rounded-2xl w-full max-w-5xl transition-all duration-300">
-          <div className="px-4 py-3">
-            <SegmentedTabs value={tab} onChange={setTab} />
-          </div>
-        </div>
-      </section>
+      {/* CONTENT SECTION */}
+      <section className="relative px-6 md:px-12 py-16">
+        <div className="grid md:grid-cols-4 gap-10">
+          {/* SIDEBAR */}
+          <aside className="md:col-span-1 space-y-6 md:sticky md:top-28 h-fit">
+            <Card className="bg-white/80 backdrop-blur-md p-6 text-center shadow-md rounded-2xl border-2 border-pink-200">
+              <Sparkles className="mx-auto text-pink-400 w-6 h-6 mb-2" />
+              <h3 className="font-quicksand text-lg font-bold text-primary mb-2">
+                Curated for You
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Handpicked items I personally use and adore — with affiliate links for transparency 💖
+              </p>
+            </Card>
 
-      {/* ===== Content area switch (Affiliate / Digital) ===== */}
-      {tab === "affiliate" ? <AffiliateProducts /> : <CoursesSection />}
+            {/* UPDATED QUICK LINKS */}
+            <Card className="bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-2xl shadow-sm">
+              <h4 className="font-bold mb-3 text-primary text-center">Quick Links</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <button
+                    onClick={() => {
+                      setTab("affiliate");
+                      setTimeout(() => scrollToSection("trending"), 100);
+                    }}
+                    className="hover:text-primary transition-colors"
+                  >
+                    🌸 Trending Finds
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setTab("digital");
+                      setTimeout(() => scrollToSection("digital"), 100);
+                    }}
+                    className="hover:text-primary transition-colors"
+                  >
+                    💾 Digital Items
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection("reviews")}
+                    className="hover:text-primary transition-colors"
+                  >
+                    💬 Reviews
+                  </button>
+                </li>
+              </ul>
+            </Card>
+          </aside>
 
-      {/* ===== Categories (kept) ===== */}
-      <section id="categories" className="py-20 bg-gradient-to-br from-secondary/10 to-primary/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">Shop by Category 🌊</h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">Discover curated collections for every aspect of your coastal lifestyle</p>
-          </div>
+          {/* MAIN CONTENT */}
+          <main className="md:col-span-3 space-y-20">
+            {/* AFFILIATE TAB */}
+            {tab === "affiliate" && (
+              <section id="trending">
+                <h2 className="font-pacifico text-4xl text-primary mb-6">
+                  🌼 Trending Picks
+                </h2>
+                <AffiliateProducts />
+              </section>
+            )}
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { key: "lifestyle", emoji: "🌸", title: "Lifestyle Essentials", desc: "Beautiful items that elevate your daily routines." },
-              { key: "study", emoji: "📚", title: "Study & Productivity", desc: "Boost productivity with selected tools & resources." },
-              { key: "travel", emoji: "✈️", title: "Travel Essentials", desc: "Everything you need for wanderlust-worthy journeys." },
-            ].map((c) => (
-              <div key={c.key} className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-md hover:shadow-lg transition text-center group">
-                <div className="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
-                  <span className="text-3xl">{c.emoji}</span>
+            {/* DIGITAL TAB */}
+            {tab === "digital" && (
+              <section id="digital" className="relative">
+                <h2 className="font-pacifico text-4xl text-primary mb-6">
+                  💾 Digital Treasures
+                </h2>
+
+                {/* FLOATING FILTER BAR */}
+                <div className="sticky top-24 z-20 mb-8">
+                  <div className="bg-white/80 backdrop-blur-md border border-pink-200 rounded-full shadow-md px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    {/* SEARCH */}
+                    <div className="relative w-full sm:w-1/2">
+                      <Search className="absolute left-3 top-3 text-muted-foreground w-5 h-5" />
+                      <input
+                        type="text"
+                        placeholder="Search digital items..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2 border border-pink-200 rounded-full focus:ring-2 focus:ring-pink-300 bg-white/80"
+                      />
+                    </div>
+
+                    {/* FILTER */}
+                    <div className="relative w-full sm:w-40">
+                      <Filter className="absolute left-2 top-2.5 text-muted-foreground w-4 h-4" />
+                      <select
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                        className="pl-8 pr-4 py-2 w-full border border-pink-200 rounded-full bg-white/80 focus:ring-2 focus:ring-pink-300 text-sm"
+                      >
+                        <option value="all">All Categories</option>
+                        <option value="student">Student</option>
+                        <option value="productivity">Productivity</option>
+                        <option value="creator">Creator</option>
+                        <option value="finance">Finance</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-quicksand text-2xl text-primary mb-4">{c.title}</h3>
-                <p className="text-text-secondary mb-6 leading-relaxed">{c.desc}</p>
-                <Button
-                  variant="secondary"
-                  className="rounded-full w-full"
-                  onClick={() => {
-                    const el = document.getElementById("featured");
-                    if (el && tab !== "affiliate") window.alert("Switch to Affiliate to filter by category 😊");
-                    // No cross-component state lift to keep two-file constraint
-                    el?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  Explore {c.title.split(" ")[0]}
-                </Button>
+
+                {/* ITEM CARDS */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredItems.map((item, i) => (
+                    <Card
+                      key={i}
+                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 backdrop-blur-sm"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-48 w-full object-cover"
+                      />
+                      <div className="p-5 space-y-3">
+                        <h3 className="font-quicksand font-bold text-lg text-primary">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">{item.desc}</p>
+                        <div className="flex justify-between items-center">
+                          <span className="font-bold text-primary">{item.price}</span>
+                          <Button className="text-xs rounded-full">
+                            Get Now <Download className="w-3 h-3 ml-2" />
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* LOAD MORE BUTTON */}
+                {visibleCount < digitalItems.length && (
+                  <div className="text-center mt-10">
+                    <Button
+                      onClick={() => setVisibleCount((prev) => prev + 3)}
+                      className="rounded-full bg-pink-400 hover:bg-pink-500 text-white px-6 py-3"
+                    >
+                      Load More Treasures ✨
+                    </Button>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* REVIEWS */}
+            <section
+              id="reviews"
+              className="bg-white/60 backdrop-blur-md p-10 rounded-3xl border border-pink-200"
+            >
+              <h2 className="font-pacifico text-3xl text-primary mb-6 text-center">
+                💬 Customer Reviews
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Lea G.",
+                    quote:
+                      "Everything here feels so intentional and adorable — it’s like shopping in a dream 💕",
+                  },
+                  {
+                    name: "Kim A.",
+                    quote:
+                      "I love the templates! Clean, useful, and totally aesthetic 🌸",
+                  },
+                  {
+                    name: "Jan R.",
+                    quote:
+                      "The affiliate recommendations are honest and reliable. You can tell there’s care behind it!",
+                  },
+                ].map((r, i) => (
+                  <Card
+                    key={i}
+                    className="bg-pink-50/60 p-6 rounded-2xl text-center shadow-sm"
+                  >
+                    <p className="italic text-muted-foreground mb-3">
+                      “{r.quote}”
+                    </p>
+                    <h4 className="font-quicksand font-semibold text-primary">
+                      {r.name}
+                    </h4>
+                    <div className="flex justify-center mt-2 text-yellow-400">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="w-4 h-4 fill-yellow-400" />
+                      ))}
+                    </div>
+                  </Card>
+                ))}
               </div>
-            ))}
-          </div>
+            </section>
+          </main>
         </div>
       </section>
 
-      {/* ===== Trust Signals (kept) ===== */}
-      <section className="py-16 bg-gradient-to-br from-surface to-primary/10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-md">
-            <div className="text-center mb-8">
-              <h3 className="font-quicksand text-2xl text-primary mb-2">Shop with Confidence 🛡️</h3>
-              <p className="text-text-secondary">Your trust is my priority.</p>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-8 text-center">
-              {[
-                { emoji: "🔒", t: "Secure Shopping", d: "SSL encrypted checkout" },
-                { emoji: "💝", t: "Curated with Love", d: "Personally tested items" },
-                { emoji: "🌟", t: "Quality Guaranteed", d: "30-day satisfaction" },
-                { emoji: "💌", t: "Transparent Affiliate", d: "Clear & honest reviews" },
-              ].map((x, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mb-4 text-2xl">{x.emoji}</div>
-                  <h4 className="font-quicksand text-lg text-primary mb-1">{x.t}</h4>
-                  <p className="text-sm text-text-secondary">{x.d}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-8 p-4 bg-primary/10 rounded-lg text-sm text-text-secondary">
-              <strong>Affiliate Disclosure:</strong> Some links on this page are affiliate links. I may earn a small commission if you purchase, at no extra cost to you. I only recommend products I love and use. 💕
-            </div>
-          </div>
-        </div>
+      {/* CLOSING */}
+      <section className="py-16 text-center bg-gradient-to-r from-pink-100 to-purple-100">
+        <h3 className="font-pacifico text-4xl text-primary mb-4">
+          💝 Thank You for Visiting
+        </h3>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Each click, download, and purchase supports small creators like me — thank you for being part of this cozy creative journey 🌷
+        </p>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
