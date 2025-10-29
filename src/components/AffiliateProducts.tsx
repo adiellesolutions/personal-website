@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
-
+import product1 from "@/assets/product1.png";
 /* =========================
    Types (local to this file)
 ========================= */
@@ -28,8 +28,7 @@ type Product = {
    Data (all-in-one here)
 ========================= */
 const PLACEHOLDER = {
-  studyDesk:
-    "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=1200&q=80",
+  vestshort: product1,
   jewelry:
     "https://images.unsplash.com/photo-1623006770456-4c4e33f5d9cf?auto=format&fit=crop&w=1200&q=80",
   skincare:
@@ -43,8 +42,8 @@ const PLACEHOLDER = {
 } as const;
 
 const productsRaw: Product[] = [
-  { id: 1, name: "Aesthetic Study Desk Setup 📚", type: "Affiliate", price: 45, description: "All the cozy items that make my study space dreamy and productive!", image: PLACEHOLDER.studyDesk, category: "study", rating: 4.9, reviews: 127, labels: ["Featured", "Free Shipping"] },
-  { id: 2, name: "My Everyday Jewelry Collection ✨", type: "Affiliate", price: 32, description: "Dainty, minimal pieces that I wear every single day. Simple elegance!", image: PLACEHOLDER.jewelry, category: "lifestyle", rating: 4.8, reviews: 89, labels: ["Best Seller"] },
+  { id: 1, name: "Francila Premium Vest + Shorts Set 👗", type: "Affiliate", price: 22.27, description: "Boss babe vibes but still comfy chic!", image: PLACEHOLDER.vestshort, category: "lifestyle", rating: 4.9, reviews: 127, labels: ["Featured", "Free Shipping"] },
+  { id: 2, name: "Butterfly Hair Clip 🦋", type: "Affiliate", price: 2.68, description: "Turn every messy bun into a fairycore look!", image: PLACEHOLDER.jewelry, category: "lifestyle", rating: 4.8, reviews: 89, labels: ["Best Seller"] },
   { id: 3, name: "Favorite Skincare Routine 🌸", type: "Affiliate", price: 36, description: "The products that transformed my skin! Gentle, effective, and student-friendly.", image: PLACEHOLDER.skincare, category: "lifestyle", rating: 4.8, reviews: 94, labels: ["Trending"] },
   { id: 4, name: "Travel Essentials Kit ✈️", type: "Affiliate", price: 78, description: "Everything I pack for weekend trips and long adventures across Europe!", image: PLACEHOLDER.travel, category: "travel", rating: 5.0, reviews: 23, labels: ["New Arrival", "Sustainable"] },
   { id: 5, name: "Cozy Loungewear Collection 💕", type: "Affiliate", price: 24, description: "Cute and comfy pieces for study sessions and relaxing at home.", image: PLACEHOLDER.loungewear, category: "lifestyle", rating: 4.7, reviews: 156, labels: ["Bestseller"] },

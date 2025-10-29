@@ -32,6 +32,7 @@ type Product = {
 };
 
 const MOCK_PRODUCT: Product = {
+  
   id: "coastal-planner",
   name: "Coastal Study Planner — Digital Bundle",
   subtitle: "A peaceful, focused planner inspired by the sea (digital + print-ready)",
