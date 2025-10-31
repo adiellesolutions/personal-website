@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import product1 from "@/assets/product1.png";
 import product2 from "@/assets/product2.png";
+import product3 from "@/assets/product3.png";
+import product4 from "@/assets/product4.png";
+import product5 from "@/assets/product5.png";
+import product6 from "@/assets/product6.png";
 
 /* =========================
    Types (local to this file)
@@ -24,6 +28,7 @@ type Product = {
   rating: number;
   reviews: number;
   labels?: string[];
+  link?: string;               // ← added
 };
 
 /* =========================
@@ -31,25 +36,94 @@ type Product = {
 ========================= */
 const PLACEHOLDER = {
   vestshort: product1,
-  jewelry: product2,
-  hairclip:
-    "https://images.unsplash.com/photo-1600181954053-c4a87c3cc536?auto=format&fit=crop&w=1200&q=80",
-  travel:
-    "https://images.unsplash.com/photo-1582719478170-2bfc0c7f6d99?auto=format&fit=crop&w=1200&q=80",
-  loungewear:
-    "https://images.unsplash.com/photo-1554568218-0d3cf7a9a07a?auto=format&fit=crop&w=1200&q=80",
-  gadgets:
-    "https://images.unsplash.com/photo-1593642532744-d377ab507dc8?auto=format&fit=crop&w=1200&q=80",
+  hairclip: product2,
+  coat: product3,
+  slipper: product4,
+  dress: product5,
+  shirt:product6,
 } as const;
 
 const productsRaw: Product[] = [
-  { id: 1, name: "Francila Premium Vest + Shorts Set 👗", type: "Affiliate", price: 22.27, description: "Boss babe vibes but still comfy chic!", image: PLACEHOLDER.vestshort, category: "lifestyle", rating: 4.9, reviews: 127, labels: ["Featured", "Free Shipping"] },
-  { id: 2, name: "Butterfly Hair Clip 🦋", type: "Affiliate", price: 2.68, description: "Turn every messy bun into a fairycore look!", image: PLACEHOLDER.jewelry, category: "lifestyle", rating: 4.8, reviews: 89, labels: ["Best Seller"] },
-  { id: 3, name: "Favorite Skincare Routine 🌸", type: "Affiliate", price: 36, description: "The products that transformed my skin! Gentle, effective, and student-friendly.", image: PLACEHOLDER.hairclip, category: "lifestyle", rating: 4.8, reviews: 94, labels: ["Trending"] },
-  { id: 4, name: "Travel Essentials Kit ✈️", type: "Affiliate", price: 78, description: "Everything I pack for weekend trips and long adventures across Europe!", image: PLACEHOLDER.travel, category: "travel", rating: 5.0, reviews: 23, labels: ["New Arrival", "Sustainable"] },
-  { id: 5, name: "Cozy Loungewear Collection 💕", type: "Affiliate", price: 24, description: "Cute and comfy pieces for study sessions and relaxing at home.", image: PLACEHOLDER.loungewear, category: "lifestyle", rating: 4.7, reviews: 156, labels: ["Bestseller"] },
-  { id: 6, name: "Tech & Productivity Gadgets 💻", type: "Affiliate", price: 89, description: "The tech that makes my student life easier and more organized!", image: PLACEHOLDER.gadgets, category: "study", rating: 4.9, reviews: 67, labels: ["Premium", "Course Included"] },
+  { 
+    id: 1, 
+    name: "Francila Premium Vest + Shorts Set 👗", 
+    type: "Affiliate", 
+    price: 22.27, 
+    description: "Boss babe vibes but still comfy chic!", 
+    image: PLACEHOLDER.vestshort, 
+    category: "lifestyle", 
+    rating: 4.9, 
+    reviews: 127, 
+    labels: ["Featured", "Free Shipping"],
+    link: "/ProductDetails/Product1"   // 👈 Custom link here
+  },
+  { 
+    id: 2, 
+    name: "Butterfly Hair Clip 🦋", 
+    type: "Affiliate", 
+    price: 2.68, 
+    description: "Turn every messy bun into a fairycore look!", 
+    image: PLACEHOLDER.hairclip, 
+    category: "lifestyle", 
+    rating: 4.8, 
+    reviews: 89, 
+    labels: ["Best Seller"],
+    link: "https://yourlinkhere.com/hairclip"
+  },
+  { 
+    id: 3, 
+    name: "Classic Black Wool Coat 🧥", 
+    type: "Affiliate", 
+    price: 45.99, 
+    description: "Your timeless “put together” coat for all seasons.", 
+    image: PLACEHOLDER.coat, 
+    category: "lifestyle", 
+    rating: 4.8, 
+    reviews: 94, 
+    labels: ["Trending"],
+    link: "https://yourlinkhere.com/coat"
+  },
+  { 
+    id: 4, 
+    name: "Blue Bow Slippers 💙", 
+    type: "Affiliate", 
+    price: 9.88, 
+    description: "Cute + cozy = the slippers you didn't know you need!", 
+    image: PLACEHOLDER.slipper, 
+    category: "lifestyle", 
+    rating: 5.0, 
+    reviews: 23, 
+    labels: ["New Arrival", "Sustainable"],
+    link: "https://yourlinkhere.com/slippers"
+  },
+  { 
+    id: 5, 
+    name: "Soleia Yellow 2-Piece Dress ☀️", 
+    type: "Affiliate", 
+    price: 40.99, 
+    description: "The sunshine dress for your dreamy summer moments!", 
+    image: PLACEHOLDER.dress, 
+    category: "lifestyle", 
+    rating: 4.7, 
+    reviews: 156, 
+    labels: ["Bestseller"],
+    link: "https://yourlinkhere.com/dress"
+  },
+  { 
+    id: 6, 
+    name: "TRNVIE White Tailored Shirt 🤍", 
+    type: "Affiliate", 
+    price: 10.19, 
+    description: "That “clean girl aesthetic” office-to-dinner top!", 
+    image: PLACEHOLDER.shirt, 
+    category: "lifestyle", 
+    rating: 4.9, 
+    reviews: 67, 
+    labels: ["Premium", "Course Included"],
+    link: "https://yourlinkhere.com/shirt"
+  },
 ];
+
 
 /* =========================
    Tiny UI helpers (local)
@@ -133,7 +207,7 @@ function ProductCard({
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-primary">€{p.price}</span>
+            <span className="text-2xl font-bold text-primary">€{p.price}</span>npm vommnit
             {p.labels?.includes("Course Included") && (
               <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">🎓 Course Included</span>
             )}
@@ -144,17 +218,13 @@ function ProductCard({
         </div>
 
         <div className="flex items-center justify-between">
-          <Link
-            to={`/shop/${p.id}`}
-            className="inline-flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform"
-          >
-            View Details
-            <ExternalLink className="w-4 h-4 ml-2" />
-          </Link>
-          <Button variant="secondary" onClick={() => onTrack(p.name)}>
-            Track
-          </Button>
-        </div>
+  <Link to={`/components/page/ProductDetails/${p.id}`}>
+    <Button variant="secondary" onClick={() => onTrack(p.name)}>
+      View Details
+    </Button>
+  </Link>
+</div>
+
       </div>
     </Card>
   );

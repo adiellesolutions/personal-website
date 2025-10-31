@@ -7,6 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import product11 from "@/assets/product1.png";
+import product12 from "@/assets/product12.png";
+import product13 from "@/assets/product13.png";
+import product14 from "@/assets/product14.png";
 
 type ProductItem = {
   id: string;
@@ -34,19 +38,17 @@ type Product = {
 const MOCK_PRODUCT: Product = {
   
   id: "coastal-planner",
-  name: "Coastal Study Planner — Digital Bundle",
-  subtitle: "A peaceful, focused planner inspired by the sea (digital + print-ready)",
-  price: "€29",
+  name: "Francila Premium Vest + Shorts Set",
+  subtitle: "Boss babe vibes but still comfy chic!",
+  price: "€22.27",
   compareAt: "€49",
   discount: "40% OFF",
   shortDescription:
-    "A digital planner with coastal calm — designed to help you plan intentionally, stay focused, and study peacefully.",
+    "Francila Premium Vest + Shorts Set — Channel your inner boss babe with this sleek and stylish co-ord. Effortlessly blending confidence and comfort, it's the perfect outfit for a polished yet laid-back look.",
   heroImage:
-    "https://images.pexels.com/photos/6373478/pexels-photo-6373478.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1400&fit=crop",
+    product11,
   gallery: [
-    "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=800&h=600&auto=format&fit=crop",
-    "https://images.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+    product12, product13, product14
   ],
   items: [
     { id: "planner-pdf", name: "Coastal Planner PDF (50+ pages)", price: "€19", link: "https://affiliate.example.com/planner-pdf", short: "Printable and tablet-ready layouts." },
@@ -54,10 +56,10 @@ const MOCK_PRODUCT: Product = {
     { id: "playlist", name: "Curated Study Playlist (Bonus)", price: "Free", link: "https://affiliate.example.com/playlist", short: "Lo-fi and gentle ocean ambience mix." },
   ],
   whyILoveIt: [
-    "Makes weekly planning feel calm and rewarding",
-    "Flexible undated layouts for any term",
-    "Tablet-friendly and print-ready formats",
-    "Includes my personal goal and exam systems",
+    "Gives instant boss babe confidence",
+    "Perfect mix of classy and comfy for any occasion",
+    "Soft, premium fabric that feels amazing all day",
+    "Effortlessly stylish — no need to overthink your outfit",
   ],
   testimonials: [
     {
@@ -112,20 +114,20 @@ function RatingStars({ value = 5 }: { value?: number }) {
 function FAQSection() {
   const faqs = [
     {
-      q: "Is this planner printable?",
-      a: "Yes! You can print it on A4 or Letter size paper, or use it digitally on your tablet or iPad.",
+      q: "What material is the Francila Premium Vest + Shorts Set made of?",
+      a: "It's crafted from soft, breathable premium fabric that keeps you cool and comfortable while looking effortlessly chic.",
     },
     {
-      q: "Can I reuse it every semester?",
-      a: "Absolutely — it’s undated, so you can reuse it for every term or new academic year.",
+      q: "Is it true to size?",
+      a: "Yes! The set fits true to size. But if you prefer a more relaxed look, you can size up for that extra laid-back vibe.",
     },
     {
-      q: "Do I get lifetime access?",
-      a: "Yes, once purchased, you’ll receive lifetime access and future updates at no extra cost.",
+      q: "Can I wear it for both casual and formal occasions?",
+      a: "Absolutely! Pair it with sneakers for a chill day out or with heels and accessories for a polished, boss babe look.",
     },
     {
-      q: "Is this suitable for students outside the Philippines?",
-      a: "Yes — it’s 100% digital and can be used anywhere. Time zones don’t affect the planner’s layout.",
+      q: "How do I care for the set?",
+      a: "Hand wash or use a gentle cycle with cold water. Avoid bleach and tumble drying to maintain its premium feel and shape.",
     },
   ];
 
@@ -270,11 +272,14 @@ export default function ProductDetails(): JSX.Element {
                 <RatingStars />
                 <span className="text-sm text-slate-500 dark:text-slate-400">127 reviews</span>
               </div>
-              <Button size="lg" className="w-full rounded-full">
-                Buy Now — {product.price}
-              </Button>
+              <a href="https://onelink.shein.com/17/52zzsj51dbgi" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="w-full rounded-full">
+                  Buy Now — {product.price}
+                </Button>
+              </a>
+
               <blockquote className="border-l-4 border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-slate-800 p-4 rounded-r-xl italic text-slate-600 dark:text-slate-300">
-                “I created this planner after realizing how scattered my study weeks felt — this layout keeps me calm, focused, and aligned.”
+                “Use my code 6W534 to get an exclusive discount! 💕”
               </blockquote>
             </motion.div>
           </section>
