@@ -60,7 +60,7 @@ const AboutPage = () => {
       month: "Present",
       title: "Building Something Bigger 🌍",
       text:
-        "Now 21, I’m trying to build something.. creating digital products, travel guides, German study tips, and lifestyle content. My goal? To help dreamers like me — the ones who feel underestimated, too young, or too scared — to still go for it.",
+        "Now 21, I’m trying to build something.. creating digital products, travel guides, German study tips, and lifestyle content. My goal? To help dreamers like me —the ones who feel underestimated, too young, or too scared — to still go for it.",
       img: journey1,
     },
   ];
@@ -80,54 +80,64 @@ const AboutPage = () => {
       <Navigation />
 
       <main className="pt-24 pb-24 px-4">
-        {/* ====== HERO (boxed) ====== */}
-        <section className="container mx-auto max-w-6xl mb-12">
-          <div className={`${sectionBox} p-8 md:p-10`}>
-            <div className="grid md:grid-cols-2 items-center gap-10 md:gap-14">
-              <div>
-                <h1 className="font-pacifico text-5xl md:text-6xl leading-tight mb-4">
-                  Hey, I’m <span className="text-secondary">Dary</span>! 🌸
-                </h1>
-                <p className="text-base md:text-lg text-muted-foreground mb-6">
+      {/* ====== HERO (boxed) ====== */}
+      <section className="container mx-auto max-w-6xl mb-12">
+        <div className={`${sectionBox} p-8 md:p-10`}>
+          <div className="grid md:grid-cols-2 items-center gap-10 md:gap-14">
+            <div>
+              <h1 className="font-pacifico text-5xl md:text-6xl leading-tight mb-4">
+                Hey, I’m <span className="text-secondary">Dary</span>! 🌸
+              </h1>
+
+              <p className="text-muted-foreground leading-relaxed  mt-4 text-justify">
                 Hi, I’m Dary! At 21, I packed my life into a suitcase and moved from the
                 Philippines to Germany. Why? Because little me once saw that Einstein was
                 German and thought, “bet, I’ll go there too.” 😂
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  I share the lessons, magic, and inspiration I’ve found in
-                  creating an aesthetic, intentional life — from cozy study vibes
-                  to adventures abroad.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed text-justify">
+                I share the lessons, magic, and inspiration I’ve found in
+                creating an aesthetic, intentional life — from cozy study vibes
+                to adventures abroad.
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed mt-4 text-justify">
                 Now here I am: juggling Ausbildung, studying German (yes, even the scary
                 grammar), traveling on a budget, and learning how to adult in a foreign country.
                 It’s not always easy — I’ve cried over missed trains, burnt rice, and cultural
                 shocks — but I’ve also learned resilience, independence, and how rewarding it
                 feels to start over.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                I’m passionate about lifestyle, travel, science, and self-growth. My content is a
-                mix of:
-                👗 OOTDs that make me feel alive
-                ✈️ Travel itineraries + random trips that keep me sane
-                💆 Self-care routines (because self-love  burnout)
-                📚 German study + Ausbildung tips
-                💌 Motivational reminders for dreamers like me
+              </p>
 
+              <p className="text-muted-foreground leading-relaxed mt-4 text-justify">
+                I’m passionate about lifestyle, travel, science, and self-growth. My content is a mix of:
+              </p>
+
+              <ul className="list-disc list-inside text-muted-foreground leading-relaxed mt-2 space-y-1 text-justify">
+                <li>👗 OOTDs that make me feel alive</li>
+                <li>✈️ Travel itineraries + random trips that keep me sane</li>
+                <li>💆 Self-care routines (because self-love ≠ burnout)</li>
+                <li>📚 German study + Ausbildung tips</li>
+                <li>💌 Motivational reminders for dreamers like me</li>
+              </ul>
+
+              <p className="text-muted-foreground leading-relaxed mt-4 text-justify">
                 This website? It’s not just my diary but also a reminder that even if you’re young,
                 scared, or underestimated — you can still build a life worth bragging about. ✨
-                </p>
-              </div>
-              <div>
-                <img
-                  src={profilePic}
-                  alt="Profile"
-                  className="w-full max-w-sm mx-auto rounded-3xl border border-white/30 shadow-glow object-cover"
-                />
-              </div>
+              </p>
+            </div>
+
+            <div>
+              <img
+                src={profilePic}
+                alt="Profile"
+                className="w-full max-w-sm mx-auto rounded-3xl border border-white/30 shadow-glow object-cover"
+              />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+
 
      
 
@@ -146,43 +156,45 @@ const AboutPage = () => {
               <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-full w-[3px] bg-primary/25 rounded-full" />
 
               <div className="space-y-14">
-                {timeline.map((item, idx) => {
-                  const isEven = idx % 2 === 0;
-                  return (
-                    <div key={idx} className="relative grid md:grid-cols-2 items-center gap-8 group">
-                      {/* center dot */}
-                      <span
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all"
-                        aria-hidden="true"
-                      />
+              {timeline.map((item, idx) => {
+                const isEven = idx % 2 === 0;
+                return (
+                  <div key={idx} className="relative grid md:grid-cols-2 items-center gap-8 group">
+                    {/* center dot */}
+                    <span
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all"
+                      aria-hidden="true"
+                    />
 
-                      {/* text card */}
-                      <div
-                        className={[
-                          "p-6 rounded-2xl border border-primary/20 bg-card/90 backdrop-blur",
-                          "transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-glow group-hover:border-primary/40",
-                          isEven ? "md:pr-10" : "md:order-2 md:pl-10",
-                        ].join(" ")}
-                      >
-                        <p className="text-xs tracking-wide font-semibold mb-1 text-secondary">
-                          {item.month}
-                        </p>
-                        <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground">{item.text}</p>
-                      </div>
-
-                      {/* image */}
-                      <div className={isEven ? "md:order-2" : "md:order-1"}>
-                        <img
-                          src={item.img}
-                          alt={item.title}
-                          className="w-full rounded-2xl object-cover border border-white/20 shadow-dreamy transition-transform duration-300 group-hover:-translate-y-1"
-                        />
-                      </div>
+                    {/* text card */}
+                    <div
+                      className={[
+                        "p-6 rounded-2xl border border-primary/20 bg-card/90 backdrop-blur",
+                        "transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-glow group-hover:border-primary/40",
+                        isEven ? "md:pr-10" : "md:order-2 md:pl-10",
+                      ].join(" ")}
+                    >
+                      <p className="text-xs tracking-wide font-semibold mb-1 text-secondary">
+                        {item.month}
+                      </p>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-justify leading-relaxed">
+                        {item.text}
+                      </p>
                     </div>
-                  );
-                })}
-              </div>
+
+                    {/* image */}
+                    <div className={isEven ? "md:order-2" : "md:order-1"}>
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full rounded-2xl object-cover border border-white/20 shadow-dreamy transition-transform duration-300 group-hover:-translate-y-1"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
             </div>
           </div>
         </section>
