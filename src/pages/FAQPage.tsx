@@ -12,52 +12,48 @@ import { HelpCircle } from "lucide-react";
 const FAQPage = () => {
   const faqs = [
     {
-      question: "How did you end up studying in Germany?",
-      answer: "I always dreamed of studying abroad, and Germany's amazing universities with low tuition fees made it possible! I applied through uni-assist, got my student visa, and here I am living my best life! ✨",
+      question: "How old are you?",
+      answer: "I’m 21 — the baby of many tables I sit at hehe 😅",
     },
     {
-      question: "What do you study?",
-      answer: "I'm studying [Your Major]! It's challenging but so rewarding. I love sharing my study tips and routines to help other students succeed too! 📚",
+      question: "Why Germany?",
+      answer:
+        "I wanted to challenge myself where growth feels real. Plus, world-class education (and tuition-free universities 👀). Also, blame Einstein — little me thought, “If he’s German, then I wanna study there too.”",
     },
     {
-      question: "How do you balance studying, content creation, and traveling?",
-      answer: "It's all about time management and planning! I batch content when I can, study consistently (not just during exam season!), and book trips during semester breaks. Some weeks are busier than others, but I make it work! 💪",
+      question: "What do you do in Germany?",
+      answer:
+        "I’m currently an Azubi (trainee) while navigating the ups and downs of life abroad, studying the language, and building a lifestyle brand along the way.",
     },
     {
-      question: "What camera/equipment do you use?",
-      answer: "I keep it pretty simple! I mainly use my iPhone for photos and videos, and I have a ring light for better lighting. You don't need expensive gear to create content - just get started with what you have! 📱",
+      question: "What languages do you speak?",
+      answer:
+        "Fluent in English, Tagalog, and Hiligaynon/Ilonggo 💕 + some Spanish 🌸 and German (still learning, pero laban lang 🥲💪).",
     },
     {
-      question: "How do you afford to travel so much as a student?",
-      answer: "Budget travel is my specialty! I hunt for cheap flights, stay in hostels or budget Airbnbs, cook my own meals, and use student discounts everywhere. Plus, many European destinations are surprisingly affordable! Check out my travel guides for all my tips! ✈️",
+      question: "Favorite German word?",
+      answer:
+        "Feierabend ✨ (nothing beats that feeling of clocking out and actually living life).",
     },
     {
-      question: "Can you help me plan my trip to [destination]?",
-      answer: "I'd love to! Check out my travel diaries and itineraries first - I have detailed guides for all the places I've visited. If you have specific questions, feel free to DM me on Instagram! 💕",
+      question: "Do you miss home?",
+      answer:
+        "Always. Rice 3x a day and family chikahan 🥹 But I balance that homesickness with discovering new experiences here.",
     },
     {
-      question: "Are your product recommendations really genuine?",
-      answer: "100% yes! I only recommend products I actually own, use, and love. If I wouldn't buy it myself, I won't recommend it to you. Some links are affiliate links (which help support this blog), but that never influences what I recommend! ✨",
+      question: "What kind of content do you share?",
+      answer:
+        "Lifestyle + travel diaries + OOTDs + study abroad tips + self-care — basically, my life abroad as a Filipina in pastel and glow. ✨",
     },
     {
-      question: "How do I start a blog/social media like yours?",
-      answer: "Just start! I began by sharing what I was already doing - studying, traveling, and trying new things. Be authentic, post consistently, and engage with your community. It takes time to grow, but if you love creating content, it's so worth it! 🌸",
+      question: "What inspires you?",
+      answer:
+        "The little girl who dreamed of being a scientist, and the future me who’s on her way to becoming one.",
     },
     {
-      question: "What's your best study tip?",
-      answer: "Active recall is a game-changer! Instead of just re-reading notes, test yourself constantly. Make flashcards, do practice problems, teach concepts out loud - anything that forces your brain to retrieve information. Trust me, it works! 📝",
-    },
-    {
-      question: "How do you stay motivated?",
-      answer: "I focus on my 'why' - remembering why I'm working toward my goals. I also break big goals into tiny steps, celebrate small wins, and don't beat myself up on off days. Progress isn't linear, and that's okay! Some days I'm super productive, other days I just rest and recharge. Balance is key! 💕",
-    },
-    {
-      question: "Do you offer 1-on-1 coaching or consultations?",
-      answer: "Not at the moment, but I have digital guides and templates that cover study strategies, productivity, and travel planning! Check out my courses section. If I start offering coaching in the future, I'll announce it on my socials! ✨",
-    },
-    {
-      question: "What's the best way to stay updated with your content?",
-      answer: "Follow me on Instagram and TikTok for daily updates! I also share longer-form content here on my blog. Turn on post notifications so you don't miss anything! 💕",
+      question: "Favorite travel so far?",
+      answer:
+        "Lake Iseo in Italy 💙 A little less known than Como, but it stole my heart with its calm, hidden-gem vibe.",
     },
   ];
 
