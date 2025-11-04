@@ -23,44 +23,44 @@ const AboutPage = () => {
 
   const timeline = [
     {
-      month: "September 2022",
-      title: "The Big Move 🌤️",
+      month: "2010s",
+      title: "The Dreamer Phase 🌙",
       text:
-        "Packed my life into two suitcases and moved to Munich. Scared but excited to start this new chapter of growth and discovery.",
+        "Little me in the Philippines, already daydreaming about science, books, and being that girl who chases big dreams. Fun fact: I once read that Einstein was German and thought, “bet, I’ll go there too.” 😂",
       img: journey2,
     },
     {
-      month: "December 2022",
-      title: "Language Learning Magic 📚",
+      month: "2019",
+      title: "The Hustler Student 📚",
       text:
-        "Discovered that learning German can be fun with patience, community, and creativity.",
+        "High school me: joining science orgs, quiz bees, leadership stuff — basically saying “yes” to everything because I wanted more than “just enough.” My mom saw that spark and supported me even if life wasn’t easy.",
       img: journey3,
     },
     {
-      month: "March 2023",
-      title: "Spring Blossoms 🌸",
+      month: "2022",
+      title: "Big Decisions ✈️",
       text:
-        "Fell in love with cherry blossoms and new routines that inspired calm productivity.",
+        "While everyone else was planning safe routes, I said: nope, I’m flying to Europe Germany challenged me the most, so I picked it — no regrets (I guess 🫣)",
       img: journey4,
     },
     {
-      month: "June 2023",
-      title: "Café Days ☕",
+      month: "2024",
+      title: "New Chapter 🇩🇪",
       text:
-        "Spent days journaling in cozy Munich cafés — finding peace in slow mornings.",
+        "Moved to Germany at 20 with a suitcase, shaky German, and a whole lot of courage. Started my Ausbildung and the classic expat struggles: culture shocks and homesickness. days journaling in cozy Munich cafés — finding peace in slow mornings.",
       img: journey5,
     },
     {
-      month: "October 2023",
-      title: "Creative Sparks 🎨",
-      text: "Started experimenting with content creation and digital art.",
+      month: "2025",
+      title: "Glow-Up & Grit Era 💪",
+      text: "Learning to balance Ausbildung, traveling on a budget, studying German, creating content, and finding self-care routines that keep me from burning out. I also started sharing my story online — turns out, people actually relate (and here you are reading this 🥹).Started experimenting with content creation and digital art.",
       img: journey6,
     },
     {
-      month: "February 2024",
-      title: "New Horizons ✈️",
+      month: "Present",
+      title: "Building Something Bigger 🌍",
       text:
-        "Traveled across Europe and learned how growth comes with stepping outside comfort zones.",
+        "Now 21, I’m trying to build something.. creating digital products, travel guides, German study tips, and lifestyle content. My goal? To help dreamers like me — the ones who feel underestimated, too young, or too scared — to still go for it.",
       img: journey1,
     },
   ];
@@ -89,14 +89,33 @@ const AboutPage = () => {
                   Hey, I’m <span className="text-secondary">Dary</span>! 🌸
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground mb-6">
-                  Welcome to my story of gentle growth and beautiful
-                  transformations. ✨ Small changes can create big transformations,
-                  and every step deserves to be celebrated.
+                Hi, I’m Dary! At 21, I packed my life into a suitcase and moved from the
+                Philippines to Germany. Why? Because little me once saw that Einstein was
+                German and thought, “bet, I’ll go there too.” 😂
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   I share the lessons, magic, and inspiration I’ve found in
                   creating an aesthetic, intentional life — from cozy study vibes
                   to adventures abroad.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                Now here I am: juggling Ausbildung, studying German (yes, even the scary
+                grammar), traveling on a budget, and learning how to adult in a foreign country.
+                It’s not always easy — I’ve cried over missed trains, burnt rice, and cultural
+                shocks — but I’ve also learned resilience, independence, and how rewarding it
+                feels to start over.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                I’m passionate about lifestyle, travel, science, and self-growth. My content is a
+                mix of:
+                👗 OOTDs that make me feel alive
+                ✈️ Travel itineraries + random trips that keep me sane
+                💆 Self-care routines (because self-love  burnout)
+                📚 German study + Ausbildung tips
+                💌 Motivational reminders for dreamers like me
+
+                This website? It’s not just my diary but also a reminder that even if you’re young,
+                scared, or underestimated — you can still build a life worth bragging about. ✨
                 </p>
               </div>
               <div>

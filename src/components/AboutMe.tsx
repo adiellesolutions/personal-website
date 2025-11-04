@@ -22,9 +22,10 @@ const AboutMe = () => {
             <div className="text-white text-center md:text-left">
               <h3 className="font-pacifico text-3xl mb-4">Hey there! 💕</h3>
               <p className="text-lg leading-relaxed mb-6">
-                I'm a student living my dream life in Germany! This is my little corner 
-                where I share study tips, favorite finds, travel adventures, and all things 
-                that make life sparkle. Join me on this journey! ✨
+              21, Filipina ✨ based in Germany 🇩🇪 — living proof that you can chase your
+              dreams even when you're young, broke, and confused (but still fabulous). I share
+              my journey of growth, studying abroad, OOTDs, self-care, and random
+              adventures — basically figuring life out so you don't have to alone. 💌
               </p>
               <Link to="/about">
                 <Button 

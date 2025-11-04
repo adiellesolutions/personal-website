@@ -11,6 +11,8 @@ import product11 from "@/assets/product1.png";
 import product12 from "@/assets/product12.png";
 import product13 from "@/assets/product13.png";
 import product14 from "@/assets/product14.png";
+import useScrollToTop from "@/hooks/useScrollToTop";
+
 
 type ProductItem = {
   id: string;
@@ -41,8 +43,8 @@ const MOCK_PRODUCT: Product = {
   name: "Francila Premium Vest + Shorts Set",
   subtitle: "Boss babe vibes but still comfy chic!",
   price: "€22.27",
-  compareAt: "€49",
-  discount: "40% OFF",
+ // compareAt: "€49",
+//discount: "40% OFF",
   shortDescription:
     "Francila Premium Vest + Shorts Set — Channel your inner boss babe with this sleek and stylish co-ord. Effortlessly blending confidence and comfort, it's the perfect outfit for a polished yet laid-back look.",
   heroImage:
@@ -201,7 +203,7 @@ export default function ProductDetails(): JSX.Element {
   const { id } = useParams();
   const product = MOCK_PRODUCT;
   const [selectedImage, setSelectedImage] = useState<string>(product.heroImage);
-
+useScrollToTop();
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-500">
       <Navigation />
@@ -265,18 +267,29 @@ export default function ProductDetails(): JSX.Element {
                   </span>
                 )}
               </div>
-              <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                {product.shortDescription}
-              </p>
-              <div className="flex items-center gap-3">
-                <RatingStars />
-                <span className="text-sm text-slate-500 dark:text-slate-400">127 reviews</span>
-              </div>
-              <a href="https://onelink.shein.com/17/52zzsj51dbgi" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="w-full rounded-full">
-                  Buy Now — {product.price}
-                </Button>
-              </a>
+              <div className="flex flex-col gap-6">
+      <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+        {product.shortDescription}
+      </p>
+
+      {/* 
+      <div className="flex items-center gap-3">
+        <RatingStars />
+        <span className="text-sm text-slate-500 dark:text-slate-400">127 reviews</span>
+      </div>
+      */}
+
+      <a
+        href="https://onelink.shein.com/17/52zzsj51dbgi"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button size="lg" className="w-full rounded-full">
+          Buy Now — {product.price}
+        </Button>
+  </a>
+</div>
+
 
               <blockquote className="border-l-4 border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-slate-800 p-4 rounded-r-xl italic text-slate-600 dark:text-slate-300">
                 “Use my code 6W534 to get an exclusive discount! 💕”
@@ -301,6 +314,7 @@ export default function ProductDetails(): JSX.Element {
                 </ul>
               </Card>
 
+            {/*}
               <Card className="p-6 bg-white dark:bg-slate-800 rounded-2xl transition-colors duration-300">
                 <h2 className="text-2xl font-semibold text-primary-700 dark:text-sky-300 mb-4">
                   Testimonials
@@ -331,34 +345,34 @@ export default function ProductDetails(): JSX.Element {
                   ))}
                 </div>
               </Card>
+                  */}
 
               <FAQSection />
               <RelatedProducts />
             </div>
 
             {/* Sidebar */}
-            <aside>
-              <Card className="p-6 bg-white dark:bg-slate-800 sticky top-24 rounded-2xl transition-colors">
-                <h4 className="font-semibold text-primary-700 dark:text-sky-300">
-                  Order Summary
-                </h4>
-                <div className="mt-4 space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Digital Planner</span>
-                    <span>{product.price}</span>
+              <aside>
+                <Card className="p-6 bg-white dark:bg-slate-800 sticky top-24 rounded-2xl transition-colors">
+                  <h4 className="font-semibold text-primary-700 dark:text-sky-300">
+                    Shopping Info
+                  </h4>
+
+                  <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p>
+                      All products featured here are from trusted affiliate stores.  
+                      Clicking <span className="font-medium text-sky-500">“Buy Now”</span> will take you
+                      directly to the official website to complete your purchase.
+                    </p>
+
+                    <p className="pt-2 border-t border-sky-100 dark:border-slate-700 text-sm">
+                      💡 <span className="text-sky-500">Tip:</span> Use my code{" "}
+                      <span className="font-semibold text-pink-400">6W534</span> for exclusive discounts on select items!
+                    </p>
                   </div>
-                  <div className="flex justify-between text-sky-600 dark:text-sky-400">
-                    <span>Discount</span>
-                    <span>-€20</span>
-                  </div>
-                  <div className="border-t border-sky-100 dark:border-slate-700 pt-2 flex justify-between font-bold">
-                    <span>Total</span>
-                    <span>{product.price}</span>
-                  </div>
-                </div>
-                <Button className="w-full mt-4 rounded-full">Checkout</Button>
-              </Card>
-            </aside>
+                </Card>
+              </aside>
+
           </section>
 
           {/* Affiliate disclosure */}

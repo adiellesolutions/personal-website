@@ -11,6 +11,9 @@ import product4 from "@/assets/product4.png";
 import product5 from "@/assets/product5.png";
 import product6 from "@/assets/product6.png";
 
+
+
+
 /* =========================
    Types (local to this file)
 ========================= */
@@ -55,7 +58,7 @@ const productsRaw: Product[] = [
     rating: 4.9, 
     reviews: 127, 
     labels: ["Featured", "Free Shipping"],
-    link: "/ProductDetails/Product1"   // 👈 Custom link here
+    link: "Product1"    // 👈 Custom link here
   },
   { 
     id: 2, 
@@ -68,7 +71,7 @@ const productsRaw: Product[] = [
     rating: 4.8, 
     reviews: 89, 
     labels: ["Best Seller"],
-    link: "https://yourlinkhere.com/hairclip"
+    link: "Product2"
   },
   { 
     id: 3, 
@@ -81,7 +84,7 @@ const productsRaw: Product[] = [
     rating: 4.8, 
     reviews: 94, 
     labels: ["Trending"],
-    link: "https://yourlinkhere.com/coat"
+    link: "Product3"
   },
   { 
     id: 4, 
@@ -207,7 +210,7 @@ function ProductCard({
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-primary">€{p.price}</span>npm vommnit
+            <span className="text-2xl font-bold text-primary">€{p.price}</span>
             {p.labels?.includes("Course Included") && (
               <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">🎓 Course Included</span>
             )}
@@ -218,11 +221,12 @@ function ProductCard({
         </div>
 
         <div className="flex items-center justify-between">
-  <Link to={`/components/page/ProductDetails/${p.id}`}>
-    <Button variant="secondary" onClick={() => onTrack(p.name)}>
-      View Details
-    </Button>
-  </Link>
+        <Link to={`/ProductDetails/Product${p.id}`}>
+  <Button variant="secondary" onClick={() => onTrack(p.name)}>
+    View Details
+  </Button>
+</Link>
+
 </div>
 
       </div>
