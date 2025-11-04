@@ -46,7 +46,7 @@ const MOCK_PRODUCT: Product = {
  // compareAt: "€49",
 //discount: "40% OFF",
   shortDescription:
-    "Francila Premium Vest + Shorts Set — Channel your inner boss babe with this sleek and stylish co-ord. Effortlessly blending confidence and comfort, it's the perfect outfit for a polished yet laid-back look.",
+    "A wardrobe essential that never goes out of style. This classic black wool coat effortlessly elevates any outfit — whether you’re heading to class, a coffee date, or a chilly evening stroll. Its sleek silhouette and soft wool blend give that “put together” look with minimal effort.",
   heroImage:
     product31,
   gallery: [
@@ -58,11 +58,11 @@ const MOCK_PRODUCT: Product = {
     { id: "playlist", name: "Curated Study Playlist (Bonus)", price: "Free", link: "https://affiliate.example.com/playlist", short: "Lo-fi and gentle ocean ambience mix." },
   ],
   whyILoveIt: [
-    "Gives instant boss babe confidence",
-    "Perfect mix of classy and comfy for any occasion",
-    "Soft, premium fabric that feels amazing all day",
-    "Effortlessly stylish — no need to overthink your outfit",
-  ],
+    "Timeless and elegant — goes with literally everything 🖤",
+    "Instantly makes any outfit look polished and chic",
+    "Warm yet lightweight — perfect for all seasons",
+    "That ‘put together’ look with zero effort needed ✨",
+    ],
   testimonials: [
     {
       name: "Ana (Iloilo)",
@@ -116,22 +116,24 @@ function RatingStars({ value = 5 }: { value?: number }) {
 function FAQSection() {
   const faqs = [
     {
-      q: "What material is the Francila Premium Vest + Shorts Set made of?",
-      a: "It's crafted from soft, breathable premium fabric that keeps you cool and comfortable while looking effortlessly chic.",
+      q: "What material is the Classic Black Wool Coat made of?",
+      a: "It’s made from a high-quality wool blend that’s soft, durable, and perfect for keeping you warm without feeling bulky.",
     },
     {
-      q: "Is it true to size?",
-      a: "Yes! The set fits true to size. But if you prefer a more relaxed look, you can size up for that extra laid-back vibe.",
+      q: "Is it suitable for all seasons?",
+      a: "Yes! Its breathable inner lining makes it comfy for cooler spring and autumn days, while still cozy enough for winter.",
     },
     {
-      q: "Can I wear it for both casual and formal occasions?",
-      a: "Absolutely! Pair it with sneakers for a chill day out or with heels and accessories for a polished, boss babe look.",
+      q: "How can I style it?",
+      a: "Layer it over jeans and boots for a casual day look or throw it over a dress and heels for an elevated evening outfit — timeless either way!",
     },
     {
-      q: "How do I care for the set?",
-      a: "Hand wash or use a gentle cycle with cold water. Avoid bleach and tumble drying to maintain its premium feel and shape.",
+      q: "How do I take care of it?",
+      a: "Dry clean only to maintain its structure and softness. Store it in a cool, dry place to preserve its classic look.",
     },
   ];
+
+
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
