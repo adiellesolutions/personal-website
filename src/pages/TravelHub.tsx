@@ -82,6 +82,8 @@ const TravelHub = () => {
     },
   ];
 
+
+
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Name");
@@ -192,12 +194,6 @@ const TravelHub = () => {
             </div>
           </div>
 
-
-          {/* Destination Count */}
-          <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">
-            {filtered.length} destinations found 💕
-          </p>
-
           {/* Destinations Grid/List */}
           <AnimatePresence>
             <motion.div
@@ -258,9 +254,15 @@ const TravelHub = () => {
                           ))}
                         </div>
 
-                        <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium mt-3 group-hover:translate-x-1 transition-all">
-                          Read Travel Guide <ArrowRight className="w-4 h-4 ml-1" />
-                        </div>
+                          <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium mt-3 group-hover:translate-x-1 transition-all">
+                            <Link to={`/TravelPost/TravelPost${d.id}`}>
+                              <Button variant="secondary">
+                                  Read Travel Guide <ArrowRight className="w-4 h-4 ml-1" />
+                              </Button>
+                            </Link>
+                          </div>
+
+
                       </div>
                     </Card>
                   </Link>
