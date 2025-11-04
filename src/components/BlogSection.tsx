@@ -8,23 +8,23 @@ const BlogSection = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "My Study Routine in Germany 📚",
-      category: "Study",
-      excerpt: "How I balance productivity and self-care while studying abroad...",
+      title: "Why Germany? The Real Reason I Chose It Over Other EU Countries 📚",
+      category: "Life Abroad",
+      excerpt: "When people ask me, “Why Germany of all places?” I always laugh a little...",
       gradient: "gradient-ocean",
     },
     {
       id: 2,
-      title: "Glow Up Diaries: Self Care Edition ✨",
-      category: "Glow-up",
-      excerpt: "My favorite routines for feeling confident and radiant every day...",
+      title: "Too Young? Too Early? My Mindset on Chasing Dreams at 21 ✨",
+      category: "Personal Growth",
+      excerpt: "Every time I sit at a table here in Germany—whether it’s with co-workers...",
       gradient: "gradient-sunset",
     },
     {
       id: 3,
-      title: "Weekend in Bavaria 🏔️",
-      category: "Travel",
-      excerpt: "Exploring the most dreamy villages and castles in southern Germany...",
+      title: "Figuring Life Out Abroad (a.k.a. How I’m Surviving, Thriving, and Sometimes Crying 😅)",
+      category: "Journey",
+      excerpt: "Moving abroad sounds glamorous, right? ✈️ New country, new people, new adventures...",
       gradient: "gradient-dreamy",
     },
   ];

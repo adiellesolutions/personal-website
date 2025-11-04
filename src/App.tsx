@@ -8,11 +8,9 @@ import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 import MoodboardPage from "./pages/MoodboardPage";
 import BlogHub from "./pages/BlogHub";
-import BlogPost from "./pages/BlogPost";
 import ShopHub from "./pages/ShopHub";
 import ProductDetails from "./pages/ProductDetails/Product1";
 import TravelHub from "./pages/TravelHub";
-import TravelPost from "./pages/TravelPost";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import Product1 from "./pages/ProductDetails/Product1";
@@ -31,6 +29,10 @@ import TravelPost6 from "./pages/TravelPost/TravelPost6";
 import TravelPost7 from "./pages/TravelPost/TravelPost7";
 import TravelPost8 from "./pages/TravelPost/TravelPost8";
 
+import BlogPost1 from "./pages/BlogPost/BlogPost1";
+import BlogPost2 from "./pages/BlogPost/BlogPost2";
+import BlogPost3 from "./pages/BlogPost/BlogPost3";
+
 
 const queryClient = new QueryClient();
 
@@ -45,14 +47,12 @@ const App = () => (
           <Route path="/about" element={<AboutPage />} />
           <Route path="/moodboard" element={<MoodboardPage />} />
           <Route path="/blog" element={<BlogHub />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/shop" element={<ShopHub />} />
           <Route path="/shop/:id" element={<ProductDetails />} />
           <Route path="/travel" element={<TravelHub />} />
-          <Route path="/travel/:id" element={<TravelPost />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          
+
           <Route path="/ProductDetails/Product1" element={<Product1 />} />
           <Route path="/ProductDetails/Product2" element={<Product2 />} />
           <Route path="/ProductDetails/Product3" element={<Product3 />} />
@@ -69,6 +69,9 @@ const App = () => (
           <Route path="/TravelPost/TravelPost7" element={<TravelPost7 />} />
           <Route path="/TravelPost/TravelPost8" element={<TravelPost8 />} />
 
+          <Route path="/BlogPost/BlogPost1" element={<BlogPost1 />} />
+          <Route path="/BlogPost/BlogPost2" element={<BlogPost2 />} />
+          <Route path="/BlogPost/BlogPost3" element={<BlogPost3 />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

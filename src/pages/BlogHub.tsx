@@ -5,66 +5,43 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { Button } from "@/components/ui/button";
 const BlogHub = () => {
   useScrollToTop();
   const blogPosts = [
     {
       id: 1,
-      title: "My Ultimate Study Routine for Exam Season 📚",
-      category: "Study Tips",
-      excerpt: "How I ace my exams with these simple but effective study techniques...",
-      date: "March 15, 2025",
-      readTime: "5 min read",
-    },
-    {
-      id: 2,
-      title: "Glow Up Diaries: My Self-Care Sunday Routine ✨",
-      category: "Glow-up",
-      excerpt: "All my favorite self-care rituals for the perfect relaxing Sunday...",
-      date: "March 12, 2025",
-      readTime: "4 min read",
-    },
-    {
-      id: 3,
-      title: "Weekend in Prague: A Dreamy Travel Guide 🏰",
-      category: "Travel",
-      excerpt: "Exploring the magical streets of Prague and all the must-see spots...",
-      date: "March 8, 2025",
-      readTime: "7 min read",
-    },
-    {
-      id: 4,
-      title: "How I Stay Organized as a University Student 📝",
-      category: "Study Tips",
-      excerpt: "My digital and analog planning system that keeps me on track...",
-      date: "March 5, 2025",
+      title: "Why Germany? The Real Reason I Chose It Over Other EU Countries 📚",
+      category: "Life Abroad",
+      excerpt: "When people ask me, “Why Germany of all places?” I always laugh a little...",
+      date: "October 20, 2025",
       readTime: "6 min read",
     },
     {
-      id: 5,
-      title: "Morning Routine for Productive Days ☀️",
-      category: "Glow-up",
-      excerpt: "Start your day right with these simple habits that changed my life...",
-      date: "March 1, 2025",
-      readTime: "5 min read",
+      id: 2,
+      title: "Too Young? Too Early? My Mindset on Chasing Dreams at 21 ✨",
+      category: "Personal Growth",
+      excerpt: "Every time I sit at a table here in Germany—whether it’s with co-workers...",
+      date: "October 21, 2025",
+      readTime: "7 min read",
     },
     {
-      id: 6,
-      title: "Exploring Munich: Hidden Gems & Cozy Cafes ☕",
-      category: "Travel",
-      excerpt: "My favorite spots in Munich that aren't in every tourist guide...",
-      date: "February 28, 2025",
+      id: 3,
+      title: "Figuring Life Out Abroad (a.k.a. How I’m Surviving, Thriving, and Sometimes Crying 😅)",
+      category: "Journey",
+      excerpt: "Moving abroad sounds glamorous, right? ✈️ New country, new people, new adventures...",
+      date: "November 4, 2025",
       readTime: "8 min read",
     },
   ];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Study Tips":
+      case "Life Abroad":
         return "gradient-ocean";
-      case "Glow-up":
+      case "Personal Growth":
         return "gradient-sunset";
-      case "Travel":
+      case "Journey":
         return "gradient-dreamy";
       default:
         return "gradient-ocean";
@@ -87,7 +64,7 @@ const BlogHub = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogPosts.map((post) => (
-              <Link key={post.id} to={`/blog/${post.id}`}>
+              <Link key={post.id} to={`/BlogPost/BlogPost${post.id}`}>
                 <Card className="group bg-card shadow-float border-2 border-primary/10 overflow-hidden hover:shadow-glow transition-smooth h-full">
                   <div className={`${getCategoryColor(post.category)} p-6`}>
                     <Badge className="bg-white/20 text-white border-white/40 mb-3">
@@ -105,10 +82,15 @@ const BlogHub = () => {
                       <span>{post.date}</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <div className="mt-4 flex items-center text-primary font-medium group-hover:translate-x-1 transition-smooth">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
+                    
+                        <div className="mt-4 flex items-center text-primary font-medium group-hover:translate-x-1 transition-smooth">
+                          <Link to={`/BlogPost/BlogPost${post.id}`}>
+                            <Button variant="secondary">
+                                Read More <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </Link>
+                        </div>
+
                   </div>
                 </Card>
               </Link>
