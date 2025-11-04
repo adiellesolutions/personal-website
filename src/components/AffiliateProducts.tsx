@@ -222,10 +222,10 @@ function ProductCard({
 
         <div className="flex items-center justify-between">
         <Link to={`/ProductDetails/Product${p.id}`}>
-  <Button variant="secondary" onClick={() => onTrack(p.name)}>
-    View Details
-  </Button>
-</Link>
+          <Button variant="secondary" onClick={() => onTrack(p.name)}>
+            View Details
+          </Button>
+        </Link>
 
 </div>
 
