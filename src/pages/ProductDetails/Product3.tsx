@@ -7,10 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import product11 from "@/assets/product1.png";
-import product12 from "@/assets/product12.png";
-import product13 from "@/assets/product13.png";
-import product14 from "@/assets/product14.png";
+import product31 from "@/assets/product3.png";
+import product32 from "@/assets/product32.png";
+import product33 from "@/assets/product33.png";
+import product34 from "@/assets/product34.png";
 import useScrollToTop from "@/hooks/useScrollToTop";
 
 
@@ -48,9 +48,9 @@ const MOCK_PRODUCT: Product = {
   shortDescription:
     "Francila Premium Vest + Shorts Set — Channel your inner boss babe with this sleek and stylish co-ord. Effortlessly blending confidence and comfort, it's the perfect outfit for a polished yet laid-back look.",
   heroImage:
-    product11,
+    product31,
   gallery: [
-    product12, product13, product14
+    product32, product33, product34
   ],
   items: [
     { id: "planner-pdf", name: "Coastal Planner PDF (50+ pages)", price: "€19", link: "https://affiliate.example.com/planner-pdf", short: "Printable and tablet-ready layouts." },
