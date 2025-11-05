@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import MoreFromJournal from "@/components/MoreFromJournal";
 import {
   ArrowLeft,
   MapPin,
@@ -33,7 +34,7 @@ export default function TravelPost() {
   // --- Static post data (replace with API later) ---
   const post = {
     id: id ?? "prague-2025",
-    name: "Prague, Czech Republic 🏰",
+    name: "Liège, Belgium",
     type: "City Break",
     duration: "3 days",
     date: "February 2025",
@@ -193,7 +194,7 @@ export default function TravelPost() {
   const Itinerary = () => (
     <div className="space-y-6">
 
-    <BuyItinerarySection/>
+    <BuyItinerarySection placeId={post.id} placeName={post.name} duration={post.duration}/>
 
     </div>
   );
@@ -295,29 +296,6 @@ export default function TravelPost() {
     </Card>
   );
 
-  const RelatedCarousel = () => (
-    <div>
-      <h3 className="font-quicksand font-semibold text-xl mb-4">More from the Journal</h3>
-      <div className="flex gap-4 overflow-x-auto pb-3">
-        {post.related.map((r) => (
-          <div key={r.id} className="min-w-[220px] flex-shrink-0">
-            <Card className="p-0 overflow-hidden rounded-2xl">
-              <img src={r.cover} alt={r.name} className="w-full h-36 object-cover" />
-              <div className="p-3">
-                <div className="font-semibold">{r.name}</div>
-                <div className="text-sm text-gray-500">Short guide</div>
-                <div className="mt-3 flex justify-between items-center">
-                  <Link to={`/travel/${r.id}`} className="text-pink-500 text-sm">Read</Link>
-                  <div className="text-xs text-gray-400">5 min</div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   // --- Render ---
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white dark:from-gray-950 dark:to-gray-900 transition-all">
@@ -403,7 +381,7 @@ export default function TravelPost() {
 
           </div>
 
-          <RelatedCarousel />
+          <MoreFromJournal related={post.related}/>
 
         </div>
 
