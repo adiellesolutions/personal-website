@@ -16,7 +16,7 @@ export default function ShopHub() {
     {
       title: "✨ Study Organizer Template",
       desc: "Plan smarter and prettier with this Notion-based template — designed for students who want both focus and flair!",
-      price: "₱249",
+      price: "€249",
       category: "student",
       image:
         "https://images.unsplash.com/photo-1602526219046-84e27f9dc9db?auto=format&fit=crop&w=600&q=80",
@@ -24,7 +24,7 @@ export default function ShopHub() {
     {
       title: "🧠 Productivity Dashboard",
       desc: "Stay on top of your goals, tasks, and dreams with this clean but cute Notion setup.",
-      price: "₱199",
+      price: "€199",
       category: "productivity",
       image:
         "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80",
@@ -32,7 +32,7 @@ export default function ShopHub() {
     {
       title: "🎨 Creative Content Planner",
       desc: "Ideal for content creators who want to stay organized while keeping aesthetics in check.",
-      price: "₱299",
+      price: "€299",
       category: "creator",
       image:
         "https://images.unsplash.com/photo-1612831816579-05ef7d1a4450?auto=format&fit=crop&w=600&q=80",
@@ -40,7 +40,7 @@ export default function ShopHub() {
     {
       title: "💰 Finance Tracker",
       desc: "Track your savings and expenses in style — aesthetic budgeting made simple.",
-      price: "₱179",
+      price: "€179",
       category: "finance",
       image:
         "https://images.unsplash.com/photo-1605902711622-cfb43c4437d4?auto=format&fit=crop&w=600&q=80",
@@ -223,11 +223,6 @@ export default function ShopHub() {
                       key={i}
                       className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 backdrop-blur-sm"
                     >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-48 w-full object-cover"
-                      />
                       <div className="p-5 space-y-3">
                         <h3 className="font-quicksand font-bold text-lg text-primary">
                           {item.title}
@@ -236,7 +231,7 @@ export default function ShopHub() {
                         <div className="flex justify-between items-center">
                           <span className="font-bold text-primary">{item.price}</span>
                           <Button className="text-xs rounded-full">
-                            Get Now <Download className="w-3 h-3 ml-2" />
+                            Coming Soon
                           </Button>
                         </div>
                       </div>

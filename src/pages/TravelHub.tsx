@@ -211,7 +211,7 @@ const TravelHub = () => {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <Link to={`/travel/${d.id}`}>
+                  <Link to={`/TravelPost/TravelPost${d.id}`}>
                     <Card className="group bg-white/90 dark:bg-gray-900/80 border border-pink-100 dark:border-gray-700 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
                       <img
                         src={d.image}
