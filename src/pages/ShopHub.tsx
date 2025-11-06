@@ -11,41 +11,92 @@ export default function ShopHub() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(3);
+  const [selectedItem, setSelectedItem] = useState(null); // ← add this
 
   const digitalItems = [
     {
-      title: "✨ Study Organizer Template",
-      desc: "Plan smarter and prettier with this Notion-based template — designed for students who want both focus and flair!",
-      price: "€249",
-      category: "student",
-      image:
-        "https://images.unsplash.com/photo-1602526219046-84e27f9dc9db?auto=format&fit=crop&w=600&q=80",
+      title: "✨ A1 German Course – The Foundation",
+      shortDesc: "For absolute beginners who want to start speaking and understanding German in daily life.",
+      details: [
+        "Bite-sized lessons (so you won’t get overwhelmed)",
+        "Everyday phrases I personally used when I first arrived in Germany",
+        "My own activity book (fun + simple, perfect if you get bored with heavy textbooks!)"
+      ],
+      price: "PRICING SOON",
+      category: "Course",
+      image: "https://images.unsplash.com/photo-1602526219046-84e27f9dc9db?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "🧠 Productivity Dashboard",
-      desc: "Stay on top of your goals, tasks, and dreams with this clean but cute Notion setup.",
-      price: "€199",
-      category: "productivity",
-      image:
-        "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80",
+      title: "✨ A2 German Course – Building Confidence",
+      shortDesc: "Continue your journey to express yourself confidently in everyday conversations.",
+      details: [
+        "Grammar explained in easy terms",
+        "Real-life examples (messages, small talk, workplace convos)",
+        "Free activity book with practice exercises to make learning less stressful"
+      ],
+      price: "PRICING SOON",
+      category: "Course",
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "🎨 Creative Content Planner",
-      desc: "Ideal for content creators who want to stay organized while keeping aesthetics in check.",
-      price: "€299",
-      category: "creator",
-      image:
-        "https://images.unsplash.com/photo-1612831816579-05ef7d1a4450?auto=format&fit=crop&w=600&q=80",
-    },
+      title: "💌 Email Drafts – Ausbildung & Student Edition",
+      shortDesc: "Ready-to-edit email templates for students and trainees who need to sound confident and professional.",
+      details: [
+        "Templates for Ausbildung applications and inquiries.",
+        "Excuse letters for school or work (sick leave, absences, etc.).",
+        "Formal request emails for extensions, schedules, and permissions.",
+        "Tone and format guidance to make your message sound natural and polite."
+      ],
+      price: "PRICING SOON",
+      category: "Template",
+      image: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba5?auto=format&fit=crop&w=600&q=80",
+    }
+    ,
     {
-      title: "💰 Finance Tracker",
-      desc: "Track your savings and expenses in style — aesthetic budgeting made simple.",
-      price: "€179",
-      category: "finance",
-      image:
-        "https://images.unsplash.com/photo-1605902711622-cfb43c4437d4?auto=format&fit=crop&w=600&q=80",
-    },
+      title: "💰 Budgeting Sheets – Track Your Finances Abroad",
+      shortDesc: "Simple and visual budgeting templates to help students and trainees manage their allowance or salary with ease.",
+      details: [
+        "Monthly tracker for income, savings, and expenses.",
+        "Pre-filled categories for food, rent, transport, and leisure.",
+        "Automatic summaries and insights for better spending habits.",
+        "Perfect for those balancing school and part-time work abroad."
+      ],
+      price: "PRICING SOON",
+      category: "Template",
+      image: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=600&q=80",
+    }
+    ,
+    {
+      title: "📚 Study Planners – Stay Organized & Focused",
+      shortDesc: "Digital planners to help you organize your study time and maintain balance with work or personal life.",
+      details: [
+        "Weekly and monthly layouts for subjects and goals.",
+        "Track deadlines, exams, and progress visually.",
+        "Built-in space for reflection and motivation notes.",
+        "Ideal for students preparing for exams or balancing dual study programs."
+      ],
+      price: "PRICING SOON",
+      category: "Template",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+    }
+    ,
+    {
+      title: "🗓️ Content Planners – Share Your Journey Online",
+      shortDesc: "Plan, schedule, and organize your social media content like a pro — even as a busy student abroad.",
+      details: [
+        "Monthly posting calendar and idea tracker.",
+        "Sections for captions, hashtags, and analytics.",
+        "Helps you stay consistent without burnout.",
+        "Perfect for students documenting their Ausbildung or study life online."
+      ],
+      price: "PRICING SOON",
+      category: "Template",
+      image: "https://images.unsplash.com/photo-1590608897129-79da98d159cc?auto=format&fit=crop&w=600&q=80",
+    }
+    ,
   ];
+  
+  
 
   const filteredItems = digitalItems
     .filter((item) =>
@@ -157,7 +208,7 @@ export default function ShopHub() {
                     onClick={() => scrollToSection("reviews")}
                     className="hover:text-primary transition-colors"
                   >
-                    💬 Reviews
+                    
                   </button>
                 </li>
               </ul>
@@ -207,37 +258,97 @@ export default function ShopHub() {
                         className="pl-8 pr-4 py-2 w-full border border-pink-200 rounded-full bg-white/80 focus:ring-2 focus:ring-pink-300 text-sm"
                       >
                         <option value="all">All Categories</option>
-                        <option value="student">Student</option>
-                        <option value="productivity">Productivity</option>
-                        <option value="creator">Creator</option>
-                        <option value="finance">Finance</option>
+                        <option value="Course">Course</option>
+                        <option value="Template">Template</option>
+                    
                       </select>
                     </div>
                   </div>
                 </div>
 
+                                {/* ITEM CARDS */}
                 {/* ITEM CARDS */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredItems.map((item, i) => (
                     <Card
                       key={i}
-                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 backdrop-blur-sm"
+                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 backdrop-blur-sm flex flex-col justify-between p-6"
                     >
-                      <div className="p-5 space-y-3">
-                        <h3 className="font-quicksand font-bold text-lg text-primary">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{item.desc}</p>
-                        <div className="flex justify-between items-center">
-                          <span className="font-bold text-primary">{item.price}</span>
-                          <Button className="text-xs rounded-full">
-                            Coming Soon
-                          </Button>
-                        </div>
-                      </div>
+                      <h3 className="font-quicksand font-bold text-lg text-primary text-center mb-4">
+                        {item.title}
+                      </h3>
+                      <Button
+                        onClick={() => setSelectedItem(item)}
+                        className="rounded-full text-sm bg-pink-400 text-white hover:bg-pink-500 mx-auto"
+                      >
+                        View More
+                      </Button>
                     </Card>
                   ))}
                 </div>
+
+                {/* FLOATING MODAL */}
+                {selectedItem && (
+                        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50">
+                          <div className="bg-white/90 rounded-3xl p-8 w-[90%] max-w-lg relative shadow-xl border border-pink-200 overflow-y-auto max-h-[90vh]">
+                            <button
+                              onClick={() => setSelectedItem(null)}
+                              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                            >
+                              ✕
+                            </button>
+
+                            {/* Title */}
+                            <h3 className="font-quicksand text-2xl font-bold text-primary mb-3">
+                              {selectedItem.title}
+                            </h3>
+
+                            {/* Description (optional) */}
+                            {selectedItem.shortDesc && (
+                              <p className="text-muted-foreground mb-4">{selectedItem.shortDesc}</p>
+                            )}
+
+                            {/* Chapters */}
+                           {/* Show either bullet list or chapters */}
+                            {selectedItem.details ? (
+                              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-2">
+                                {selectedItem.details.map((point, i) => (
+                                  <li key={i}>{point}</li>
+                                ))}
+                              </ul>
+                            ) : selectedItem.chapters ? (
+                              <div className="space-y-6">
+                                {selectedItem.chapters.map((chapter, idx) => (
+                                  <div key={idx}>
+                                    <h4 className="font-semibold text-primary mb-2">{chapter.title}</h4>
+                                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                                      {chapter.details.map((point, i) => (
+                                        <li key={i}>{point}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : null}
+
+
+                            {/* Coming Soon Button */}
+                            <Button
+                              disabled
+                              className="mt-6 w-full rounded-full bg-gray-300 text-gray-600 cursor-not-allowed"
+                            >
+                              Coming Soon 🚧
+                            </Button>
+
+
+                            {/* Price */}
+                            <div className="mt-6 text-right">
+                              <span className="font-semibold text-pink-500 text-lg">{selectedItem.price}</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
 
                 {/* LOAD MORE BUTTON */}
                 {visibleCount < digitalItems.length && (
@@ -254,50 +365,52 @@ export default function ShopHub() {
             )}
 
             {/* REVIEWS */}
-            <section
-              id="reviews"
-              className="bg-white/60 backdrop-blur-md p-10 rounded-3xl border border-pink-200"
-            >
-              <h2 className="font-pacifico text-3xl text-primary mb-6 text-center">
-                💬 Customer Reviews
-              </h2>
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    name: "Lea G.",
-                    quote:
-                      "Everything here feels so intentional and adorable — it’s like shopping in a dream 💕",
-                  },
-                  {
-                    name: "Kim A.",
-                    quote:
-                      "I love the templates! Clean, useful, and totally aesthetic 🌸",
-                  },
-                  {
-                    name: "Jan R.",
-                    quote:
-                      "The affiliate recommendations are honest and reliable. You can tell there’s care behind it!",
-                  },
-                ].map((r, i) => (
-                  <Card
-                    key={i}
-                    className="bg-pink-50/60 p-6 rounded-2xl text-center shadow-sm"
-                  >
-                    <p className="italic text-muted-foreground mb-3">
-                      “{r.quote}”
-                    </p>
-                    <h4 className="font-quicksand font-semibold text-primary">
-                      {r.name}
-                    </h4>
-                    <div className="flex justify-center mt-2 text-yellow-400">
-                      {[...Array(5)].map((_, j) => (
-                        <Star key={j} className="w-4 h-4 fill-yellow-400" />
-                      ))}
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </section>
+            {/* 
+<section
+  id="reviews"
+  className="bg-white/60 backdrop-blur-md p-10 rounded-3xl border border-pink-200"
+>
+  <h2 className="font-pacifico text-3xl text-primary mb-6 text-center">
+    💬 Customer Reviews
+  </h2>
+  <div className="grid md:grid-cols-3 gap-8">
+    {[
+      {
+        name: "Lea G.",
+        quote:
+          "Everything here feels so intentional and adorable — it’s like shopping in a dream 💕",
+      },
+      {
+        name: "Kim A.",
+        quote:
+          "I love the templates! Clean, useful, and totally aesthetic 🌸",
+      },
+      {
+        name: "Jan R.",
+        quote:
+          "The affiliate recommendations are honest and reliable. You can tell there’s care behind it!",
+      },
+    ].map((r, i) => (
+      <Card
+        key={i}
+        className="bg-pink-50/60 p-6 rounded-2xl text-center shadow-sm"
+      >
+        <p className="italic text-muted-foreground mb-3">
+          “{r.quote}”
+        </p>
+        <h4 className="font-quicksand font-semibold text-primary">
+          {r.name}
+        </h4>
+        <div className="flex justify-center mt-2 text-yellow-400">
+          {[...Array(5)].map((_, j) => (
+            <Star key={j} className="w-4 h-4 fill-yellow-400" />
+          ))}
+        </div>
+      </Card>
+    ))}
+  </div>
+</section>
+*/}
           </main>
         </div>
       </section>

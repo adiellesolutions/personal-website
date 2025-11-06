@@ -41,9 +41,9 @@ export default function TravelPost() {
   const post = {
     id: id ?? "prague-2025",
     name: "Liège, Belgium",
-    type: "City Break",
-    duration: "3 days",
-    date: "February 2025",
+    type: "Christmas Market Adventure",
+    duration: "2 days",
+    date: " ",
     region: "Europe",
     banner: "https://cdn.pixabay.com/photo/2016/01/19/17/39/prague-1149620_1280.jpg",
     rating: 4.9,

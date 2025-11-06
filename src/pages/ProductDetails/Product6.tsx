@@ -286,7 +286,7 @@ useScrollToTop();
       */}
 
       <a
-        href="https://onelink.shein.com/17/53001es1ksvy"
+        href="https://onelink.shein.com/17/530039v3eo0m"
         target="_blank"
         rel="noopener noreferrer"
       >
