@@ -68,17 +68,9 @@ export default function TravelPost() {
           { when: "Evening", text: "Sunset river cruise." },
         ],
       },
-      {
-        id: "day-3",
-        title: "Day 3 — Local Favorites",
-        sections: [
-          { when: "Morning", text: "Vyšehrad peaceful stroll and views." },
-          { when: "Afternoon", text: "Karlín cafés and concept stores." },
-          { when: "Evening", text: "Malá Strana wine cellar dinner." },
-        ],
-      },
+      
     ],
-    content: `Prague stole my heart from the moment I arrived! This fairytale city is everything you imagine and more. Read the itinerary and tips below for a compact long-weekend plan.`,
+    content: `Liège during Christmas turns into a cozy, sparkling village filled with warm lights, food stalls, and festive music. This quick 2-day getaway is perfect if you’re coming from Frankfurt and want to soak in holiday magic without rushing.`,
     tips: [
       "Download offline maps — WiFi can be spotty",
       "Learn basic Czech phrases — locals appreciate it",
@@ -87,10 +79,10 @@ export default function TravelPost() {
       "Pack layers — weather changes quickly",
     ],
     budget: {
-      flights: "€250",
-      accommodation: "€120 (3 nights)",
-      food: "€60",
-      activities: "€40",
+      Accommodation: "€63 (good for 4)",
+      Transportation: "€30",
+      Food: "€40",
+      
     },
     related: [
       { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
@@ -202,50 +194,64 @@ export default function TravelPost() {
 
   const Sidebar = () => (
     <aside className="space-y-6 sticky top-28">
-      {/* Summary card */}
-      <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
-        <div className="flex items-start gap-3">
-          <div className="flex-1">
-            <h4 className="font-semibold text-lg">Trip Summary</h4>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{post.duration} • {post.date} • {post.region}</p>
-            <div className="mt-3 flex items-center gap-2">
-              <button onClick={toggleLike} className={`flex items-center gap-2 px-3 py-1 rounded-full ${liked ? "bg-pink-50 text-pink-600" : "bg-white/60 dark:bg-gray-700/60"}`}>
-                <Heart size={16} /> {likes}
-              </button>
-              <button onClick={handleSave} className={`flex items-center gap-2 px-3 py-1 rounded-full ${saved ? "bg-yellow-50 text-yellow-600" : "bg-white/60 dark:bg-gray-700/60"}`}>
-                <Bookmark size={16} /> {saved ? "Saved" : "Save"}
-              </button>
-              <button
-                onClick={() => {
-                  const shareData = {
-                    title: document.title,
-                    text: "Check out this travel post!",
-                    url: window.location.href,
-                  };
+  {/* Hashtags Card */}
+  <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
+    <div className="flex items-start gap-3">
+      <div className="flex-1">
+        <h4 className="font-semibold text-lg text-primary">Hashtags</h4>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+          3 days • February 2025 • Europe
+        </p>
 
-                  if (navigator.share) {
-                    navigator
-                      .share(shareData)
-                      .then(() => console.log("Shared successfully"))
-                      .catch((err) => console.log("Share canceled or failed:", err));
-                  } else {
-                    navigator.clipboard.writeText(window.location.href);
-                    alert("Link copied to clipboard! ✨");
-                  }
-                }}
-                className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-gray-700/60 hover:bg-white/80 dark:hover:bg-gray-700 transition"
-              >
-                <Share2 size={16} /> Share
-              </button>
-            </div>
-          </div>
-          <div className="text-right">
-            <div className="text-sm text-gray-500 dark:text-gray-400">Rating</div>
-            <div className="flex items-center gap-1 mt-1 font-semibold text-pink-600">{post.rating} <Star size={14} /></div>
-            <div className="text-xs text-gray-500 mt-2">{post.readingMinutes} min read</div>
-          </div>
+        <div className="mt-3 space-y-2 text-gray-700 dark:text-gray-300">
+          <p>#LiegeMagic</p>
+          <p>#BelgiumDiaries</p>
+          <p>#WinterGlow</p>
         </div>
-      </Card>
+
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 italic">
+          Posting your trip photos? Use my hashtag so I can see your adventures! ✨
+        </p>
+
+        {/* Share button */}
+        <div className="mt-4 flex items-center gap-2">
+          <button
+            onClick={() => {
+              const shareData = {
+                title: "Trip Hashtags ✨",
+                text: "Check out these travel hashtags!",
+                url: window.location.href,
+              };
+
+              if (navigator.share) {
+                navigator
+                  .share(shareData)
+                  .then(() => console.log("Shared successfully"))
+                  .catch((err) =>
+                    console.log("Share canceled or failed:", err)
+                  );
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied to clipboard! ✨");
+              }
+            }}
+            className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-gray-700/60 hover:bg-white/80 dark:hover:bg-gray-700 transition text-sm"
+          >
+            <Share2 size={16} /> Share
+          </button>
+        </div>
+      </div>
+
+      {/* Right Side (Reading time retained) */}
+      <div className="text-right">
+        <div className="text-xs text-gray-500 mt-2">3 min read</div>
+      </div>
+    </div>
+  </Card>
+
+
+ 
+  
 
       {/* Budget */}
       <Card className="p-4 bg-white/70 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
@@ -339,20 +345,37 @@ export default function TravelPost() {
           <Card className="p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-50 dark:border-gray-700">
             <Gallery />
 
-            <div className="mt-6 prose prose-lg dark:prose-invert max-w-none">
+            <div className="mt-6 prose prose-lg dark:prose-invert max-w-none text-justify">
               {/* Rich content (static) — you can swap with dangerouslySetInnerHTML if needed */}
               <h2>Overview</h2>
               <p>
-                Prague is a charming city with cobbled streets, pastel facades and cathedral spires. It's perfect for a 2–4 day break.
+                Over two days, you’ll explore Liège’s charming old town, enjoy the famous
+                Christmas Market at Place du Marché, and taste local treats like Liège
+                waffles and Pèkèt. On Day 2, slow down with brunch, climb Montagne de Bueren
+                for panoramic views, visit La Batte Market, and stroll along Parc de la
+                Boverie before heading home. A trip that feels like stepping into a European
+                holiday movie ✨🎄
               </p>
 
-              <h2>Must-Do's</h2>
-              <ul>
-                <li>Visit Charles Bridge early morning</li>
-                <li>Wander Old Town Square and the Astronomical Clock</li>
-                <li>Climb to Prague Castle for panoramic views</li>
+              <h2 className="mt-6">Insider Tips</h2>
+              <ul className="list-disc pl-5 text-muted-foreground">
+                <li>Visited the oldest Christmas Market in Belgium 🎄</li>
+                <li>Try Liège waffles & coffee — heavenly combo ☕️🧇</li>
+                <li>
+                  Money-saving hack: brought adobo from Germany 🤣 iconic Filipino move!
+                </li>
+              </ul>
+
+              {/* Added Packing Essentials Section */}
+              <h2 className="mt-6">Packing Essentials</h2>
+              <ul className="list-disc pl-5 text-muted-foreground">
+                <li>Cozy coat, beret & gloves 🧤</li>
+                <li>Warm outfit for Christmas market photos ❄️</li>
+                <li>Anti-theft bag & powerbank 🔋</li>
+                <li>Sunglasses (for day) & cap/beanie (for cold)</li>
               </ul>
             </div>
+
 
             <div className="mt-6">
               <Itinerary />

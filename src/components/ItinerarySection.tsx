@@ -40,7 +40,7 @@ export default function ItinerarySection({ placeId, placeName, duration }: Itine
             <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
               <li className="flex items-center gap-2"><CheckCircle className="text-pink-400" size={16} /> Full {duration} itinerary + insider tips</li>
               <li className="flex items-center gap-2"><CheckCircle className="text-pink-400" size={16} /> Budget & transport guide</li>
-              <li className="flex items-center gap-2"><CheckCircle className="text-pink-400" size={16} /> Café & restaurant recommendations ☕</li>
+              <li className="flex items-center gap-2"><CheckCircle className="text-pink-400" size={16} /> Food recommendations </li>
             </ul>
 
             <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
@@ -77,14 +77,14 @@ export default function ItinerarySection({ placeId, placeName, duration }: Itine
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-1 text-yellow-400 mt-2">
+          {/*<div className="flex items-center justify-center gap-1 text-yellow-400 mt-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={14} />
             ))}
             <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
               Loved by travelers ❤️
             </span>
-          </div>
+            </div>*/}
 
           <div className="bg-pink-50/50 dark:bg-gray-900/50 rounded-lg p-3 mt-4 text-sm text-gray-700 dark:text-gray-300 italic">
             <Sparkles className="inline w-4 h-4 text-pink-400 mr-1" />

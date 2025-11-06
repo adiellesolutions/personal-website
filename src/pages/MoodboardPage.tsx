@@ -105,7 +105,7 @@ const MoodboardPage = () => {
 // 🎵 Playlist Section Component
 function PlaylistSection() {
   const playlists = {
-    "Study Vibes": "https://open.spotify.com/embed/playlist/37i9dQZF1DX8Uebhn9wzrS?utm_source=generator",
+    "🇧🇪 Belgium": "https://open.spotify.com/playlist/0fAjqR8W08ycQWWOcI575a?si=Hu1X5DwkSbmJrr9CuQe-Nw&pi=NAaW8iicQumD4",
     "Coastal Dreams": "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator",
     "Morning Energy": "https://open.spotify.com/embed/playlist/37i9dQZF1DXc5e2bJhV6pu?utm_source=generator",
     "Evening Calm": "https://open.spotify.com/embed/playlist/37i9dQZF1DWZZbwlv3Vmtr?utm_source=generator",
