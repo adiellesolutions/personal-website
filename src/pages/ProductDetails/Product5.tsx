@@ -12,6 +12,8 @@ import product52 from "@/assets/product52.png";
 import product53 from "@/assets/product53.png";
 import product54 from "@/assets/product54.png";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import RelatedProducts from "@/components/RelatedProducts";
+
 
 
 type ProductItem = {
@@ -175,33 +177,6 @@ function FAQSection() {
         ))}
       </div>
     </Card>
-  );
-}
-
-function RelatedProducts() {
-  return (
-    <section>
-      <h2 className="text-2xl font-semibold text-primary-700 dark:text-sky-300 mb-6">
-        You Might Also Like 🐚
-      </h2>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {RELATED_PRODUCTS.map((p) => (
-          <Card
-            key={p.id}
-            className="overflow-hidden bg-white dark:bg-slate-800 hover:shadow-lg transition-all rounded-2xl border border-sky-100 dark:border-slate-700"
-          >
-            <img src={p.image} alt={p.name} className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h3 className="font-semibold text-primary-700 dark:text-sky-200">{p.name}</h3>
-              <p className="text-slate-600 dark:text-slate-400">{p.price}</p>
-              <Button variant="outline" size="sm" className="mt-3 rounded-full w-full">
-                View Product
-              </Button>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </section>
   );
 }
 

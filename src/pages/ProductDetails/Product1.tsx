@@ -12,6 +12,7 @@ import product12 from "@/assets/product12.png";
 import product13 from "@/assets/product13.png";
 import product14 from "@/assets/product14.png";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import RelatedProducts from "@/components/RelatedProducts";
 
 
 type ProductItem = {
@@ -172,32 +173,7 @@ function FAQSection() {
   );
 }
 
-function RelatedProducts() {
-  return (
-    <section>
-      <h2 className="text-2xl font-semibold text-primary-700 dark:text-sky-300 mb-6">
-        You Might Also Like 🐚
-      </h2>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {RELATED_PRODUCTS.map((p) => (
-          <Card
-            key={p.id}
-            className="overflow-hidden bg-white dark:bg-slate-800 hover:shadow-lg transition-all rounded-2xl border border-sky-100 dark:border-slate-700"
-          >
-            <img src={p.image} alt={p.name} className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h3 className="font-semibold text-primary-700 dark:text-sky-200">{p.name}</h3>
-              <p className="text-slate-600 dark:text-slate-400">{p.price}</p>
-              <Button variant="outline" size="sm" className="mt-3 rounded-full w-full">
-                View Product
-              </Button>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </section>
-  );
-}
+
 
 export default function ProductDetails(): JSX.Element {
   const { id } = useParams();
@@ -267,29 +243,25 @@ useScrollToTop();
                   </span>
                 )}
               </div>
+
               <div className="flex flex-col gap-6">
-      <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-        {product.shortDescription}
-      </p>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                  {product.shortDescription}
+                </p>
 
-      {/* 
-      <div className="flex items-center gap-3">
-        <RatingStars />
-        <span className="text-sm text-slate-500 dark:text-slate-400">127 reviews</span>
-      </div>
-      */}
+                {/* 
+                <div className="flex items-center gap-3">
+                  <RatingStars />
+                  <span className="text-sm text-slate-500 dark:text-slate-400">127 reviews</span>
+                </div>
+                */}
 
-      <a
-        href="https://onelink.shein.com/17/52zzsj51dbgi"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button size="lg" className="w-full rounded-full">
-          Buy Now — {product.price}
-        </Button>
-  </a>
-</div>
-
+                <a href="https://onelink.shein.com/17/52zzsj51dbgi" target="_blank" rel="noopener noreferrer" >
+                  <Button size="lg" className="w-full rounded-full">
+                    Buy Now — {product.price}
+                  </Button>
+                </a>
+              </div>
 
               <blockquote className="border-l-4 border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-slate-800 p-4 rounded-r-xl italic text-slate-600 dark:text-slate-300">
                 “Use my code 6W534 to get an exclusive discount! 💕”

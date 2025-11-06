@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { MapPin, ArrowRight, Search, Star, LayoutGrid, List, Sparkles } from "lucide-react";
 import TimelineSection from "@/components/TravelTimelineSection";
 import useScrollToTop from "@/hooks/useScrollToTop";
@@ -12,6 +13,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const TravelHub = () => {
   useScrollToTop();
+
+  const [showModal, setShowModal] = useState(false);
 
   const destinations = [
     {
@@ -42,9 +45,9 @@ const TravelHub = () => {
       type: "Spring City & Nature Walk",
       duration: "1 day",
       rating: 4.9,
-      tags: ["Luxembourg City", "Old Town", "Fairytale Walks"],
+      tags: ["Castles", "Walks", "Views"],
       image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      description: "Small but mighty! 🏰 Walking through Luxembourg felt like strolling inside a fairytale with a mix of old castles and modern chic.",
+      description: "A fairytale city mixing old castles and modern charm.",
       highlights: ["Corniche", "Grund", "Adolphe Bridge"],
     },
     {
@@ -53,9 +56,9 @@ const TravelHub = () => {
       type: "Local Adventures",
       duration: "6 days",
       rating: 5.0,
-      tags: ["Germany Trips", "City Hopping", "Train Travel"],
+      tags: ["Germany", "City", "Trains"],
       image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      description: "Hamburg gives mini-Venice waterfront vibes, Frankfurt is my skyscraper-filled study home, and Aachen mixes historic hot springs with sweet gingerbread charm.",
+      description: "Mini-Venice vibes, skyscrapers, and historic charm.",
       highlights: ["Main River", "Aachen Dom", "Speicherstadt"],
     },
     {
@@ -64,15 +67,12 @@ const TravelHub = () => {
       type: "3-Day Couple Coastal & City Adventure",
       duration: "3 days",
       rating: 4.8,
-      tags: ["Lombardy Trip", "Couple Getaway", "Lakeside Romance"],
+      tags: ["Italy", "Couple", "Lakes"],
       image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      description: "Milan is the fashion capital (with Jollibee!), Lake Como is the glamorous “rich auntie” of lakes, and Lake Iseo is the quiet romantic gem that feels like a private Italy.",
+      description: "Dreamy lakes, fashion city, and romantic escapes.",
       highlights: ["Duomo", "Park Bellagio", "Iseo"],
     },
-   
   ];
-
-
 
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
@@ -100,6 +100,7 @@ const TravelHub = () => {
       <Navigation />
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
+
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="font-pacifico text-5xl md:text-6xl text-primary dark:text-pink-300 mb-4 flex justify-center items-center gap-2">
@@ -111,7 +112,7 @@ const TravelHub = () => {
           </div>
 
           {/* Timeline Section */}
-          <TimelineSection />
+          {/* <TimelineSection />*/}
 
           {/* Search + Filter Bar */}
           <div className="sticky top-20 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-sm border border-pink-100 dark:border-gray-700 p-4 md:p-5 mb-10 transition-colors duration-500">
@@ -130,34 +131,6 @@ const TravelHub = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full pl-9 pr-3 py-2 rounded-full border border-pink-200 dark:border-gray-700 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 bg-white dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-200"
                 />
-              </div>
-
-              {/* Filters */}
-              <div className="relative w-full lg:max-w-[500px] flex-shrink overflow-hidden">
-                <div
-                  className="flex flex-nowrap gap-2 py-2 px-1 overflow-x-auto"
-                >
-                  {filters.map((type) => (
-                    <Button
-                      key={type}
-                      size="sm"
-                      onClick={() => setFilter(type)}
-                      className={`flex-shrink-0 rounded-full text-xs sm:text-sm px-3 py-1 ${
-                        filter === type
-                          ? "bg-pink-400 text-white shadow dark:bg-pink-500"
-                          : "bg-white border border-pink-200 text-pink-500 hover:bg-pink-50 dark:bg-gray-800 dark:border-gray-700 dark:text-pink-300 dark:hover:bg-gray-700"
-                      }`}
-                    >
-                      {type}
-                    </Button>
-                  ))}
-                </div>
-
-                {/* Left Shadow */}
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-2 bg-gradient-to-r rounded-full from-white dark:from-gray-900"></div>
-
-                {/* Right Shadow */}
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-2 bg-gradient-to-l rounded-full from-white dark:from-gray-900"></div>
               </div>
 
               {/* Sort + View Toggle */}
@@ -210,7 +183,7 @@ const TravelHub = () => {
                       />
                       <div className="p-5 flex flex-col gap-3">
                         <div className="flex justify-between items-center">
-                          <h3 className="font-quicksand font-semibold text-lg text-pink-700 dark:text-pink-300 leading-tight">
+                          <h3 className="font-quicksand font-semibold text-lg text-pink-700 dark:text-pink-300 leading-tight line-clamp-1">
                             {d.name}
                           </h3>
                           <span className="flex items-center text-yellow-500 text-sm">
@@ -218,7 +191,7 @@ const TravelHub = () => {
                           </span>
                         </div>
 
-                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-1">
                           {d.description}
                         </p>
 
@@ -280,14 +253,37 @@ const TravelHub = () => {
             </h3>
             <p className="text-white/95 text-lg max-w-2xl mx-auto mb-6">
               Want pastel-perfect travel guides, packing lists, and hidden gems?  
-              Discover all my cozy itineraries and travel secrets!
+              Discover all my travel secrets!
             </p>
-            <Link to="/courses">
-              <Button className="bg-white text-primary dark:text-gray-900 hover:bg-white/90 rounded-full">
-                Get Travel Guides
-              </Button>
-            </Link>
+
+            <Button
+              onClick={() => setShowModal(true)}
+              className="bg-white text-primary dark:text-gray-900 hover:bg-white/90 rounded-full"
+            >
+              Coming Soon ✨
+            </Button>
           </Card>
+
+          {/* Coming Soon Modal */}
+          <Dialog open={showModal} onOpenChange={setShowModal}>
+            <DialogContent className="rounded-2xl text-center p-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-pacifico text-primary">
+                  🌸 Coming Soon 🌸
+                </DialogTitle>
+              </DialogHeader>
+              <p className="text-gray-600 dark:text-gray-300 mt-2">
+                I'm currently crafting cute travel ebooks & pastel guides!  
+                Stay tuned 💗
+              </p>
+              <DialogFooter className="justify-center mt-6">
+                <Button onClick={() => setShowModal(false)} className="rounded-full">
+                  Okayyy 💖
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
         </div>
       </main>
       <Footer />
