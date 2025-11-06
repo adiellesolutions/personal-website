@@ -20,7 +20,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
-import BuyItinerarySection from "@/components/BuyItinerarySection";
+import BuyItinerarySection from "@/components/ItinerarySection";
 
 // =====================
 // TravelPost (static)

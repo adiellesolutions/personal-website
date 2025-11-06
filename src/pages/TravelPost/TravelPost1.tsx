@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import MoreFromJournal from "@/components/MoreFromJournal";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   MapPin,
@@ -21,7 +22,11 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
-import BuyItinerarySection from "@/components/BuyItinerarySection";
+import ItinerarySection from "@/components/ItinerarySection";
+import HeroImg from "@/assets/TravelPost1/20.jpg";
+import img1 from "@/assets/TravelPost1/19.jpg";
+import img2 from "@/assets/TravelPost1/16.jpg";
+import img3 from "@/assets/TravelPost1/14.jpg";
 
 // =====================
 // TravelPost (static)
@@ -29,6 +34,7 @@ import BuyItinerarySection from "@/components/BuyItinerarySection";
 
 export default function TravelPost() {
   const { id } = useParams();
+  const navigate = useNavigate();
   useScrollToTop();
 
   // --- Static post data (replace with API later) ---
@@ -39,16 +45,10 @@ export default function TravelPost() {
     duration: "3 days",
     date: "February 2025",
     region: "Europe",
-    banner:
-      "https://cdn.pixabay.com/photo/2016/01/19/17/39/prague-1149620_1280.jpg",
+    banner: "https://cdn.pixabay.com/photo/2016/01/19/17/39/prague-1149620_1280.jpg",
     rating: 4.9,
     readingMinutes: 8,
-    gallery: [
-      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-      "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
-    ],
+    gallery: [img1, img2, img3],
     itinerary: [
       {
         id: "day-1",
@@ -150,14 +150,15 @@ export default function TravelPost() {
 
   // --- Small components inside file for clarity ---
   const Gallery = () => (
-    <div className="relative">
-      <div className="overflow-hidden rounded-xl">
-        <img
-          src={post.gallery[galleryIndex]}
-          alt={`gallery-${galleryIndex}`}
-          className="w-full h-64 md:h-80 object-cover rounded-xl"
-        />
-      </div>
+<div className="relative">
+  <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 flex justify-center items-center">
+    <img
+      src={post.gallery[galleryIndex]}
+      alt={`gallery-${galleryIndex}`}
+      className="w-full max-h-[1050px] object-contain rounded-xl transition-all"
+    />
+  </div>
+
 
       <div className="absolute inset-y-0 left-2 flex items-center">
         <button
@@ -194,7 +195,7 @@ export default function TravelPost() {
   const Itinerary = () => (
     <div className="space-y-6">
 
-    <BuyItinerarySection placeId={post.id} placeName={post.name} duration={post.duration}/>
+    <ItinerarySection placeId={post.id} placeName={post.name} duration={post.duration}/>
 
     </div>
   );
@@ -264,7 +265,7 @@ export default function TravelPost() {
     </aside>
   );
 
-  const Comments = () => (
+ /* const Comments = () => (
     <Card className="p-4 h-70">
       <h4 className="font-semibold mb-3">Comments</h4>
       <div className="space-y-3 h-2">
@@ -294,7 +295,7 @@ export default function TravelPost() {
 
       </div>
     </Card>
-  );
+  );*/
 
   // --- Render ---
   return (
@@ -303,7 +304,7 @@ export default function TravelPost() {
 
       {/* Hero */}
       <div className="relative h-[48vh] md:h-[56vh] lg:h-[60vh] overflow-hidden rounded-b-3xl shadow-xl">
-        <img src="https://petapixel.com/assets/uploads/2022/06/what-is-landscape-photography.jpg" alt={post.name} className="object-cover w-full h-full" />
+        <img src={HeroImg} alt={post.name} className="object-cover w-full h-full" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         <div className="absolute bottom-8 left-6 md:left-12 text-white max-w-3xl">
           <div className="flex items-center gap-3 mb-3">
@@ -324,8 +325,12 @@ export default function TravelPost() {
         <div className="lg:col-span-2 space-y-8">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Button variant="ghost" className="flex items-center gap-2 text-pink-500">
-                <ArrowLeft /> Back
+              <Button
+                variant="ghost"
+                onClick={() => navigate(-1)} // ✅ This goes back to previous page
+                className="flex items-center gap-2 text-pink-500 hover:text-pink-600"
+              >
+                <ArrowLeft size={18} /> Back
               </Button>
               <div className="text-sm text-gray-600 dark:text-gray-300">{post.readingMinutes} min read • {post.date}</div>
             </div>
@@ -354,32 +359,34 @@ export default function TravelPost() {
             </div>
           </Card>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Comments />
+          {/* 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Comments />
 
-            <Card className="p-6 h-[18rem] md:h-[22rem] flex flex-col">
-              <h4 className="font-semibold mb-3">Practical Info</h4>
+              <Card className="p-6 h-[18rem] md:h-[22rem] flex flex-col">
+                <h4 className="font-semibold mb-3">Practical Info</h4>
 
-              {/* Scrollable content area */}
-              <div className="flex-1 overflow-y-auto pr-2 show-scrollbar">
-                <ul className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Currency: Czech koruna (CZK)</li>
-                  <li>Language: Czech (English widely spoken in tourist areas)</li>
-                  <li>Transport: Trams, metro — buy a 3-day pass for convenience</li>
-                  <li>Plug type: Type E (230V)</li>
-                  {/* add more lines to test scrolling */}
-                  <li>Emergency: 112</li>
-                  <li>Time zone: CET (UTC+1)</li>
-                  <li>Best time to visit: April — October</li>
-                </ul>
-              </div>
+                <div className="flex-1 overflow-y-auto pr-2 show-scrollbar">
+                  <ul className="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>Currency: Czech koruna (CZK)</li>
+                    <li>Language: Czech</li>
+                    <li>Transport: Trams, metro</li>
+                    <li>Plug type: Type E (230V)</li>
+                    <li>Emergency: 112</li>
+                    <li>Time zone: CET (UTC+1)</li>
+                    <li>Best time to visit: April — October</li>
+                  </ul>
+                </div>
 
-              <div className="mt-4">
-                <Button className="bg-pink-500 text-white w-full">Download Printable Itinerary (PDF)</Button>
-              </div>
-            </Card>
+                <div className="mt-4">
+                  <Button className="bg-pink-500 text-white w-full">
+                    Download Printable Itinerary (PDF)
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          */}
 
-          </div>
 
           <MoreFromJournal related={post.related}/>
 

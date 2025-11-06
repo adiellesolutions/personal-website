@@ -25,9 +25,6 @@ import TravelPost2 from "./pages/TravelPost/TravelPost2";
 import TravelPost3 from "./pages/TravelPost/TravelPost3";
 import TravelPost4 from "./pages/TravelPost/TravelPost4";
 import TravelPost5 from "./pages/TravelPost/TravelPost5";
-import TravelPost6 from "./pages/TravelPost/TravelPost6";
-import TravelPost7 from "./pages/TravelPost/TravelPost7";
-import TravelPost8 from "./pages/TravelPost/TravelPost8";
 
 import BlogPost1 from "./pages/BlogPost/BlogPost1";
 import BlogPost2 from "./pages/BlogPost/BlogPost2";
@@ -65,9 +62,6 @@ const App = () => (
           <Route path="/TravelPost/TravelPost3" element={<TravelPost3 />} />
           <Route path="/TravelPost/TravelPost4" element={<TravelPost4 />} />
           <Route path="/TravelPost/TravelPost5" element={<TravelPost5 />} />
-          <Route path="/TravelPost/TravelPost6" element={<TravelPost6 />} />
-          <Route path="/TravelPost/TravelPost7" element={<TravelPost7 />} />
-          <Route path="/TravelPost/TravelPost8" element={<TravelPost8 />} />
 
           <Route path="/BlogPost/BlogPost1" element={<BlogPost1 />} />
           <Route path="/BlogPost/BlogPost2" element={<BlogPost2 />} />
