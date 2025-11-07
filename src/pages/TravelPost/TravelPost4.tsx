@@ -23,73 +23,145 @@ import {
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import ItinerarySection from "@/components/ItinerarySection";
-import HeroImg from "@/assets/TravelPost1/20.jpg";
-import img1 from "@/assets/TravelPost1/19.jpg";
-import img2 from "@/assets/TravelPost1/16.jpg";
-import img3 from "@/assets/TravelPost1/14.jpg";
+import HeroImg from "@/assets/TravelPost4/16.jpg";
+import img1 from "@/assets/TravelPost4/9.jpg";
+import img2 from "@/assets/TravelPost4/18.jpg";
+import img3 from "@/assets/TravelPost4/12.jpg";
 
 // =====================
 // TravelPost (static)
 // =====================
 
-export default function TravelPost() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function TravelPost() { 
+  const { id } = useParams(); 
+  const navigate = useNavigate(); 
   useScrollToTop();
 
-  // --- Static post data (replace with API later) ---
-  const post = {
-    id: id ?? "prague-2025",
-    name: "Liège, Belgium",
-    type: "Christmas Market Adventure",
-    duration: "2 days",
-    date: " ",
-    region: "Europe",
-    banner: "https://cdn.pixabay.com/photo/2016/01/19/17/39/prague-1149620_1280.jpg",
-    rating: 4.9,
-    readingMinutes: 8,
-    gallery: [img1, img2, img3],
-    itinerary: [
-      {
-        id: "day-1",
-        title: "Day 1 — Old Town Magic",
-        sections: [
-          { when: "Morning", text: "Astronomical Clock, trdelník at the square." },
-          { when: "Afternoon", text: "Jewish Quarter and Spanish Synagogue." },
-          { when: "Evening", text: "Charles Bridge sunset and riverside dinner." },
-        ],
-      },
-      {
-        id: "day-2",
-        title: "Day 2 — Castle & Views",
-        sections: [
-          { when: "Morning", text: "Prague Castle early visit, St. Vitus Cathedral." },
-          { when: "Afternoon", text: "Golden Lane and castle gardens." },
-          { when: "Evening", text: "Sunset river cruise." },
-        ],
-      },
-      
-    ],
-    content: `Liège during Christmas turns into a cozy, sparkling village filled with warm lights, food stalls, and festive music. This quick 2-day getaway is perfect if you’re coming from Frankfurt and want to soak in holiday magic without rushing.`,
-    tips: [
-      "Download offline maps — WiFi can be spotty",
-      "Learn basic Czech phrases — locals appreciate it",
-      "Book castle tickets online to skip queues",
-      "Avoid currency exchange kiosks — use ATMs",
-      "Pack layers — weather changes quickly",
-    ],
-    budget: {
-      Accommodation: "€63 (good for 4)",
-      Transportation: "€30",
-      Food: "€40",
-      
+const post = {
+  id: id ?? "oslo-tjome-3-days",
+  name: "Oslo & Tjøme, Norway",
+  type: "City + Coastal Road Trip",
+  duration: "3 Days",
+  date: "May–September",
+  region: "Europe",
+  banner: HeroImg,
+  rating: 4.9,
+  readingMinutes: 8,
+
+  hashtags: [
+    "OsloTravel",
+    "ScandinavianRoadTrip",
+    "TjømeNorway",
+    "VerdensEnde"
+  ],
+
+  gallery: [img1, img2, img3],
+
+  itinerary: [
+    {
+      id: "day-1",
+      title: "Oslo City & Ekeberg Views",
+      sections: [
+        {
+          when: "Morning",
+          text: "Slow breakfast at home or grab pastries & coffee at Baker Hansen 🥐☕. Drive along Karl Johans gate → The Royal Palace → Oslo Opera House (walk on the roof!)."
+        },
+        {
+          when: "Late Morning",
+          text: "Visit the MUNCH Museum next to the Opera. See *The Scream* and learn about Edvard Munch’s inspiration from Oslo’s landscapes."
+        },
+        {
+          when: "Midday",
+          text: "Drive 10–15 min to Ekebergparken. Park near Ekebergrestauranten. Wander through the sculpture park and enjoy panoramic views over Oslofjord."
+        },
+        {
+          when: "Lunch (Optional)",
+          text: "Dine at Ekebergrestauranten — glass walls + scenery = chef’s kiss ✨"
+        },
+        {
+          when: "Evening",
+          text: "Drive to Aker Brygge / Tjuvholmen. Dinner by the harbor at Olivia Aker Brygge or Louise Restaurant. Sunset fjord walk 🌅"
+        }
+      ],
     },
-    related: [
-      { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
-      { id: "vienna-2023", name: "Vienna, Austria", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
-      { id: "prague-night", name: "Prague — Night Walks", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
-    ],
-  };
+
+    {
+      id: "day-2",
+      title: "Road Trip to Tjøme (Coastal Escape)",
+      sections: [
+        {
+          when: "Morning (Leave ~08:00)",
+          text: "Drive south from Oslo (~1h 45m) via E18. Stop at Tønsberg — Norway’s oldest town — for a short harbor walk or visit Tønsberg Tower."
+        },
+        {
+          when: "Midday",
+          text: "Continue to Tjøme Island → drive to Verdens Ende ('World’s End'). Boardwalks, smooth seaside rocks, and the iconic stone lighthouse."
+        },
+        {
+          when: "Lunch",
+          text: "Seafood lunch at Spiseriet Verdens Ende — fresh, local, and right by the ocean 🌊"
+        },
+        {
+          when: "Golden Hour / Drive Back",
+          text: "Enjoy slow coastal roads returning to Oslo. Optional coffee stop in Tønsberg (Café Babel or Bare Barista)."
+        }
+      ],
+    },
+
+    {
+      id: "day-3",
+      title: "Oslo Slow Day / Local Life",
+      sections: [
+        {
+          when: "Morning",
+          text: "Relax at home with your Tita 💕 or stroll through Grünerløkka’s cafés and vintage shops."
+        },
+        {
+          when: "Lunch",
+          text: "Try Mathallen Food Hall — international food stalls + local treats."
+        },
+        {
+          when: "Afternoon",
+          text: "Walk along Akerselva River or visit Vigeland Sculpture Park for art-in-nature."
+        },
+        {
+          when: "Evening",
+          text: "Chill night in, cozy dinner, tea, and early rest — perfect ending to a slow Scandinavian escape."
+        }
+      ],
+    }
+  ],
+
+  content: `This trip blends the calm elegance of Oslo with the wild, coastal magic of Tjøme. From fjord sunsets to sculpture parks and sea cliffs, it’s a slow-travel experience filled with nature, art, and quiet meaningful moments.`,
+
+  overview: `A relaxing 3-day road trip based in Oslo — city views, coastal drives, seaside lunches, and time spent with family. Perfect for travelers who love scenic landscapes, art, and cozy harbor evenings.`,
+
+  insiderTips: [
+    "Parking in Oslo varies — check signs to avoid fines.",
+    "Verdens Ende is windy — bring a light jacket even in summer.",
+    "Ekeberg has some uphill walking — comfy shoes are essential."
+  ],
+
+  packing: [
+    "Layered outfits (weather shifts quickly) 🧥",
+    "Comfortable walking shoes 👟",
+    "Light scarf or windbreaker 🌬️",
+    "Reusable water bottle 💧",
+    "Powerbank 🔋"
+  ],
+
+  tips: [
+    "Start days early to avoid crowds, especially in summer.",
+    "Tønsberg is worth lingering in — cute cafés everywhere.",
+    "Golden hour at the Oslofjord hits *different* 😌"
+  ],
+
+  budget: {
+    Transportation: "€0 (Private Car)",
+    Food: "€25–60 per meal depending on restaurant",
+    Activities: "€0–20 (most viewpoints & parks are free)",
+  },
+};
 
   // --- UI State (static interactions only) ---
   const [liked, setLiked] = useState(false);
@@ -194,26 +266,23 @@ export default function TravelPost() {
 
   const Sidebar = () => (
     <aside className="space-y-6 sticky top-28">
-  {/* Hashtags Card */}
-  <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
-    <div className="flex items-start gap-3">
-      <div className="flex-1">
+      {/* ✅ Updated dynamic Hashtags */}
+      <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
         <h4 className="font-semibold text-lg text-primary">Hashtags</h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-          3 days • February 2025 • Europe
+          {post.duration} • {post.date} • {post.region}
         </p>
 
         <div className="mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-          <p>#LiegeMagic</p>
-          <p>#BelgiumDiaries</p>
-          <p>#WinterGlow</p>
+          {post.hashtags.map((tag, i) => (
+            <p key={i}>#{tag}</p>
+          ))}
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 italic">
           Posting your trip photos? Use my hashtag so I can see your adventures! ✨
         </p>
 
-        {/* Share button */}
         <div className="mt-4 flex items-center gap-2">
           <button
             onClick={() => {
@@ -223,40 +292,22 @@ export default function TravelPost() {
                 url: window.location.href,
               };
 
-              if (navigator.share) {
-                navigator
-                  .share(shareData)
-                  .then(() => console.log("Shared successfully"))
-                  .catch((err) =>
-                    console.log("Share canceled or failed:", err)
-                  );
-              } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("Link copied to clipboard! ✨");
-              }
+              if (navigator.share) navigator.share(shareData);
+              else navigator.clipboard.writeText(window.location.href);
             }}
             className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-gray-700/60 hover:bg-white/80 dark:hover:bg-gray-700 transition text-sm"
           >
             <Share2 size={16} /> Share
           </button>
         </div>
-      </div>
 
-      {/* Right Side (Reading time retained) */}
-      <div className="text-right">
-        <div className="text-xs text-gray-500 mt-2">3 min read</div>
-      </div>
-    </div>
-  </Card>
-
-
- 
-  
+        <div className="text-xs text-gray-500 mt-2">{post.readingMinutes} min read</div>
+      </Card>
 
       {/* Budget */}
       <Card className="p-4 bg-white/70 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
         <h4 className="font-semibold mb-3">Budget Est.</h4>
-        <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+        <ul className="text-sm space-y-2">
           {Object.entries(post.budget).map(([k, v]) => (
             <li key={k} className="flex justify-between">
               <span className="capitalize">{k}</span>
@@ -264,9 +315,6 @@ export default function TravelPost() {
             </li>
           ))}
         </ul>
-        <div className="mt-4">
-          <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white">Save Trip</Button>
-        </div>
       </Card>
     </aside>
   );
@@ -346,35 +394,24 @@ export default function TravelPost() {
             <Gallery />
 
             <div className="mt-6 prose prose-lg dark:prose-invert max-w-none text-justify">
-              {/* Rich content (static) — you can swap with dangerouslySetInnerHTML if needed */}
               <h2>Overview</h2>
-              <p>
-                Over two days, you’ll explore Liège’s charming old town, enjoy the famous
-                Christmas Market at Place du Marché, and taste local treats like Liège
-                waffles and Pèkèt. On Day 2, slow down with brunch, climb Montagne de Bueren
-                for panoramic views, visit La Batte Market, and stroll along Parc de la
-                Boverie before heading home. A trip that feels like stepping into a European
-                holiday movie ✨🎄
-              </p>
+              <p>{post.overview}</p>
 
               <h2 className="mt-6">Insider Tips</h2>
               <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Visited the oldest Christmas Market in Belgium 🎄</li>
-                <li>Try Liège waffles & coffee — heavenly combo ☕️🧇</li>
-                <li>
-                  Money-saving hack: brought adobo from Germany 🤣 iconic Filipino move!
-                </li>
+                {post.insiderTips.map((tip, i) => (
+                  <li key={i}>{tip}</li>
+                ))}
               </ul>
 
-              {/* Added Packing Essentials Section */}
               <h2 className="mt-6">Packing Essentials</h2>
               <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Cozy coat, beret & gloves 🧤</li>
-                <li>Warm outfit for Christmas market photos ❄️</li>
-                <li>Anti-theft bag & powerbank 🔋</li>
-                <li>Sunglasses (for day) & cap/beanie (for cold)</li>
+                {post.packing.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </div>
+
 
 
             <div className="mt-6">
@@ -411,7 +448,7 @@ export default function TravelPost() {
           */}
 
 
-          <MoreFromJournal related={post.related}/>
+          <MoreFromJournal />
 
         </div>
 

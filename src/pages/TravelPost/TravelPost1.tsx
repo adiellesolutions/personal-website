@@ -37,59 +37,104 @@ export default function TravelPost() {
   const navigate = useNavigate();
   useScrollToTop();
 
-  // --- Static post data (replace with API later) ---
-  const post = {
-    id: id ?? "prague-2025",
-    name: "Liège, Belgium",
-    type: "Christmas Market Adventure",
-    duration: "2 days",
-    date: " ",
-    region: "Europe",
-    banner: "https://cdn.pixabay.com/photo/2016/01/19/17/39/prague-1149620_1280.jpg",
-    rating: 4.9,
-    readingMinutes: 8,
-    gallery: [img1, img2, img3],
-    itinerary: [
-      {
-        id: "day-1",
-        title: "Day 1 — Old Town Magic",
-        sections: [
-          { when: "Morning", text: "Astronomical Clock, trdelník at the square." },
-          { when: "Afternoon", text: "Jewish Quarter and Spanish Synagogue." },
-          { when: "Evening", text: "Charles Bridge sunset and riverside dinner." },
-        ],
-      },
-      {
-        id: "day-2",
-        title: "Day 2 — Castle & Views",
-        sections: [
-          { when: "Morning", text: "Prague Castle early visit, St. Vitus Cathedral." },
-          { when: "Afternoon", text: "Golden Lane and castle gardens." },
-          { when: "Evening", text: "Sunset river cruise." },
-        ],
-      },
-      
-    ],
-    content: `Liège during Christmas turns into a cozy, sparkling village filled with warm lights, food stalls, and festive music. This quick 2-day getaway is perfect if you’re coming from Frankfurt and want to soak in holiday magic without rushing.`,
-    tips: [
-      "Download offline maps — WiFi can be spotty",
-      "Learn basic Czech phrases — locals appreciate it",
-      "Book castle tickets online to skip queues",
-      "Avoid currency exchange kiosks — use ATMs",
-      "Pack layers — weather changes quickly",
-    ],
-    budget: {
-      Accommodation: "€63 (good for 4)",
-      Transportation: "€30",
-      Food: "€40",
-      
+const post = {
+  id: id ?? "liege-christmas",
+  name: "Liège, Belgium",
+  type: "Christmas Market Getaway",
+  duration: "2 Days / 1 Night",
+  date: "December",
+  region: "Europe",
+  banner: HeroImg,
+  rating: 4.9,
+  readingMinutes: 9,
+
+  hashtags: ["LiegeChristmas", "WinterVillageVibes", "BelgiumTravel", "HolidayMarkets"],
+
+  gallery: [img1, img2, img3],
+
+  itinerary: [
+    {
+      id: "day-1",
+      title: "Day 1 — Arrival + Christmas Magic",
+      sections: [
+        {
+          when: "Morning / Midday",
+          text: "Arrive at Liège-Guillemins Station (futuristic architecture by Calatrava). Walk or take a short bus to your accommodation near Place Saint-Lambert. Drop bags, then brunch at Le Pain Quotidien or Une Gaufrette Saperlipopette (famous Liège waffles)."
+        },
+        {
+          when: "Afternoon",
+          text: "Stroll across Pont des Arches for your first view of the Meuse River. Explore Place Saint-Lambert + Palais des Princes-Évêques. Check small artisan shops and Belgian chocolate boutiques."
+        },
+        {
+          when: "Evening",
+          text: "Liège Christmas Village begins! Located at Place du Marché & Place Saint-Lambert. Enjoy 200+ wooden chalets, ice skating, ferris wheel views, hot vin chaud, waffles, raclette, Belgian fries, and try Liège’s local fruit gin, Pèkèt. Cozy, warm glowing Hallmark vibes 🥹✨"
+        },
+        {
+          when: "Night",
+          text: "Dinner inside the market — try tartiflette or Belgian fondue. Optional nightlife at Le Carré District if you want music/drinks before bed."
+        }
+      ],
     },
-    related: [
-      { id: "budapest-2024", name: "Budapest, Hungary", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
-      { id: "vienna-2023", name: "Vienna, Austria", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
-      { id: "prague-night", name: "Prague — Night Walks", cover: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg" },
+    {
+      id: "day-2",
+      title: "Day 2 — Local Gems + Scenic Views",
+      sections: [
+        {
+          when: "Morning",
+          text: "Slow brunch at Ma Ferme en Ville (farm-to-table). Then climb Montagne de Bueren — 374 steps up with panoramic city views. Even halfway has great photos!"
+        },
+        {
+          when: "Midday",
+          text: "If it's Sunday, visit La Batte Market — Belgium’s oldest riverside market. Pick up cheese, waffles, handmade crafts."
+        },
+        {
+          when: "Afternoon",
+          text: "Walk through Parc de la Boverie for a peaceful break. Optional art museum stop. Final coffee at Café Randaxhe or Le Café Liegeois along the river."
+        },
+        {
+          when: "Evening",
+          text: "Train or FlixBus back to Frankfurt — relaxed and cozy trip end."
+        }
+      ],
+    },
+  ],
+
+  content: `Liège during Christmas transforms into a warm, festive storybook town — glowing wooden stalls, mulled wine in the air, twinkling lights, and cozy corners waiting to be discovered. It's quieter and more intimate than the big European markets, and that’s part of its charm.`,
+
+    overview: `Over two days, you’ll explore Liège’s charming old town, enjoy the 
+      Christmas Market at Place du Marché, and taste local treats like Liège waffles and Pèkèt. 
+      On Day 2, slow down with brunch, climb Montagne de Bueren for panoramic views, visit 
+      La Batte Market, and stroll along Parc de la Boverie before heading home. A trip that 
+      feels like stepping into a European holiday movie ✨🎄`,
+
+    insiderTips: [
+      "Visited the oldest Christmas Market in Belgium 🎄",
+      "Try Liège waffles & coffee — heavenly combo ☕️🧇",
+      "Money-saving hack: brought adobo from Germany 🤣 iconic Filipino move!"
     ],
+
+    packing: [
+      "Cozy coat, beret & gloves 🧤",
+      "Warm outfit for Christmas market photos ❄️",
+      "Anti-theft bag & powerbank 🔋",
+      "Sunglasses (for day) & cap/beanie (for cold)"
+    ],
+
+    tips: [
+      "Public transport is FREE — buses, trams, trains.",
+      "Wear comfy shoes — cobblestones + gentle hills.",
+      "Chemin de la Corniche is best at golden hour.",
+      "Glass elevator to Grund is free & scenic.",
+      "Everything is walkable from Place d’Armes."
+    ],
+
+    budget: {
+      Transportation: "Free (within Luxembourg)",
+      Food: "€20–45",
+      Extras: "€5–10 (coffee/pastries)"
+    },
   };
+
 
   // --- UI State (static interactions only) ---
   const [liked, setLiked] = useState(false);
@@ -194,26 +239,23 @@ export default function TravelPost() {
 
   const Sidebar = () => (
     <aside className="space-y-6 sticky top-28">
-  {/* Hashtags Card */}
-  <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
-    <div className="flex items-start gap-3">
-      <div className="flex-1">
+      {/* ✅ Updated dynamic Hashtags */}
+      <Card className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
         <h4 className="font-semibold text-lg text-primary">Hashtags</h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-          3 days • February 2025 • Europe
+          {post.duration} • {post.date} • {post.region}
         </p>
 
         <div className="mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-          <p>#LiegeMagic</p>
-          <p>#BelgiumDiaries</p>
-          <p>#WinterGlow</p>
+          {post.hashtags.map((tag, i) => (
+            <p key={i}>#{tag}</p>
+          ))}
         </div>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 italic">
           Posting your trip photos? Use my hashtag so I can see your adventures! ✨
         </p>
 
-        {/* Share button */}
         <div className="mt-4 flex items-center gap-2">
           <button
             onClick={() => {
@@ -223,40 +265,22 @@ export default function TravelPost() {
                 url: window.location.href,
               };
 
-              if (navigator.share) {
-                navigator
-                  .share(shareData)
-                  .then(() => console.log("Shared successfully"))
-                  .catch((err) =>
-                    console.log("Share canceled or failed:", err)
-                  );
-              } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("Link copied to clipboard! ✨");
-              }
+              if (navigator.share) navigator.share(shareData);
+              else navigator.clipboard.writeText(window.location.href);
             }}
             className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-gray-700/60 hover:bg-white/80 dark:hover:bg-gray-700 transition text-sm"
           >
             <Share2 size={16} /> Share
           </button>
         </div>
-      </div>
 
-      {/* Right Side (Reading time retained) */}
-      <div className="text-right">
-        <div className="text-xs text-gray-500 mt-2">3 min read</div>
-      </div>
-    </div>
-  </Card>
-
-
- 
-  
+        <div className="text-xs text-gray-500 mt-2">{post.readingMinutes} min read</div>
+      </Card>
 
       {/* Budget */}
       <Card className="p-4 bg-white/70 dark:bg-gray-800/80 backdrop-blur-md border border-pink-100 dark:border-gray-700">
         <h4 className="font-semibold mb-3">Budget Est.</h4>
-        <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+        <ul className="text-sm space-y-2">
           {Object.entries(post.budget).map(([k, v]) => (
             <li key={k} className="flex justify-between">
               <span className="capitalize">{k}</span>
@@ -264,9 +288,6 @@ export default function TravelPost() {
             </li>
           ))}
         </ul>
-        <div className="mt-4">
-          <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white">Save Trip</Button>
-        </div>
       </Card>
     </aside>
   );
@@ -346,35 +367,24 @@ export default function TravelPost() {
             <Gallery />
 
             <div className="mt-6 prose prose-lg dark:prose-invert max-w-none text-justify">
-              {/* Rich content (static) — you can swap with dangerouslySetInnerHTML if needed */}
               <h2>Overview</h2>
-              <p>
-                Over two days, you’ll explore Liège’s charming old town, enjoy the famous
-                Christmas Market at Place du Marché, and taste local treats like Liège
-                waffles and Pèkèt. On Day 2, slow down with brunch, climb Montagne de Bueren
-                for panoramic views, visit La Batte Market, and stroll along Parc de la
-                Boverie before heading home. A trip that feels like stepping into a European
-                holiday movie ✨🎄
-              </p>
+              <p>{post.overview}</p>
 
               <h2 className="mt-6">Insider Tips</h2>
               <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Visited the oldest Christmas Market in Belgium 🎄</li>
-                <li>Try Liège waffles & coffee — heavenly combo ☕️🧇</li>
-                <li>
-                  Money-saving hack: brought adobo from Germany 🤣 iconic Filipino move!
-                </li>
+                {post.insiderTips.map((tip, i) => (
+                  <li key={i}>{tip}</li>
+                ))}
               </ul>
 
-              {/* Added Packing Essentials Section */}
               <h2 className="mt-6">Packing Essentials</h2>
               <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Cozy coat, beret & gloves 🧤</li>
-                <li>Warm outfit for Christmas market photos ❄️</li>
-                <li>Anti-theft bag & powerbank 🔋</li>
-                <li>Sunglasses (for day) & cap/beanie (for cold)</li>
+                {post.packing.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </div>
+
 
 
             <div className="mt-6">
@@ -411,7 +421,7 @@ export default function TravelPost() {
           */}
 
 
-          <MoreFromJournal related={post.related}/>
+          <MoreFromJournal />
 
         </div>
 
