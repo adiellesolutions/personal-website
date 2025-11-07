@@ -59,49 +59,51 @@
     --sidebar-ring: 203 42% 74%;
   }
 
-  /* ===== Evening Theme (Galaxy Sky / Nebula / Stars) ===== */
-  .dark {
-    --background: 230 35% 22%;          /* deep cosmic indigo */
-    --foreground: 50 100% 92%;          /* moonlight text */
+  /* ===== Evening Theme (Blue Twilight / Ocean Night) ===== */
+.dark {
+  --background: 215 40% 18%;          /* deep navy blue */
+  --foreground: 200 100% 95%;         /* soft moonlight text */
 
-    --card: 230 35% 26%;
-    --card-foreground: 50 100% 92%;
+  --card: 215 40% 22%;
+  --card-foreground: 200 100% 95%;
 
-    --popover: 230 35% 26%;
-    --popover-foreground: 50 100% 92%;
+  --popover: 215 40% 22%;
+  --popover-foreground: 200 100% 95%;
 
-    --primary: 230 30% 74%;             /* periwinkle */
-    --primary-foreground: 228 33% 18%;
+  --primary: 205 70% 60%;             /* bright azure blue */
+  --primary-foreground: 215 40% 12%;
 
-    --secondary: 338 78% 83%;           /* pink cloud */
-    --secondary-foreground: 228 33% 18%;
+  --secondary: 195 55% 55%;           /* muted cyan-blue */
+  --secondary-foreground: 215 40% 12%;
 
-    --muted: 230 28% 40%;               /* indigo-muted */
-    --muted-foreground: 50 100% 88%;
+  --muted: 215 25% 38%;               /* steel blue muted tone */
+  --muted-foreground: 200 100% 90%;
 
-    --accent: 53 100% 86%;              /* pale star yellow */
-    --accent-foreground: 228 33% 22%;
+  --accent: 190 80% 70%;              /* teal highlight */
+  --accent-foreground: 215 40% 12%;
 
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
 
-    --border: 230 25% 42%;
-    --input: 230 25% 42%;
-    --ring: 230 30% 74%;
+  --border: 215 25% 40%;
+  --input: 215 25% 40%;
+  --ring: 205 70% 60%;
 
-    --gradient-ocean: linear-gradient(180deg, hsl(230 35% 30%) 0%, hsl(260 35% 40%) 100%);
-    --gradient-sunset: linear-gradient(135deg, hsl(338 78% 83%) 0%, hsl(53 100% 86%) 100%);
-    --gradient-dreamy: linear-gradient(180deg, hsl(230 35% 28%) 0%, hsl(260 35% 45%) 100%);
+  /* Gradients (deep ocean tones) */
+  --gradient-ocean: linear-gradient(180deg, hsl(215 40% 24%) 0%, hsl(205 60% 38%) 100%);
+  --gradient-sunset: linear-gradient(135deg, hsl(205 70% 60%) 0%, hsl(190 80% 70%) 100%);
+  --gradient-dreamy: linear-gradient(180deg, hsl(215 40% 20%) 0%, hsl(205 55% 35%) 100%);
 
-    --sidebar-background: 230 35% 26%;
-    --sidebar-foreground: 50 100% 92%;
-    --sidebar-primary: 230 30% 74%;
-    --sidebar-primary-foreground: 228 33% 18%;
-    --sidebar-accent: 230 28% 40%;
-    --sidebar-accent-foreground: 50 100% 92%;
-    --sidebar-border: 230 25% 42%;
-    --sidebar-ring: 230 30% 74%;
-  }
+  /* Sidebar (dark ocean aesthetic) */
+  --sidebar-background: 215 40% 22%;
+  --sidebar-foreground: 200 100% 95%;
+  --sidebar-primary: 205 70% 60%;
+  --sidebar-primary-foreground: 215 40% 12%;
+  --sidebar-accent: 215 25% 38%;
+  --sidebar-accent-foreground: 200 100% 95%;
+  --sidebar-border: 215 25% 40%;
+  --sidebar-ring: 205 70% 60%;
+}
 }
 
 /* Light mode */
@@ -125,7 +127,7 @@
 
 /* Dark mode */
 .dark #loading-screen {
-  background: linear-gradient(135deg, #0f1423 0%, #1b2136 45%, #241f3a 100%);
+  background: linear-gradient(135deg, #0a192f 0%, #0e243b 45%, #142f49 100%);
 }
 
 
@@ -157,16 +159,15 @@
 
   .transition-smooth { transition: var(--transition-smooth); }
   .transition-bounce { transition: var(--transition-bounce); }
-
-  /* Base galaxy sky (keeps your palette) */
-  .galaxy-bg {
-    background: radial-gradient(
-      circle at 50% 80%,
-      hsl(260 40% 25%) 0%,
-      hsl(230 35% 22%) 60%,
-      hsl(228 33% 18%) 100%
-    );
-  }
+/* Galaxy background in darker blues */
+.galaxy-bg {
+  background: radial-gradient(
+    circle at 50% 80%,
+    hsl(215 45% 20%) 0%,
+    hsl(220 35% 18%) 60%,
+    hsl(230 30% 15%) 100%
+  );
+}
 
   /* Overlay host: only for star layers now (comet moved to its own element) */
   .galaxy-overlay {
@@ -216,19 +217,13 @@
     animation: starLayer2 9s ease-in-out infinite alternate;
   }
 
-  /* Optional soft nebula glow */
-  .galaxy-nebula {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse at 30% 40%, rgba(181,133,255,0.22), transparent 70%),
-      radial-gradient(ellipse at 70% 60%, rgba(255,173,214,0.18), transparent 70%);
-    filter: blur(80px);
-    animation: nebulaDrift 40s linear infinite alternate;
-  }
-
+/* Optional soft blue nebula */
+.galaxy-nebula {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(64,150,255,0.25), transparent 70%),
+    radial-gradient(ellipse at 70% 60%, rgba(0,204,255,0.18), transparent 70%);
+  filter: blur(80px);
+}
   /* === Comet (own layer) === */
   .comet-layer {
     position: fixed;

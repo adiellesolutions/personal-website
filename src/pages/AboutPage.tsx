@@ -5,17 +5,23 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
 import profilePic from "@/assets/profile-pic.jpg";
-import journey1 from "@/assets/1.jpg";
-import journey2 from "@/assets/2.jpg";
-import journey3 from "@/assets/3.jpg";
-import journey4 from "@/assets/4.jpg";
-import journey5 from "@/assets/5.jpg";
-import journey6 from "@/assets/6.jpeg";
-import polaroid1 from "@/assets/7.jpg";
-import polaroid2 from "@/assets/8.jpg";
-import polaroid3 from "@/assets/9.jpg";
+import journey1 from "@/assets/aboutPage/aboutp1.png";
+import journey2 from "@/assets/aboutPage/aboutp2.png";
+import journey3 from "@/assets/aboutPage/aboutp3.png";
+import journey4 from "@/assets/aboutPage/aboutp4.png";
+import journey5 from "@/assets/aboutPage/aboutp5.png";
+import journey6 from "@/assets/aboutPage/aboutp6.png";
+import polaroid1 from "@/assets/aboutPage/pol1.png";
+import polaroid2 from "@/assets/aboutPage/pol2.png";
+import polaroid3 from "@/assets/aboutPage/pol3.png";
+import polaroid4 from "@/assets/aboutPage/pol4.png";
+import polaroid5 from "@/assets/aboutPage/pol5.png";
+import polaroid6 from "@/assets/aboutPage/pol6.png";
+import polaroid7 from "@/assets/aboutPage/pol7.png";
+import polaroid8 from "@/assets/aboutPage/pol8.png";
+import polaroid9 from "@/assets/aboutPage/pol9.png";
+
 
 const AboutPage = () => {
   // lightbox state for polaroids
@@ -27,48 +33,55 @@ const AboutPage = () => {
       title: "The Dreamer Phase 🌙",
       text:
         "Little me in the Philippines, already daydreaming about science, books, and being that girl who chases big dreams. Fun fact: I once read that Einstein was German and thought, “bet, I’ll go there too.” 😂",
-      img: journey2,
+      img: journey1,
     },
     {
       month: "2019",
       title: "The Hustler Student 📚",
       text:
         "High school me: joining science orgs, quiz bees, leadership stuff — basically saying “yes” to everything because I wanted more than “just enough.” My mom saw that spark and supported me even if life wasn’t easy.",
-      img: journey3,
+      img: journey2,
     },
     {
       month: "2022",
       title: "Big Decisions ✈️",
       text:
         "While everyone else was planning safe routes, I said: nope, I’m flying to Europe Germany challenged me the most, so I picked it — no regrets (I guess 🫣)",
-      img: journey4,
+      img: journey3,
     },
     {
       month: "2024",
       title: "New Chapter 🇩🇪",
       text:
         "Moved to Germany at 20 with a suitcase, shaky German, and a whole lot of courage. Started my Ausbildung and the classic expat struggles: culture shocks and homesickness. days journaling in cozy Munich cafés — finding peace in slow mornings.",
-      img: journey5,
+      img: journey4,
     },
     {
       month: "2025",
       title: "Glow-Up & Grit Era 💪",
       text: "Learning to balance Ausbildung, traveling on a budget, studying German, creating content, and finding self-care routines that keep me from burning out. I also started sharing my story online — turns out, people actually relate (and here you are reading this 🥹).Started experimenting with content creation and digital art.",
-      img: journey6,
+      img: journey5,
     },
     {
       month: "Present",
       title: "Building Something Bigger 🌍",
       text:
         "Now 21, I’m trying to build something.. creating digital products, travel guides, German study tips, and lifestyle content. My goal? To help dreamers like me —the ones who feel underestimated, too young, or too scared — to still go for it.",
-      img: journey1,
+      img: journey6,
     },
   ];
 
   const polaroids = [
-    { img: polaroid1, caption: "My aesthetic workspace in Munich ✨" },
-    { img: polaroid2, caption: "Weekend adventure in the Alps 🏔️" },
-    { img: polaroid3, caption: "Study session with kawaii vibes 📚" },
+    { img: polaroid1, caption: " " },
+    { img: polaroid2, caption: " " },
+    { img: polaroid3, caption: " " },
+    { img: polaroid4, caption: " " },
+    { img: polaroid5, caption: " " },
+    { img: polaroid6, caption: " " },
+    { img: polaroid7, caption: " " },
+    { img: polaroid8, caption: " " },
+    { img: polaroid9, caption: " " },
+
   ];
 
   // one place to tweak the “box” look per section
@@ -223,7 +236,7 @@ const AboutPage = () => {
           alt={selected.caption}
           className="w-full h-auto rounded-lg object-cover mb-4"
         />
-        <p className="text-center font-handwritten text-muted-foreground text-base">
+        <p className="text-center font-handwritten text-muted-foreground text-base text-darkblue-300">
           {selected.caption}
         </p>
       </div>
@@ -239,23 +252,46 @@ const AboutPage = () => {
   )}
 
   {/* Polaroid Grid */}
-  <div className="grid md:grid-cols-3 gap-10 justify-center">
-    {polaroids.map((photo, i) => (
+<div className="grid md:grid-cols-3 gap-10 justify-center">
+  {polaroids.map((photo, i) => {
+    // Define rotation variations for 9 photos
+    const rotations = [
+      "rotate-[3deg]",
+      "-rotate-[2deg]",
+      "rotate-[1deg]",
+      "-rotate-[4deg]",
+      "rotate-[2deg]",
+      "-rotate-[3deg]",
+      "rotate-[5deg]",
+      "-rotate-[1deg]",
+      "rotate-[4deg]",
+    ];
+
+    return (
       <button
         key={i}
         type="button"
         onClick={() => setSelected(photo)}
         className={[
           "relative bg-white rounded-2xl shadow-float p-4",
-          i === 0 ? "rotate-[3deg]" : i === 1 ? "-rotate-[2deg]" : "rotate-[1deg]",
+          rotations[i % rotations.length], // cycles through 9 unique rotations
           "hover:rotate-0 hover:scale-105 transition-all duration-500 text-left",
         ].join(" ")}
       >
-        <img src={photo.img} alt={photo.caption} className="rounded-md mb-4 object-cover w-full" />
-        <p className="font-handwritten text-muted-foreground text-sm">{photo.caption}</p>
+        <img
+          src={photo.img}
+          alt={photo.caption}
+          className="rounded-md mb-4 object-cover w-full"
+        />
+        {/* 👇 Caption: gray on light mode, blue on dark mode */}
+        <p className="font-handwritten text-muted-foreground text-sm dark:text-blue-300">
+          {photo.caption}
+        </p>
       </button>
-    ))}
-  </div>
+    );
+  })}
+</div>
+
 </section>
 
         {/* ====== CTA (boxed) ====== */}

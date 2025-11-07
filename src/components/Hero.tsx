@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import heroLight from "@/assets/hero-coastal.jpg";
 import heroDark from "@/assets/hero-coastal2.jpg";
 import profilepic from "@/assets/pictest.jpg";
-
+import pic1 from "@/assets/aboutPage/aboutp1.png";
+import pic2 from "@/assets/aboutPage/aboutp1.png";
+import pic3 from "@/assets/aboutPage/aboutp1.png";
 const Hero = () => {
   const [isDark, setIsDark] = useState(
     document.documentElement.classList.contains("dark")
@@ -131,7 +133,7 @@ const Hero = () => {
 
               {[
                 {
-                  img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop",
+                  img: pic1,
                   caption: "Study break 📖",
                   tape: "bg-yellow-200/90 dark:bg-amber-200/90",
                   border: "border-amber-200/70 dark:border-amber-100/60",
