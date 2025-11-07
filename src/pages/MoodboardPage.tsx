@@ -102,7 +102,6 @@ const MoodboardPage = () => {
   );
 };
 
-// 🎵 Playlist Section Component
 function PlaylistSection() {
   const playlists = {
     "🇧🇪 Belgium": "https://open.spotify.com/playlist/0fAjqR8W08ycQWWOcI575a?si=Hu1X5DwkSbmJrr9CuQe-Nw&pi=NAaW8iicQumD4",
@@ -112,7 +111,8 @@ function PlaylistSection() {
     "Others": "https://open.spotify.com/embed/playlist/37i9dQZF1DWSkMjlBZAZ07?utm_source=generator",
   };
 
-  const [current, setCurrent] = useState("Study Vibes");
+  // 🔹 Fix: use a valid key or first key dynamically
+  const [current, setCurrent] = useState(Object.keys(playlists)[0]);
 
   return (
     <Card className="bg-card shadow-float border-2 border-primary/10 p-8 mb-12">
@@ -120,7 +120,6 @@ function PlaylistSection() {
         My Playlists 🎵
       </h2>
 
-      {/* Playlist Choices */}
       <div className="flex flex-wrap justify-center gap-3 mb-6">
         {Object.keys(playlists).map((name) => (
           <Button
@@ -133,7 +132,6 @@ function PlaylistSection() {
         ))}
       </div>
 
-      {/* Spotify Embed */}
       <div className="max-w-3xl mx-auto">
         <iframe
           style={{ borderRadius: "12px" }}
@@ -148,5 +146,6 @@ function PlaylistSection() {
     </Card>
   );
 }
+
 
 export default MoodboardPage;

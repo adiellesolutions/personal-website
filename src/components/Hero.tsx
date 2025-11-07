@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import heroLight from "@/assets/hero-coastal.jpg";
 import heroDark from "@/assets/hero-coastal2.jpg";
 import profilepic from "@/assets/pictest.jpg";
-import pic1 from "@/assets/aboutPage/aboutp1.png";
-import pic2 from "@/assets/aboutPage/aboutp1.png";
-import pic3 from "@/assets/aboutPage/aboutp1.png";
+import pic1 from "@/assets/aboutPage/pol2.png";
+import pic2 from "@/assets/aboutPage/pol1.png";
+import pic3 from "@/assets/aboutPage/pol4.png";
 const Hero = () => {
   const [isDark, setIsDark] = useState(
     document.documentElement.classList.contains("dark")
@@ -134,21 +134,21 @@ const Hero = () => {
               {[
                 {
                   img: pic1,
-                  caption: "Study break 📖",
+                  caption: " ",
                   tape: "bg-yellow-200/90 dark:bg-amber-200/90",
                   border: "border-amber-200/70 dark:border-amber-100/60",
                   dot: "bg-yellow-300/80 dark:bg-amber-200/80",
                 },
                 {
-                  img: "https://media.istockphoto.com/id/471926619/photo/moraine-lake-at-sunrise-banff-national-park-canada.jpg?s=612x612&w=0&k=20&c=mujiCtVk5QA697SD3d8V8BGmd91-8HlxCNHkolEA0Bo=",
-                  caption: "Cozy cafe 💗",
+                  img: pic2,
+                  caption: " ",
                   tape: "bg-sky-200/90 dark:bg-cyan-200/90",
                   border: "border-sky-200/70 dark:border-cyan-100/60",
                   dot: "bg-sky-300/80 dark:bg-cyan-200/80",
                 },
                 {
-                  img: "https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=",
-                  caption: "Morning walk ☀️",
+                  img: pic3,
+                  caption: " ",
                   tape: "bg-pink-200/90 dark:bg-pink-300/90",
                   border: "border-pink-200/70 dark:border-pink-100/60",
                   dot: "bg-pink-300/80 dark:bg-pink-200/80",

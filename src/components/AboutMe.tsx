@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import profilePic from "@/assets/profile-pic.jpg";
+import profilePic from "@/assets/aboutPage/pol1.png";
 
 const AboutMe = () => {
   return (
