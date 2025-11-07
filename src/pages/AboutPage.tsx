@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import profilePic from "@/assets/aboutPage/pol1.png";
+import profilePic from "@/assets/aboutPage/aboutp.png";
 import journey1 from "@/assets/aboutPage/aboutp1.png";
 import journey2 from "@/assets/aboutPage/aboutp2.png";
 import journey3 from "@/assets/aboutPage/aboutp3.png";

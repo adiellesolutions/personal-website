@@ -104,11 +104,11 @@ const MoodboardPage = () => {
 
 function PlaylistSection() {
   const playlists = {
-    "🇧🇪 Belgium": "https://open.spotify.com/playlist/0fAjqR8W08ycQWWOcI575a?si=Hu1X5DwkSbmJrr9CuQe-Nw&pi=NAaW8iicQumD4",
-    "Coastal Dreams": "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator",
-    "Morning Energy": "https://open.spotify.com/embed/playlist/37i9dQZF1DXc5e2bJhV6pu?utm_source=generator",
-    "Evening Calm": "https://open.spotify.com/embed/playlist/37i9dQZF1DWZZbwlv3Vmtr?utm_source=generator",
-    "Others": "https://open.spotify.com/embed/playlist/37i9dQZF1DWSkMjlBZAZ07?utm_source=generator",
+    "🇧🇪 Belgium": "https://open.spotify.com/embed/playlist/0fAjqR8W08ycQWWOcI575a?utm_source=generator",
+    "🇮🇹 Italy": "https://open.spotify.com/embed/playlist/6YY4TwrvBGdnLp1XQEfhTJ?utm_source=generator",
+    "🇩🇪 Germany": "https://open.spotify.com/embed/playlist/7w2Bm6AoB1IotnIatEKBck?utm_source=generator",
+    "🇱🇺 Luxembourg": "https://open.spotify.com/embed/playlist/3eB2qLezepKVbO9uvHHXj5?utm_source=generator",
+    "🇳🇴 Norway": "https://open.spotify.com/embed/playlist/37i9dQZF1DWSkMjlBZAZ07?utm_source=generator",
   };
 
   // 🔹 Fix: use a valid key or first key dynamically

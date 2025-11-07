@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Mail, Instagram, Youtube, MessageCircle, ExternalLink } from "lucide-react";
+import { Mail, Instagram, Youtube, MessageCircle, Facebook, ExternalLink } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ReviewForm from "@/components/ReviewForm"; // <-- import it
@@ -11,22 +11,23 @@ const ContactPage = () => {
       name: "Instagram",
       icon: Instagram,
       handle: "@coastal.sanctuary",
-      color: "gradient-sunset",
-      link: "https://instagram.com/coastal.sanctuary",
+      color: "gradient-dreamy",
+      link: "https://www.instagram.com/_lifewithmewi?igsh=dGN5OXlqY2k1djQ%3D&utm_source=qr",
     },
     {
-      name: "YouTube",
-      icon: Youtube,
-      handle: "Life With Dary",
-      color: "gradient-ocean",
-      link: "https://youtube.com/@coastalsanctuary",
+      name: "Facebook",
+      icon: Facebook,
+      handle: "coastal.sanctuary",
+      color: "gradient-sunset",
+      link: "https://www.facebook.com/profile.php?id=61564832823224&mibextid=wwXIfr&rdid=IdKGZAs8NSFeb6Wk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EHyAB5mQu%2F%3Fmibextid%3DwwXIfr#",
     },
+    
     {
       name: "TikTok",
       icon: MessageCircle,
       handle: "@coastalsanctuary",
       color: "gradient-dreamy",
-      link: "https://tiktok.com/@coastalsanctuary",
+      link: "https://www.tiktok.com/@_lifewithdary?_t=ZS-90FQBhzWXQ7&_r=1",
     },
   ];
 
@@ -85,14 +86,22 @@ const ContactPage = () => {
                 Have a question? Want to chat? Send me an anonymous message 
                 and I'll share my answer on my socials!
               </p>
-              <Button 
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 transition-bounce shadow-float"
+
+              <a
+                href="https://ngl.link/meriandrea"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Send Anonymous Message
-                <MessageCircle className="w-5 h-5 ml-2" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-white/90 transition-bounce shadow-float"
+                >
+                  Send Anonymous Message
+                  <MessageCircle className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
             </Card>
+
 
 
 
