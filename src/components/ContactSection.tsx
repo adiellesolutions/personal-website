@@ -13,7 +13,7 @@ const ContactSection = () => {
     {
       name: "YouTube",
       icon: Youtube,
-      handle: "Coastal Sanctuary",
+      handle: "Life With Dary",
       color: "gradient-ocean",
     },
     {

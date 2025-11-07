@@ -18,10 +18,14 @@ import {
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import ItinerarySection from "@/components/ItinerarySection";
-import HeroImg from "@/assets/TravelPost4/16.jpg";
-import img1 from "@/assets/TravelPost4/9.jpg";
-import img2 from "@/assets/TravelPost4/18.jpg";
-import img3 from "@/assets/TravelPost4/12.jpg";
+import HeroImg from "@/assets/TravelPost4/Dusseldorf/3.jpg";
+import img1 from "@/assets/TravelPost4/Dusseldorf/4.jpg";
+import img2 from "@/assets/TravelPost4/Cochem/2.jpg";
+import img3 from "@/assets/TravelPost4/Cochem/3.jpg";
+import img4 from "@/assets/TravelPost4/Frankfurt/5.jpg";
+import img5 from "@/assets/TravelPost4/Frankfurt/6.jpg";
+import img6 from "@/assets/TravelPost4/Hamburg/2.jpg";
+import img7 from "@/assets/TravelPost4/Hamburg/4.jpg";
 
 export default function TravelPost() {
   const { id } = useParams();
@@ -33,7 +37,7 @@ export default function TravelPost() {
   // ----------------
   const post = {
     id: id ?? "oslo-tjome-3-days",
-    name: "Germany",
+    name: "Germany – Hamburg, Düsseldorf, Cochem & Frankfurt",
     type: "City + Coastal Road Trip",
     duration: "3 Days",
     date: "May–September",
@@ -42,7 +46,7 @@ export default function TravelPost() {
     rating: 4.9,
     readingMinutes: 8,
     hashtags: ["OsloTravel", "ScandinavianRoadTrip", "TjømeNorway", "VerdensEnde"],
-    gallery: [img1, img2, img3],
+    gallery: [img1, img2, img3, img4, img5, img6, img7],
     itinerary: [
       {
         id: "day-1",
@@ -120,7 +124,7 @@ export default function TravelPost() {
     content:
       "Explore Germany’s vibrant cities and charming towns, from Frankfurt’s riverside skyline to Hamburg’s magical Christmas markets. Insider tips and packing essentials make traveling easy and stylish.",
     overview:
-      "A 1–3 day adventure across Frankfurt, Aachen, Düsseldorf, and Hamburg. Highlights include river walks, historic Altstadt streets, cozy cafés, festive markets, and must-try local treats. This guide combines insider tips, budget-friendly suggestions, and packing essentials to ensure a smooth and enjoyable trip.",
+      "A 1–3 day adventure across Frankfurt, Cochem, Düsseldorf, and Hamburg. Highlights include river walks, historic Altstadt streets, cozy cafés, festive markets, and must-try local treats. This guide combines insider tips, budget-friendly suggestions, and packing essentials to ensure a smooth and enjoyable trip.",
      
     budget: {
       Transportation: "€49 Deutschlandticket ",
@@ -263,7 +267,7 @@ export default function TravelPost() {
         packing: ["Comfortable walking shoes 👟", "Layered outfits 🧥"],
       },
       {
-        name: "Aachen",
+        name: "Cochem",
         insiderTips: ["Use Deutschlandticket for transport", "Visit the castle & Altstadt"],
         packing: ["Comfy shoes 👟", "Satin skirt + white blouse 👗"],
       },
@@ -363,10 +367,6 @@ export default function TravelPost() {
 
               {/* Germany Travel Slider */}
               <GermanyTravelCarousel />
-            </div>
-
-            <div className="mt-6">
-              <Itinerary />
             </div>
           </Card>
 

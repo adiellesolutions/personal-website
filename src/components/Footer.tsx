@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <p className="font-pacifico text-2xl text-primary mb-4">
-            Coastal Sanctuary
+            Life With Dary
           </p>
           <p className="text-muted-foreground flex items-center justify-center gap-2 mb-4">
             Made with 
@@ -14,7 +14,7 @@ const Footer = () => {
             and coastal vibes
           </p>
           <p className="text-sm text-muted-foreground">
-            © 2024 Coastal Sanctuary. All rights reserved. ✨
+            © 2025 Life With Dary. All rights reserved. ✨
           </p>
         </div>
       </div>

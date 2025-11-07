@@ -17,7 +17,7 @@ const ContactPage = () => {
     {
       name: "YouTube",
       icon: Youtube,
-      handle: "Coastal Sanctuary",
+      handle: "Life With Dary",
       color: "gradient-ocean",
       link: "https://youtube.com/@coastalsanctuary",
     },

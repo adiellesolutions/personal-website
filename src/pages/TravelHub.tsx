@@ -10,6 +10,13 @@ import { MapPin, ArrowRight, Search, Star, LayoutGrid, List, Sparkles } from "lu
 import TimelineSection from "@/components/TravelTimelineSection";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { motion, AnimatePresence } from "framer-motion";
+import Thumbnail1 from "@/assets/TravelPost1/16.jpg";
+import Thumbnail2 from "@/assets/TravelPost2/20.jpg";
+import Thumbnail3 from "@/assets/TravelPost3/10.jpg";
+import Thumbnail4 from "@/assets/TravelPost4/Dusseldorf/3.jpg";
+import Thumbnail5 from "@/assets/TravelPost5/8.jpg";
+
+
 
 const TravelHub = () => {
   useScrollToTop();
@@ -19,58 +26,58 @@ const TravelHub = () => {
   const destinations = [
     {
       id: 1,
-      name: "Norway – Oslo 🏰",
+      name: "Oslo & Tjøme, Norway 🏰",
       type: "Family Visit + Winter Adventure",
       duration: "3 days",
       rating: 4.8,
       tags: ["Norway", "Roadtrip", "Fjord"],
-      image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      image: Thumbnail1,
       description: "Cold air, modern vibes, and fjord views 🏔 Oslo made me realize that peace and beauty can live in the same city.",
-      highlights: ["Ekeberg", "Tjøme", "Vigeland"],
+      highlights: ["Verdens Ende", "Tjøme", "Ekeberg"],
     },
     {
       id: 2,
-      name: "Belgium – Liège Christmas Market 🌷",
+      name: "Liège, Belgium 🌷",
       type: "Christmas Market Adventure",
       duration: "2 days",
       rating: 4.7,
       tags: ["Christmas", "Travel", "Europe"],
-      image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      image: Thumbnail2,
       description: "Bike rides along canals, tulip fields, and the cutest cafes!",
-      highlights: ["Guillemins", "Bueren", "Boverie"],
+      highlights: ["Liège", "Montagne de Bueren", "Parc de la Boverie"],
     },
     {
       id: 3,
-      name: "Luxembourg – Luxembourg City 🎵",
+      name: "Luxembourg City, Luxembourg 🎵",
       type: "Spring City & Nature Walk",
       duration: "1 day",
       rating: 4.9,
       tags: ["Castles", "Walks", "Views"],
-      image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      image: Thumbnail3,
       description: "A fairytale city mixing old castles and modern charm.",
-      highlights: ["Corniche", "Grund", "Adolphe Bridge"],
+      highlights: ["Frankfurt", "Grund", "Chemin de la Corniche"],
     },
     {
       id: 4,
-      name: "Germany – Hamburg, Frankfurt & Aachen 🏔️",
+      name: "Germany – Hamburg, Düsseldorf, Cochem & Frankfurt 🏔️",
       type: "Local Adventures",
       duration: "6 days",
       rating: 5.0,
       tags: ["Germany", "City", "Trains"],
-      image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      image: Thumbnail4,
       description: "Mini-Venice vibes, skyscrapers, and historic charm.",
-      highlights: ["Main River", "Aachen Dom", "Speicherstadt"],
+      highlights: ["Hamburg", "Düsseldorf", "Cochem"],
     },
     {
       id: 5,
-      name: "Italy – Milan, Como & Iseo 🌊",
+      name: "Milan, Lake Como (Bellagio), & Lake Iseo 🌊",
       type: "3-Day Couple Coastal & City Adventure",
       duration: "3 days",
       rating: 4.8,
       tags: ["Italy", "Couple", "Lakes"],
-      image: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg",
+      image: Thumbnail5,
       description: "Dreamy lakes, fashion city, and romantic escapes.",
-      highlights: ["Duomo", "Park Bellagio", "Iseo"],
+      highlights: ["Como", "Park Bellagio", "Iseo"],
     },
   ];
 

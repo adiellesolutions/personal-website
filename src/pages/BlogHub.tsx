@@ -70,12 +70,12 @@ const BlogHub = () => {
                     <Badge className="bg-white/20 text-white border-white/40 mb-3">
                       {post.category}
                     </Badge>
-                    <h3 className="font-quicksand font-bold text-xl text-white mb-2 group-hover:scale-105 transition-bounce">
+                    <h3 className="font-quicksand font-bold text-xl text-white mb-2 group-hover:scale-105 transition-bounce line-clamp-2">
                       {post.title}
                     </h3>
                   </div>
                   <div className="p-6">
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground mb-4 line-clamp-2">
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between text-sm text-muted-foreground">

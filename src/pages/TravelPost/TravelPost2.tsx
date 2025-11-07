@@ -23,10 +23,10 @@ import {
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import ItinerarySection from "@/components/ItinerarySection";
-import HeroImg from "@/assets/TravelPost1/20.jpg";
-import img1 from "@/assets/TravelPost1/19.jpg";
-import img2 from "@/assets/TravelPost1/16.jpg";
-import img3 from "@/assets/TravelPost1/14.jpg";
+import HeroImg from "@/assets/TravelPost2/20.jpg";
+import img1 from "@/assets/TravelPost2/19.jpg";
+import img2 from "@/assets/TravelPost2/16.jpg";
+import img3 from "@/assets/TravelPost2/14.jpg";
 
 // =====================
 // TravelPost (static)

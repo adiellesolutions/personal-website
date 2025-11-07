@@ -23,118 +23,145 @@ import {
 } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import ItinerarySection from "@/components/ItinerarySection";
-import HeroImg from "@/assets/TravelPost1/20.jpg";
-import img1 from "@/assets/TravelPost1/19.jpg";
-import img2 from "@/assets/TravelPost1/16.jpg";
-import img3 from "@/assets/TravelPost1/14.jpg";
+import HeroImg from "@/assets/TravelPost1/16.jpg";
+import img1 from "@/assets/TravelPost1/9.jpg";
+import img2 from "@/assets/TravelPost1/18.jpg";
+import img3 from "@/assets/TravelPost1/12.jpg";
 
 // =====================
 // TravelPost (static)
 // =====================
 
-export default function TravelPost() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function TravelPost() { 
+  const { id } = useParams(); 
+  const navigate = useNavigate(); 
   useScrollToTop();
 
 const post = {
-  id: id ?? "liege-christmas",
-  name: "Liège, Belgium",
-  type: "Christmas Market Getaway",
-  duration: "2 Days / 1 Night",
-  date: "December",
+  id: id ?? "oslo-tjome-3-days",
+  name: "Oslo & Tjøme, Norway",
+  type: "City + Coastal Road Trip",
+  duration: "3 Days",
+  date: "May–September",
   region: "Europe",
   banner: HeroImg,
   rating: 4.9,
-  readingMinutes: 9,
+  readingMinutes: 8,
 
-  hashtags: ["LiegeChristmas", "WinterVillageVibes", "BelgiumTravel", "HolidayMarkets"],
+  hashtags: [
+    "OsloTravel",
+    "ScandinavianRoadTrip",
+    "TjømeNorway",
+    "VerdensEnde"
+  ],
 
   gallery: [img1, img2, img3],
 
   itinerary: [
     {
       id: "day-1",
-      title: "Day 1 — Arrival + Christmas Magic",
-      sections: [
-        {
-          when: "Morning / Midday",
-          text: "Arrive at Liège-Guillemins Station (futuristic architecture by Calatrava). Walk or take a short bus to your accommodation near Place Saint-Lambert. Drop bags, then brunch at Le Pain Quotidien or Une Gaufrette Saperlipopette (famous Liège waffles)."
-        },
-        {
-          when: "Afternoon",
-          text: "Stroll across Pont des Arches for your first view of the Meuse River. Explore Place Saint-Lambert + Palais des Princes-Évêques. Check small artisan shops and Belgian chocolate boutiques."
-        },
-        {
-          when: "Evening",
-          text: "Liège Christmas Village begins! Located at Place du Marché & Place Saint-Lambert. Enjoy 200+ wooden chalets, ice skating, ferris wheel views, hot vin chaud, waffles, raclette, Belgian fries, and try Liège’s local fruit gin, Pèkèt. Cozy, warm glowing Hallmark vibes 🥹✨"
-        },
-        {
-          when: "Night",
-          text: "Dinner inside the market — try tartiflette or Belgian fondue. Optional nightlife at Le Carré District if you want music/drinks before bed."
-        }
-      ],
-    },
-    {
-      id: "day-2",
-      title: "Day 2 — Local Gems + Scenic Views",
+      title: "Oslo City & Ekeberg Views",
       sections: [
         {
           when: "Morning",
-          text: "Slow brunch at Ma Ferme en Ville (farm-to-table). Then climb Montagne de Bueren — 374 steps up with panoramic city views. Even halfway has great photos!"
+          text: "Slow breakfast at home or grab pastries & coffee at Baker Hansen 🥐☕. Drive along Karl Johans gate → The Royal Palace → Oslo Opera House (walk on the roof!)."
+        },
+        {
+          when: "Late Morning",
+          text: "Visit the MUNCH Museum next to the Opera. See *The Scream* and learn about Edvard Munch’s inspiration from Oslo’s landscapes."
         },
         {
           when: "Midday",
-          text: "If it's Sunday, visit La Batte Market — Belgium’s oldest riverside market. Pick up cheese, waffles, handmade crafts."
+          text: "Drive 10–15 min to Ekebergparken. Park near Ekebergrestauranten. Wander through the sculpture park and enjoy panoramic views over Oslofjord."
         },
         {
-          when: "Afternoon",
-          text: "Walk through Parc de la Boverie for a peaceful break. Optional art museum stop. Final coffee at Café Randaxhe or Le Café Liegeois along the river."
+          when: "Lunch (Optional)",
+          text: "Dine at Ekebergrestauranten — glass walls + scenery = chef’s kiss ✨"
         },
         {
           when: "Evening",
-          text: "Train or FlixBus back to Frankfurt — relaxed and cozy trip end."
+          text: "Drive to Aker Brygge / Tjuvholmen. Dinner by the harbor at Olivia Aker Brygge or Louise Restaurant. Sunset fjord walk 🌅"
         }
       ],
     },
+
+    {
+      id: "day-2",
+      title: "Road Trip to Tjøme (Coastal Escape)",
+      sections: [
+        {
+          when: "Morning (Leave ~08:00)",
+          text: "Drive south from Oslo (~1h 45m) via E18. Stop at Tønsberg — Norway’s oldest town — for a short harbor walk or visit Tønsberg Tower."
+        },
+        {
+          when: "Midday",
+          text: "Continue to Tjøme Island → drive to Verdens Ende ('World’s End'). Boardwalks, smooth seaside rocks, and the iconic stone lighthouse."
+        },
+        {
+          when: "Lunch",
+          text: "Seafood lunch at Spiseriet Verdens Ende — fresh, local, and right by the ocean 🌊"
+        },
+        {
+          when: "Golden Hour / Drive Back",
+          text: "Enjoy slow coastal roads returning to Oslo. Optional coffee stop in Tønsberg (Café Babel or Bare Barista)."
+        }
+      ],
+    },
+
+    {
+      id: "day-3",
+      title: "Oslo Slow Day / Local Life",
+      sections: [
+        {
+          when: "Morning",
+          text: "Relax at home with your Tita 💕 or stroll through Grünerløkka’s cafés and vintage shops."
+        },
+        {
+          when: "Lunch",
+          text: "Try Mathallen Food Hall — international food stalls + local treats."
+        },
+        {
+          when: "Afternoon",
+          text: "Walk along Akerselva River or visit Vigeland Sculpture Park for art-in-nature."
+        },
+        {
+          when: "Evening",
+          text: "Chill night in, cozy dinner, tea, and early rest — perfect ending to a slow Scandinavian escape."
+        }
+      ],
+    }
   ],
 
-  content: `Liège during Christmas transforms into a warm, festive storybook town — glowing wooden stalls, mulled wine in the air, twinkling lights, and cozy corners waiting to be discovered. It's quieter and more intimate than the big European markets, and that’s part of its charm.`,
+  content: `This trip blends the calm elegance of Oslo with the wild, coastal magic of Tjøme. From fjord sunsets to sculpture parks and sea cliffs, it’s a slow-travel experience filled with nature, art, and quiet meaningful moments.`,
 
-    overview: `Over two days, you’ll explore Liège’s charming old town, enjoy the 
-      Christmas Market at Place du Marché, and taste local treats like Liège waffles and Pèkèt. 
-      On Day 2, slow down with brunch, climb Montagne de Bueren for panoramic views, visit 
-      La Batte Market, and stroll along Parc de la Boverie before heading home. A trip that 
-      feels like stepping into a European holiday movie ✨🎄`,
+  overview: `A relaxing 3-day road trip based in Oslo — city views, coastal drives, seaside lunches, and time spent with family. Perfect for travelers who love scenic landscapes, art, and cozy harbor evenings.`,
 
-    insiderTips: [
-      "Visited the oldest Christmas Market in Belgium 🎄",
-      "Try Liège waffles & coffee — heavenly combo ☕️🧇",
-      "Money-saving hack: brought adobo from Germany 🤣 iconic Filipino move!"
-    ],
+  insiderTips: [
+    "Parking in Oslo varies — check signs to avoid fines.",
+    "Verdens Ende is windy — bring a light jacket even in summer.",
+    "Ekeberg has some uphill walking — comfy shoes are essential."
+  ],
 
-    packing: [
-      "Cozy coat, beret & gloves 🧤",
-      "Warm outfit for Christmas market photos ❄️",
-      "Anti-theft bag & powerbank 🔋",
-      "Sunglasses (for day) & cap/beanie (for cold)"
-    ],
+  packing: [
+    "Layered outfits (weather shifts quickly) 🧥",
+    "Comfortable walking shoes 👟",
+    "Light scarf or windbreaker 🌬️",
+    "Reusable water bottle 💧",
+    "Powerbank 🔋"
+  ],
 
-    tips: [
-      "Public transport is FREE — buses, trams, trains.",
-      "Wear comfy shoes — cobblestones + gentle hills.",
-      "Chemin de la Corniche is best at golden hour.",
-      "Glass elevator to Grund is free & scenic.",
-      "Everything is walkable from Place d’Armes."
-    ],
+  tips: [
+    "Start days early to avoid crowds, especially in summer.",
+    "Tønsberg is worth lingering in — cute cafés everywhere.",
+    "Golden hour at the Oslofjord hits *different* 😌"
+  ],
 
-    budget: {
-      Transportation: "Free (within Luxembourg)",
-      Food: "€20–45",
-      Extras: "€5–10 (coffee/pastries)"
-    },
-  };
-
+  budget: {
+    Transportation: "€0 (Private Car)",
+    Food: "€25–60 per meal depending on restaurant",
+    Activities: "€0–20 (most viewpoints & parks are free)",
+  },
+};
 
   // --- UI State (static interactions only) ---
   const [liked, setLiked] = useState(false);
