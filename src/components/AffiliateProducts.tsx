@@ -391,7 +391,7 @@ export default function AffiliateProducts() {
       />
 
       {/* Grid */}
-      <main id="featured" className="py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+      <main id="featured" className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">Featured Favorites 💕</h2>

@@ -15,20 +15,20 @@ const ShopSection = () => {
   const products = [
     {
       id: 1,
-      name: "Aesthetic Desk Accessories",
-      description: "Transform your study space into a dreamy sanctuary",
+      name: "Francila Premium Vest + Shorts Set",
+      description: "Francila Premium Vest + Shorts Set — Channel your inner boss babe with this sleek and stylish co-ord. Effortlessly blending confidence and comfort, it's the perfect outfit for a polished yet laid-back look.",
       type: "Affiliate",
     },
     {
       id: 2,
-      name: "Pastel Study Supplies",
-      description: "Cute stationery that makes studying more fun",
+      name: "Classic Black Wool Coat",
+      description: "Wrap yourself in timeless elegance with this Classic Black Wool Coat. Perfect for any season, it adds that effortlessly 'put together' charm to every outfit — from casual strolls to city nights.",
       type: "Affiliate",
     },
     {
       id: 3,
       name: "Travel Essentials Kit",
-      description: "Everything you need for weekend adventures",
+      description: "A wardrobe essential that never goes out of style. This classic black wool coat effortlessly elevates any outfit — whether you’re heading to class, a coffee date, or a chilly evening stroll. Its sleek silhouette and soft wool blend give that “put together” look with minimal effort.",
       type: "Favorite",
     },
   ];
@@ -57,7 +57,7 @@ const ShopSection = () => {
           {products.map((product) => (
             <Card
               key={product.id}
-              onClick={() => handleNavigate(`/shop/${product.id}`)}
+              onClick={() => handleNavigate(`/ProductDetails/Product${product.id}`)}
               className="
                 group cursor-pointer 
                 bg-card/90 dark:bg-gray-900 
@@ -69,12 +69,12 @@ const ShopSection = () => {
                 <Badge className="bg-white/20 text-white border-white/40 mb-3">
                   {product.type}
                 </Badge>
-                <h3 className="font-quicksand font-bold text-xl text-white mb-2 group-hover:scale-105 transition-bounce">
+                <h3 className="font-quicksand font-bold text-xl text-white mb-2 group-hover:scale-105 transition-bounce line-clamp-1">
                   {product.name}
                 </h3>
               </div>
               <div className="p-6">
-              <p className="text-muted-foreground dark:text-gray-400 mb-4">
+              <p className="text-muted-foreground dark:text-gray-400 mb-4 line-clamp-3">
                   {product.description}
                 </p>
                 <div className="flex items-center text-primary dark:text-pink-400 font-medium group-hover:translate-x-1 transition-smooth">

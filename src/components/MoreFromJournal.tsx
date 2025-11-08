@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
+import { useMemo } from "react";
 
-// ✅ Import your static images here
+// Static images
 import TP1Img from "@/assets/TravelPost1/16.jpg";
 import TP2Img from "@/assets/TravelPost2/20.jpg";
 import TP3Img from "@/assets/TravelPost3/10.jpg";
@@ -36,7 +37,9 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export default function MoreFromJournal() {
   const { id: currentId } = useParams<{ id: string }>();
-  const shuffledSuggestions = shuffleArray(JOURNAL_SUGGESTIONS);
+
+  // Shuffle only once per mount
+  const shuffledSuggestions = useMemo(() => shuffleArray(JOURNAL_SUGGESTIONS), []);
 
   return (
     <div>
@@ -44,26 +47,28 @@ export default function MoreFromJournal() {
         More from the Journal
       </h3>
 
-      <div className="flex gap-4 overflow-x-auto pb-3">
+      <div
+        className="flex gap-4 overflow-x-auto pb-3 scroll-smooth scroll-pl-4"
+        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+      >
         {shuffledSuggestions
-          .filter((item) => item.id !== currentId) // Hide current page
+          .filter((item) => item.id !== currentId)
           .map((item) => (
             <Link
               key={item.id}
               to={`/TravelPost/TravelPost${item.id}`}
-              className="min-w-[220px] flex-shrink-0"
+              className="min-w-[220px] flex-shrink-0 scroll-snap-align-start will-change-transform"
             >
-              <Card className="p-0 overflow-hidden rounded-2xl cursor-pointer hover:shadow-lg transition">
+              <Card className="p-0 overflow-hidden rounded-2xl cursor-pointer hover:shadow-lg transition-transform duration-200">
                 <img
                   src={IMAGE_MAP[item.id]}
                   alt={item.name}
                   className="w-full h-36 object-cover"
+                  loading="lazy"
                 />
-
                 <div className="p-3">
                   <div className="font-semibold">{item.name}</div>
                   <div className="text-sm text-gray-500">Short guide</div>
-
                   <div className="mt-3 flex justify-between items-center">
                     <div className="text-xs text-gray-400">5 min</div>
                   </div>

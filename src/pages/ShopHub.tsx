@@ -112,324 +112,175 @@ export default function ShopHub() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 scroll-smooth">
-      <Navigation />
+  <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 transition-colors duration-500 scroll-smooth">
+    <Navigation />
 
-      {/* HERO SECTION */}
-      <section className="pt-28 pb-20 px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1 space-y-6 text-center md:text-left">
-          <h1 className="font-pacifico text-5xl md:text-6xl text-primary drop-shadow-sm">
-            Dary’s Curated Finds 🌷
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-            A cozy collection of affiliate favorites and digital goods — blending cuteness,
-            creativity, and calm energy ✨
-          </p>
+    {/* HERO SECTION */}
+    <section className="pt-28 pb-20 px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
+      <div className="flex-1 space-y-6 text-center md:text-left">
+        <h1 className="font-pacifico text-5xl md:text-6xl text-primary dark:text-pink-300 drop-shadow-sm transition-colors duration-500">
+          Dary’s Curated Finds 🌷
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-300 max-w-xl leading-relaxed transition-colors duration-500">
+          A cozy collection of affiliate favorites and digital goods — blending cuteness,
+          creativity, and calm energy ✨
+        </p>
 
-          {/* TOGGLE BUTTONS */}
-          <div className="flex justify-center md:justify-start gap-4 bg-white/70 backdrop-blur-md rounded-full p-1 shadow-inner border border-pink-200 w-fit mx-auto md:mx-0">
-            <Button
-              onClick={() => setTab("affiliate")}
-              className={`rounded-full text-sm px-5 py-3 transition-all ${
-                tab === "affiliate"
-                  ? "bg-pink-400 text-white"
-                  : "bg-transparent text-primary hover:bg-pink-100"
-              }`}
-            >
-              Affiliate Finds 🛍️
-            </Button>
-            <Button
-              onClick={() => setTab("digital")}
-              className={`rounded-full text-sm px-5 py-3 transition-all ${
-                tab === "digital"
-                  ? "bg-pink-400 text-white"
-                  : "bg-transparent text-primary hover:bg-pink-100"
-              }`}
-            >
-              Digital Items 💾
-            </Button>
-          </div>
+        {/* TOGGLE BUTTONS */}
+        <div className="flex justify-center md:justify-start gap-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-full p-1 shadow-inner border border-pink-200 dark:border-gray-700 w-fit mx-auto md:mx-0 transition-colors duration-500">
+          <Button
+            onClick={() => setTab("affiliate")}
+            className={`rounded-full text-sm px-5 py-3 transition-all ${
+              tab === "affiliate"
+                ? "bg-pink-400 text-white"
+                : "bg-transparent text-primary dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-gray-700"
+            }`}
+          >
+            Affiliate Finds 🛍️
+          </Button>
+          <Button
+            onClick={() => setTab("digital")}
+            className={`rounded-full text-sm px-5 py-3 transition-all ${
+              tab === "digital"
+                ? "bg-pink-400 text-white"
+                : "bg-transparent text-primary dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-gray-700"
+            }`}
+          >
+            Digital Items 💾
+          </Button>
         </div>
+      </div>
 
-        {/* HERO IMAGE */}
-        <div className="flex-1 relative">
-          <div className="absolute -top-6 -left-8 w-24 h-24 bg-pink-200 rounded-full blur-2xl opacity-60"></div>
-          <img
-            src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
-            alt="Shop aesthetic"
-            className="rounded-3xl shadow-xl w-full object-cover"
-          />
-        </div>
-      </section>
+      {/* HERO IMAGE */}
+      <div className="flex-1 relative">
+        <div className="absolute -top-6 -left-8 w-24 h-24 bg-pink-200 dark:bg-pink-900 rounded-full blur-2xl opacity-60 transition-colors duration-500"></div>
+        <img
+          src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
+          alt="Shop aesthetic"
+          className="rounded-3xl shadow-xl w-full object-cover transition-all duration-500"
+        />
+      </div>
+    </section>
 
-      {/* CONTENT SECTION */}
-      <section className="relative px-6 md:px-12 py-16">
-        <div className="grid md:grid-cols-4 gap-10">
-          {/* SIDEBAR */}
-          <aside className="md:col-span-1 space-y-6 md:sticky md:top-28 h-fit">
-          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-center shadow-md rounded-2xl border-2 border-pink-200">
-              <Sparkles className="mx-auto text-pink-400 w-6 h-6 mb-2" />
-              <h3 className="font-quicksand text-lg font-bold text-primary mb-2">
-                Curated for You
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Handpicked items I personally use and adore — with affiliate links for transparency 💖
-              </p>
-            </Card>
+    {/* CONTENT SECTION */}
+    <section className="relative px-6 md:px-12 py-16 ">
+      <div className="grid md:grid-cols-4 gap-10">
+        {/* SIDEBAR */}
+        <aside className="md:col-span-1 space-y-6 md:sticky md:top-28 h-fit">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-center shadow-md rounded-2xl border-2 border-pink-200 dark:border-gray-700 transition-colors duration-500">
+            <Sparkles className="mx-auto text-pink-400 w-6 h-6 mb-2" />
+            <h3 className="font-quicksand text-lg font-bold text-primary dark:text-pink-300 mb-2 transition-colors duration-500">
+              Curated for You
+            </h3>
+            <p className="text-sm text-muted-foreground dark:text-gray-300 transition-colors duration-500">
+              Handpicked items I personally use and adore — with affiliate links for transparency 💖
+            </p>
+          </Card>
 
-            {/* UPDATED QUICK LINKS */}
-            <Card className="bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-2xl shadow-sm">
-              <h4 className="font-bold mb-3 text-primary text-center">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <button
-                    onClick={() => {
-                      setTab("affiliate");
-                      setTimeout(() => scrollToSection("trending"), 100);
-                    }}
-                    className="hover:text-primary transition-colors"
-                  >
-                    🌸 Trending Finds
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => {
-                      setTab("digital");
-                      setTimeout(() => scrollToSection("digital"), 100);
-                    }}
-                    className="hover:text-primary transition-colors"
-                  >
-                    💾 Digital Items
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection("reviews")}
-                    className="hover:text-primary transition-colors"
-                  >
-                    
-                  </button>
-                </li>
-              </ul>
-            </Card>
-          </aside>
+          {/* QUICK LINKS */}
+          <Card className="bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-700 dark:to-gray-800 p-6 rounded-2xl shadow-sm transition-colors duration-500">
+            <h4 className="font-bold mb-3 text-primary dark:text-pink-300 text-center transition-colors duration-500">Quick Links</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground dark:text-gray-300 transition-colors duration-500">
+              <li>
+                <button
+                  onClick={() => {
+                    setTab("affiliate");
+                    setTimeout(() => scrollToSection("trending"), 100);
+                  }}
+                  className="hover:text-primary dark:hover:text-pink-300 transition-colors"
+                >
+                  🌸 Trending Finds
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setTab("digital");
+                    setTimeout(() => scrollToSection("digital"), 100);
+                  }}
+                  className="hover:text-primary dark:hover:text-pink-300 transition-colors"
+                >
+                  💾 Digital Items
+                </button>
+              </li>
+            </ul>
+          </Card>
+        </aside>
 
-          {/* MAIN CONTENT */}
-          <main className="md:col-span-3 space-y-20">
-            {/* AFFILIATE TAB */}
-            {tab === "affiliate" && (
-              <section id="trending">
-                <h2 className="font-pacifico text-4xl text-primary mb-6">
-                  🌼 Trending Picks
-                </h2>
-                <AffiliateProducts />
-              </section>
-            )}
+        {/* MAIN CONTENT */}
+        <main className="md:col-span-3 space-y-20">
+          {tab === "affiliate" && (
+            <section id="trending">
+              <h2 className="font-pacifico text-4xl text-primary dark:text-pink-300 mb-6 transition-colors duration-500">
+                🌼 Trending Picks
+              </h2>
+              <AffiliateProducts />
+            </section>
+          )}
 
-            {/* DIGITAL TAB */}
-            {tab === "digital" && (
-              <section id="digital" className="relative">
-                <h2 className="font-pacifico text-4xl text-primary mb-6">
-                  💾 Digital Treasures
-                </h2>
+          {tab === "digital" && (
+            <section id="digital" className="relative">
+              <h2 className="font-pacifico text-4xl text-primary dark:text-pink-300 mb-6 transition-colors duration-500">
+                💾 Digital Treasures
+              </h2>
 
-                {/* FLOATING FILTER BAR */}
-                <div className="sticky top-24 z-20 mb-8">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-200 rounded-full shadow-md px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    {/* SEARCH */}
-                    <div className="relative w-full sm:w-1/2">
-                      <Search className="absolute left-3 top-3 text-muted-foreground w-5 h-5" />
-                      <input
-                        type="text"
-                        placeholder="Search digital items..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 border border-pink-200 rounded-full focus:ring-2 focus:ring-pink-300 bg-white/80 dark:bg-gray-800/80
-                        "
-                      />
-                    </div>
+              {/* FLOATING FILTER BAR */}
+              <div className="sticky top-24 z-20 mb-8">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-200 dark:border-gray-700 rounded-full shadow-md px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-500">
+                  {/* SEARCH */}
+                  <div className="relative w-full sm:w-1/2">
+                    <Search className="absolute left-3 top-3 text-muted-foreground dark:text-gray-300 w-5 h-5 transition-colors duration-500" />
+                    <input
+                      type="text"
+                      placeholder="Search digital items..."
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2 border border-pink-200 dark:border-gray-700 rounded-full focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 transition-colors duration-500"
+                    />
+                  </div>
 
-                    {/* FILTER */}
-                    <div className="relative w-full sm:w-40">
-                      <Filter className="absolute left-2 top-2.5 text-muted-foreground w-4 h-4" />
-                      <select
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value)}
-                        className="pl-8 pr-4 py-2 w-full border border-pink-200 rounded-full bg-white/80 dark:bg-gray-800/80
-                        focus:ring-2 focus:ring-pink-300 text-sm"
-                      >
-                        <option value="all">All Categories</option>
-                        <option value="Course">Course</option>
-                        <option value="Template">Template</option>
-                    
-                      </select>
-                    </div>
+                  {/* FILTER */}
+                  <div className="relative w-full sm:w-40">
+                    <Filter className="absolute left-2 top-2.5 text-muted-foreground dark:text-gray-300 w-4 h-4 transition-colors duration-500" />
+                    <select
+                      value={filter}
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="pl-8 pr-4 py-2 w-full border border-pink-200 dark:border-gray-700 rounded-full bg-white/80 dark:bg-gray-800/80 focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-400 text-sm text-gray-700 dark:text-gray-200 transition-colors duration-500"
+                    >
+                      <option value="all">All Categories</option>
+                      <option value="Course">Course</option>
+                      <option value="Template">Template</option>
+                    </select>
                   </div>
                 </div>
+              </div>
 
-                                {/* ITEM CARDS */}
-                {/* ITEM CARDS */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredItems.map((item, i) => (
-                    <Card
-                      key={i}
-                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 dark:bg-gray-800/80
-                      backdrop-blur-sm flex flex-col justify-between p-6"
-                    >
-                      <h3 className="font-quicksand font-bold text-lg text-primary text-center mb-4">
-                        {item.title}
-                      </h3>
-                      <Button
-                        onClick={() => setSelectedItem(item)}
-                        className="rounded-full text-sm bg-pink-400 text-white hover:bg-pink-500 mx-auto"
-                      >
-                        View More
-                      </Button>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* FLOATING MODAL */}
-                {selectedItem && (
-                        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50">
-                          <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-8 w-[90%] max-w-lg relative shadow-xl border border-pink-200 overflow-y-auto max-h-[90vh]">
-                            <button
-                              onClick={() => setSelectedItem(null)}
-                              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-                            >
-                              ✕
-                            </button>
-
-                            {/* Title */}
-                            <h3 className="font-quicksand text-2xl font-bold text-primary mb-3">
-                              {selectedItem.title}
-                            </h3>
-
-                            {/* Description (optional) */}
-                            {selectedItem.shortDesc && (
-                              <p className="text-muted-foreground mb-4">{selectedItem.shortDesc}</p>
-                            )}
-
-                            {/* Chapters */}
-                           {/* Show either bullet list or chapters */}
-                            {selectedItem.details ? (
-                              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-2">
-                                {selectedItem.details.map((point, i) => (
-                                  <li key={i}>{point}</li>
-                                ))}
-                              </ul>
-                            ) : selectedItem.chapters ? (
-                              <div className="space-y-6">
-                                {selectedItem.chapters.map((chapter, idx) => (
-                                  <div key={idx}>
-                                    <h4 className="font-semibold text-primary mb-2">{chapter.title}</h4>
-                                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                                      {chapter.details.map((point, i) => (
-                                        <li key={i}>{point}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                ))}
-                              </div>
-                            ) : null}
-
-
-                            {/* Coming Soon Button */}
-                            <Button
-                              disabled
-                              className="mt-6 w-full rounded-full bg-gray-300 text-gray-600 cursor-not-allowed"
-                            >
-                              Coming Soon 🚧
-                            </Button>
-
-
-                            {/* Price */}
-                            <div className="mt-6 text-right">
-                              <span className="font-semibold text-pink-500 text-lg">{selectedItem.price}</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-
-                {/* LOAD MORE BUTTON */}
-                {visibleCount < digitalItems.length && (
-                  <div className="text-center mt-10">
+              {/* ITEM CARDS */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredItems.map((item, i) => (
+                  <Card
+                    key={i}
+                    className="overflow-hidden border border-pink-200 dark:border-gray-700 rounded-2xl hover:shadow-lg transition-all bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm flex flex-col justify-between p-6 transition-colors duration-500"
+                  >
+                    <h3 className="font-quicksand font-bold text-lg text-primary dark:text-pink-300 text-center mb-4 transition-colors duration-500">
+                      {item.title}
+                    </h3>
                     <Button
-                      onClick={() => setVisibleCount((prev) => prev + 3)}
-                      className="rounded-full bg-pink-400 hover:bg-pink-500 text-white px-6 py-3"
+                      onClick={() => setSelectedItem(item)}
+                      className="rounded-full text-sm bg-pink-400 text-white hover:bg-pink-500 mx-auto"
                     >
-                      Load More Treasures ✨
+                      View More
                     </Button>
-                  </div>
-                )}
-              </section>
-            )}
+                  </Card>
+                ))}
+              </div>
+            </section>
+          )}
+        </main>
+      </div>
+    </section>
 
-            {/* REVIEWS */}
-            {/* 
-<section
-  id="reviews"
-  className="bg-white/60 backdrop-blur-md p-10 rounded-3xl border border-pink-200"
->
-  <h2 className="font-pacifico text-3xl text-primary mb-6 text-center">
-    💬 Customer Reviews
-  </h2>
-  <div className="grid md:grid-cols-3 gap-8">
-    {[
-      {
-        name: "Lea G.",
-        quote:
-          "Everything here feels so intentional and adorable — it’s like shopping in a dream 💕",
-      },
-      {
-        name: "Kim A.",
-        quote:
-          "I love the templates! Clean, useful, and totally aesthetic 🌸",
-      },
-      {
-        name: "Jan R.",
-        quote:
-          "The affiliate recommendations are honest and reliable. You can tell there’s care behind it!",
-      },
-    ].map((r, i) => (
-      <Card
-        key={i}
-        className="bg-pink-50/60 p-6 rounded-2xl text-center shadow-sm"
-      >
-        <p className="italic text-muted-foreground mb-3">
-          “{r.quote}”
-        </p>
-        <h4 className="font-quicksand font-semibold text-primary">
-          {r.name}
-        </h4>
-        <div className="flex justify-center mt-2 text-yellow-400">
-          {[...Array(5)].map((_, j) => (
-            <Star key={j} className="w-4 h-4 fill-yellow-400" />
-          ))}
-        </div>
-      </Card>
-    ))}
+    <Footer />
   </div>
-</section>
-*/}
-          </main>
-        </div>
-      </section>
-
-      {/* CLOSING */}
-      <section className="py-16 text-center bg-gradient-to-r from-pink-100 to-purple-100 dark:from-gray-900 dark:to-gray-800">
-
-        <h3 className="font-pacifico text-4xl text-primary mb-4">
-          💝 Thank You for Visiting
-        </h3>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Each click, download, and purchase supports small creators like me — thank you for being part of this cozy creative journey 🌷
-        </p>
-      </section>
-
-      <Footer />
-    </div>
   );
 }

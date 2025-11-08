@@ -7,21 +7,23 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { MapPin, ArrowRight, Search, Star, LayoutGrid, List, Sparkles } from "lucide-react";
-import TimelineSection from "@/components/TravelTimelineSection";
 import useScrollToTop from "@/hooks/useScrollToTop";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
 import Thumbnail1 from "@/assets/TravelPost1/16.jpg";
 import Thumbnail2 from "@/assets/TravelPost2/20.jpg";
 import Thumbnail3 from "@/assets/TravelPost3/10.jpg";
 import Thumbnail4 from "@/assets/TravelPost4/Dusseldorf/3.jpg";
 import Thumbnail5 from "@/assets/TravelPost5/8.jpg";
 
-
-
 const TravelHub = () => {
   useScrollToTop();
 
   const [showModal, setShowModal] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
+  const [sort, setSort] = useState("Name");
+  const [view, setView] = useState<"grid" | "list">("grid");
 
   const destinations = [
     {
@@ -81,11 +83,6 @@ const TravelHub = () => {
     },
   ];
 
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("All");
-  const [sort, setSort] = useState("Name");
-  const [view, setView] = useState<"grid" | "list">("grid");
-
   const filters = ["All", ...new Set(destinations.map((d) => d.type))];
 
   const filtered = destinations
@@ -108,7 +105,6 @@ const TravelHub = () => {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
 
-          {/* Header */}
           <div className="text-center mb-12">
             <h1 className="font-pacifico text-5xl md:text-6xl text-primary dark:text-pink-300 mb-4 flex justify-center items-center gap-2">
               Travel Diaries ✈️ <Sparkles className="text-yellow-400 w-6 h-6" />
@@ -118,19 +114,12 @@ const TravelHub = () => {
             </p>
           </div>
 
-          {/* Timeline Section */}
-          {/* <TimelineSection />*/}
-
-          {/* Search + Filter Bar */}
-          <div className="sticky top-20 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-sm border border-pink-100 dark:border-gray-700 p-4 md:p-5 mb-10 transition-colors duration-500">
+          {/* Sticky Search & Filter */}
+          <div className="sticky top-20 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-sm border border-pink-100 dark:border-gray-700 p-4 md:p-5 mb-10 transition-colors duration-500">
             <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between w-full overflow-hidden">
 
-              {/* Search Bar */}
               <div className="relative flex-1 min-w-[200px]">
-                <Search
-                  className="absolute left-3 top-2.5 text-gray-400 dark:text-gray-300"
-                  size={18}
-                />
+                <Search className="absolute left-3 top-2.5 text-gray-400 dark:text-gray-300" size={18} />
                 <input
                   type="text"
                   placeholder="Search destinations..."
@@ -140,12 +129,11 @@ const TravelHub = () => {
                 />
               </div>
 
-              {/* Sort + View Toggle */}
               <div className="flex items-center justify-center gap-2 flex-shrink-0 ">
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
-                  className="border border-pink-200 dark:border-gray-700 rounded-full text-sm py-2 px-3 bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 hover:bg-white/90 dark:hover:bg-gray-800/90 focus:ring-0 focus:outline-none"
+                  className="border border-pink-200 dark:border-gray-700 rounded-full text-sm py-2 px-3 bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 focus:ring-0 focus:outline-none"
                 >
                   <option value="Name">Name</option>
                   <option value="Duration">Duration</option>
@@ -165,83 +153,76 @@ const TravelHub = () => {
           </div>
 
           {/* Destinations Grid/List */}
-          <AnimatePresence>
-            <motion.div
-              layout
-              className={`grid gap-6 ${
-                view === "grid" ? "sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
-              }`}
-            >
-              {filtered.map((d) => (
-                <motion.div
-                  key={d.id}
-                  layout
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <Link to={`/TravelPost/TravelPost${d.id}`}>
-                    <Card className="group bg-white/90 dark:bg-gray-900/80 border border-pink-100 dark:border-gray-700 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
-                      <img
-                        src={d.image}
-                        alt={d.name}
-                        className="w-full h-48 sm:h-56 object-cover"
-                      />
-                      <div className="p-5 flex flex-col gap-3">
-                        <div className="flex justify-between items-center">
-                          <h3 className="font-quicksand font-semibold text-lg text-pink-700 dark:text-pink-300 leading-tight line-clamp-1">
-                            {d.name}
-                          </h3>
-                          <span className="flex items-center text-yellow-500 text-sm">
-                            <Star size={14} className="mr-1" /> {d.rating}
-                          </span>
-                        </div>
-
-                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-1">
-                          {d.description}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          {d.tags.map((tag) => (
-                            <Badge
-                              key={tag}
-                              className="bg-pink-50 dark:bg-gray-800 text-pink-600 dark:text-pink-300 border border-pink-200 dark:border-gray-700 text-xs rounded-full"
-                            >
-                              #{tag}
-                            </Badge>
-                          ))}
-                        </div>
-
-                        <div className="space-y-1">
-                          <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
-                            Highlights:
-                          </p>
-                          {d.highlights.map((h) => (
-                            <div key={h} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
-                              <MapPin size={14} className="text-pink-400 dark:text-pink-300" /> {h}
-                            </div>
-                          ))}
-                        </div>
-
-                          <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium mt-3 group-hover:translate-x-1 transition-all">
-                            <Link to={`/TravelPost/TravelPost${d.id}`}>
-                              <Button variant="secondary">
-                                  Read Travel Guide <ArrowRight className="w-4 h-4 ml-1" />
-                              </Button>
-                            </Link>
-                          </div>
-
-
+          <div
+            className={`grid gap-6 ${
+              view === "grid" ? "sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
+            }`}
+          >
+            {filtered.map((d) => (
+              <motion.div
+                key={d.id}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+                className="will-change-transform"
+              >
+                <Link to={`/TravelPost/TravelPost${d.id}`}>
+                  <Card className="group bg-white/90 dark:bg-gray-900/80 border border-pink-100 dark:border-gray-700 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+                    <img
+                      src={d.image}
+                      alt={d.name}
+                      loading="lazy"
+                      className="w-full h-48 sm:h-56 object-cover"
+                    />
+                    <div className="p-5 flex flex-col gap-3">
+                      <div className="flex justify-between items-center">
+                        <h3 className="font-quicksand font-semibold text-lg text-pink-700 dark:text-pink-300 leading-tight line-clamp-1">
+                          {d.name}
+                        </h3>
+                        <span className="flex items-center text-yellow-500 text-sm">
+                          <Star size={14} className="mr-1" /> {d.rating}
+                        </span>
                       </div>
-                    </Card>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
 
-          {/* Empty State */}
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-1">
+                        {d.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {d.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            className="bg-pink-50 dark:bg-gray-800 text-pink-600 dark:text-pink-300 border border-pink-200 dark:border-gray-700 text-xs rounded-full"
+                          >
+                            #{tag}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <div className="space-y-1">
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                          Highlights:
+                        </p>
+                        {d.highlights.map((h) => (
+                          <div key={h} className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+                            <MapPin size={14} className="text-pink-400 dark:text-pink-300" /> {h}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium mt-3 group-hover:translate-x-1 transition-all">
+                        <Link to={`/TravelPost/TravelPost${d.id}`}>
+                          <Button variant="secondary">
+                            Read Travel Guide <ArrowRight className="w-4 h-4 ml-1" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
           {filtered.length === 0 && (
             <div className="text-center mt-16">
               <img

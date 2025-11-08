@@ -23,7 +23,7 @@ export default function ItinerarySection({ placeId, placeName, duration }: Itine
 
  return (
     <>
-      <Card className="relative p-6 bg-white/90 dark:bg-gray-800/80 backdrop-blur-lg shadow-lg rounded-2xl border border-pink-200 dark:border-gray-700 overflow-hidden">
+      <Card className="relative p-6 bg-white/90 dark:bg-gray-800/80 bg-white/80 shadow-lg rounded-2xl border border-pink-200 dark:border-gray-700 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-pink-100/20 via-white/5 to-transparent dark:from-pink-900/10 pointer-events-none" />
 
         <div className="relative z-10 space-y-4">
@@ -95,7 +95,7 @@ export default function ItinerarySection({ placeId, placeName, duration }: Itine
 
       {/* PDF Preview Modal */}
       {showPreview && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0 bg-black/60 bg-white/80 flex items-center justify-center z-50 px-4">
           <div className="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-5xl h-[90vh] shadow-2xl flex flex-col relative">
 
             {/* Header */}

@@ -231,7 +231,7 @@ const post = {
     <img
       src={post.gallery[galleryIndex]}
       alt={`gallery-${galleryIndex}`}
-      className="w-full max-h-[1050px] object-contain rounded-xl transition-all"
+      className="w-full max-h-[1050px] object-contain rounded-xl transition-all" loading="lazy"
     />
   </div>
 
@@ -370,7 +370,7 @@ const post = {
 
       {/* Hero */}
       <div className="relative h-[48vh] md:h-[56vh] lg:h-[60vh] overflow-hidden rounded-b-3xl shadow-xl">
-        <img src={HeroImg} alt={post.name} className="object-cover w-full h-full" />
+        <img src={HeroImg} alt={post.name} className="object-cover w-full h-full" loading="lazy"/>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         <div className="absolute bottom-8 left-6 md:left-12 text-white max-w-3xl">
           <div className="flex items-center gap-3 mb-3">

@@ -41,7 +41,7 @@ const BlogSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {blogPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.id}`}>
+            <Link key={post.id} to={`/BlogPost/BlogPost${post.id}`}>
               <Card className="group bg-card shadow-float border-2 border-primary/10 overflow-hidden hover:shadow-glow transition-smooth h-full">
                 <div className={`${post.gradient} p-6`}>
                   <Badge className="bg-white/20 text-white border-white/40 mb-3">
