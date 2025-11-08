@@ -221,7 +221,7 @@ useScrollToTop();
             >
               <div>
                 <Badge className="bg-sky-100 dark:bg-sky-900 text-primary-700 dark:text-sky-200">
-                  Digital Planner
+                  Chic Comfort
                 </Badge>
                 <h1 className="text-4xl font-bold text-primary-700 dark:text-sky-200 mt-2">
                   {product.name}

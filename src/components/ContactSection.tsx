@@ -7,14 +7,14 @@ const ContactSection = () => {
     {
       name: "Instagram",
       icon: Instagram,
-      handle: "@coastal.sanctuary",
+      handle: "@_lifewithmew",
       color: "gradient-dreamy",
       link: "https://www.instagram.com/_lifewithmewi?igsh=dGN5OXlqY2k1djQ%3D&utm_source=qr",
     },
     {
       name: "Facebook",
       icon: Facebook,
-      handle: "coastal.sanctuary",
+      handle: "Mary Andrea’s Digital Sanctuary",
       color: "gradient-sunset",
       link: "https://www.facebook.com/profile.php?id=61564832823224&mibextid=wwXIfr&rdid=IdKGZAs8NSFeb6Wk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EHyAB5mQu%2F%3Fmibextid%3DwwXIfr#",
     },
@@ -22,7 +22,7 @@ const ContactSection = () => {
     {
       name: "TikTok",
       icon: MessageCircle,
-      handle: "@coastalsanctuary",
+      handle: "@_lifewithdary",
       color: "gradient-dreamy",
       link: "https://www.tiktok.com/@_lifewithdary?_t=ZS-90FQBhzWXQ7&_r=1",
     },

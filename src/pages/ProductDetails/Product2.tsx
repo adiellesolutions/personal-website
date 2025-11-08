@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import product31 from "@/assets/product3.png";
+import product2 from "@/assets/product2.png";
 import product22 from "@/assets/product22.png";
 import product23 from "@/assets/product23.png";
 import product24 from "@/assets/product24.png";
@@ -40,17 +40,16 @@ type Product = {
 const MOCK_PRODUCT: Product = {
   
   id: "coastal-planner",
-  name: "Classic Black Wool Coat",
-  subtitle: "Your timeless “put together” coat for all seasons!",
-  price: "€45.00",
-  compareAt: "€49",
-  discount: "40% OFF",
-  shortDescription:
-    "Wrap yourself in timeless elegance with this Classic Black Wool Coat. Perfect for any season, it adds that effortlessly 'put together' charm to every outfit — from casual strolls to city nights.",
+  name: "Butterfly Hair Clip",
+  subtitle: "A touch of nature, a twist of elegance, effortless elegance in every season.",
+  price: "€2.78",
+  //compareAt: "€49",
+  //discount: "40% OFF",
+  shortDescription: "Add a touch of charm and elegance with this Butterfly Hair Clip. Designed to hold your hair gracefully in place, it’s the perfect blend of delicate beauty and everyday practicality — ideal for any occasion.",
   heroImage:
-    product31,
+    product2,
   gallery: [
-    product22, product22, product24
+    product22, product24, product23
   ],
   items: [
     { id: "planner-pdf", name: "Coastal Planner PDF (50+ pages)", price: "€19", link: "https://affiliate.example.com/planner-pdf", short: "Printable and tablet-ready layouts." },
@@ -220,7 +219,7 @@ export default function ProductDetails(): JSX.Element {
             >
               <div>
                 <Badge className="bg-sky-100 dark:bg-sky-900 text-primary-700 dark:text-sky-200">
-                  Digital Planner
+                  Fairy Elegance
                 </Badge>
                 <h1 className="text-4xl font-bold text-primary-700 dark:text-sky-200 mt-2">
                   {product.name}

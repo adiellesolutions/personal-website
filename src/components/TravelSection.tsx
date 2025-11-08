@@ -6,22 +6,22 @@ import { Link } from "react-router-dom";
 const TravelSection = () => {
   const destinations = [
     {
-      id: 1,
-      name: "Munich, Germany",
-      description: "Beer gardens and beautiful architecture",
-      emoji: "🏰",
+      id: 5,
+      name: "Milan, Lake Como (Bellagio), & Lake Iseo",
+      description: "A trip made for two — from historical Milan city walks, to fairytale Bellagio alleyways, to cruising across Lake Iseo like movie characters. Calm mornings, slow meals, scenic views, and memories that feel soft and warm.",
+      emoji: "🗼",
     },
     {
-      id: 2,
-      name: "Swiss Alps",
-      description: "Mountain peaks and dreamy train rides",
+      id: 4,
+      name: "Germany – Hamburg, Düsseldorf, Cochem & Frankfurt",
+      description: "Explore Germany’s vibrant cities and charming towns, from Frankfurt’s riverside skyline to Hamburg’s magical Christmas markets. Insider tips and packing essentials make traveling easy and stylish.",
       emoji: "🏔️",
     },
     {
       id: 3,
-      name: "Paris, France",
-      description: "Cafés and romantic sunsets",
-      emoji: "🗼",
+      name: "Luxembourg City, Luxembourg",
+      description: "Luxembourg City feels like walking inside a softly lit fairytale — stone bridges, pastel buildings, and calm café corners. It’s the kind of place where you can explore slowly, breathe deeply, and fall in love with the quiet.",
+      emoji: "🏰",
     },
   ];
 
@@ -37,7 +37,7 @@ const TravelSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {destinations.map((destination) => (
-            <Link key={destination.id} to={`/travel/${destination.id}`}>
+            <Link key={destination.id} to={`/TravelPost/TravelPost${destination.id}`}>
               <Card className="group bg-card shadow-float border-2 border-primary/10 p-6 hover:shadow-glow transition-smooth text-center h-full">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-bounce">
                   {destination.emoji}

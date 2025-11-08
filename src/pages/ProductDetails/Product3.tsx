@@ -42,9 +42,9 @@ type Product = {
 const MOCK_PRODUCT: Product = {
   
   id: "coastal-planner",
-  name: "Francila Premium Vest + Shorts Set",
-  subtitle: "Boss babe vibes but still comfy chic!",
-  price: "€22.27",
+  name: "Classic Black Wool Coat",
+  subtitle: "Your timeless “put together” coat for all seasons!",
+  price: "€45.99",
  // compareAt: "€49",
 //discount: "40% OFF",
   shortDescription:
@@ -222,7 +222,7 @@ useScrollToTop();
             >
               <div>
                 <Badge className="bg-sky-100 dark:bg-sky-900 text-primary-700 dark:text-sky-200">
-                  Digital Planner
+                  Timeless Style
                 </Badge>
                 <h1 className="text-4xl font-bold text-primary-700 dark:text-sky-200 mt-2">
                   {product.name}
@@ -257,7 +257,7 @@ useScrollToTop();
       */}
 
       <a
-        href="https://onelink.shein.com/17/52zzsj51dbgi"
+        href="https://onelink.shein.com/17/52zzxmmwtpuk"
         target="_blank"
         rel="noopener noreferrer"
       >

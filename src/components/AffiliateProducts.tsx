@@ -3,16 +3,12 @@ import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 import product1 from "@/assets/product1.png";
 import product2 from "@/assets/product2.png";
 import product3 from "@/assets/product3.png";
 import product4 from "@/assets/product4.png";
 import product5 from "@/assets/product5.png";
 import product6 from "@/assets/product6.png";
-
-
-
 
 /* =========================
    Types (local to this file)
@@ -31,7 +27,7 @@ type Product = {
   rating: number;
   reviews: number;
   labels?: string[];
-  link?: string;               // ← added
+  link?: string;
 };
 
 /* =========================
@@ -43,114 +39,114 @@ const PLACEHOLDER = {
   coat: product3,
   slipper: product4,
   dress: product5,
-  shirt:product6,
+  shirt: product6,
 } as const;
 
 const productsRaw: Product[] = [
-  { 
-    id: 1, 
-    name: "Francila Premium Vest + Shorts Set 👗", 
-    type: "Affiliate", 
-    price: 22.27, 
-    description: "Boss babe vibes but still comfy chic!", 
-    image: PLACEHOLDER.vestshort, 
-    category: "lifestyle", 
-    rating: 4.9, 
-    reviews: 127, 
-    labels: ["Featured", "Free Shipping"],
-    link: "Product1"    // 👈 Custom link here
+  {
+    id: 1,
+    name: "Francila Premium Vest + Shorts Set 👗",
+    type: "Affiliate",
+    price: 22.27,
+    description: "Boss babe vibes but still comfy chic!",
+    image: PLACEHOLDER.vestshort,
+    category: "lifestyle",
+    rating: 4.9,
+    reviews: 127,
+    labels: ["Featured"],
+    link: "Product1",
   },
-  { 
-    id: 2, 
-    name: "Butterfly Hair Clip 🦋", 
-    type: "Affiliate", 
-    price: 2.68, 
-    description: "Turn every messy bun into a fairycore look!", 
-    image: PLACEHOLDER.hairclip, 
-    category: "lifestyle", 
-    rating: 4.8, 
-    reviews: 89, 
+  {
+    id: 2,
+    name: "Butterfly Hair Clip 🦋",
+    type: "Affiliate",
+    price: 2.68,
+    description: "Turn every messy bun into a fairycore look!",
+    image: PLACEHOLDER.hairclip,
+    category: "lifestyle",
+    rating: 4.8,
+    reviews: 89,
     labels: ["Best Seller"],
-    link: "Product2"
+    link: "Product2",
   },
-  { 
-    id: 3, 
-    name: "Classic Black Wool Coat 🧥", 
-    type: "Affiliate", 
-    price: 45.99, 
-    description: "Your timeless “put together” coat for all seasons.", 
-    image: PLACEHOLDER.coat, 
-    category: "lifestyle", 
-    rating: 4.8, 
-    reviews: 94, 
+  {
+    id: 3,
+    name: "Classic Black Wool Coat 🧥",
+    type: "Affiliate",
+    price: 45.99,
+    description: "Your timeless “put together” coat for all seasons.",
+    image: PLACEHOLDER.coat,
+    category: "lifestyle",
+    rating: 4.8,
+    reviews: 94,
     labels: ["Trending"],
-    link: "Product3"
+    link: "Product3",
   },
-  { 
-    id: 4, 
-    name: "Blue Bow Slippers 💙", 
-    type: "Affiliate", 
-    price: 9.88, 
-    description: "Cute + cozy = the slippers you didn't know you need!", 
-    image: PLACEHOLDER.slipper, 
-    category: "lifestyle", 
-    rating: 5.0, 
-    reviews: 23, 
-    labels: ["New Arrival", "Sustainable"],
-    link: "https://yourlinkhere.com/slippers"
+  {
+    id: 4,
+    name: "Blue Bow Slippers 💙",
+    type: "Affiliate",
+    price: 9.88,
+    description: "Cute + cozy = the slippers you didn't know you need!",
+    image: PLACEHOLDER.slipper,
+    category: "lifestyle",
+    rating: 5.0,
+    reviews: 23,
+    labels: ["New Arrival"],
+    link: "https://yourlinkhere.com/slippers",
   },
-  { 
-    id: 5, 
-    name: "Soleia Yellow 2-Piece Dress ☀️", 
-    type: "Affiliate", 
-    price: 40.99, 
-    description: "The sunshine dress for your dreamy summer moments!", 
-    image: PLACEHOLDER.dress, 
-    category: "lifestyle", 
-    rating: 4.7, 
-    reviews: 156, 
+  {
+    id: 5,
+    name: "Soleia Yellow 2-Piece Dress ☀️",
+    type: "Affiliate",
+    price: 40.99,
+    description: "The sunshine dress for your dreamy summer moments!",
+    image: PLACEHOLDER.dress,
+    category: "lifestyle",
+    rating: 4.7,
+    reviews: 156,
     labels: ["Bestseller"],
-    link: "https://yourlinkhere.com/dress"
+    link: "https://yourlinkhere.com/dress",
   },
-  { 
-    id: 6, 
-    name: "TRNVIE White Tailored Shirt 🤍", 
-    type: "Affiliate", 
-    price: 10.19, 
-    description: "That “clean girl aesthetic” office-to-dinner top!", 
-    image: PLACEHOLDER.shirt, 
-    category: "lifestyle", 
-    rating: 4.9, 
-    reviews: 67, 
-    labels: ["Premium", "Course Included"],
-    link: "https://yourlinkhere.com/shirt"
+  {
+    id: 6,
+    name: "TRNVIE White Tailored Shirt 🤍",
+    type: "Affiliate",
+    price: 10.19,
+    description: "That “clean girl aesthetic” office-to-dinner top!",
+    image: PLACEHOLDER.shirt,
+    category: "lifestyle",
+    rating: 4.9,
+    reviews: 67,
+    labels: ["Premium"],
+    link: "https://yourlinkhere.com/shirt",
   },
 ];
-
 
 /* =========================
    Tiny UI helpers (local)
 ========================= */
 const Pill = ({ children, className = "", ...props }: any) => (
-  <button className={`filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 ${className}`} {...props}>
+  <button
+    className={`filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 ${className}`}
+    {...props}
+  >
     {children}
   </button>
 );
 
 function ProductCard({
   p,
-  isWishlisted,
-  onToggleWishlist,
-  onAddCompare,
   onTrack,
 }: {
   p: Product;
-  isWishlisted: boolean;
-  onToggleWishlist: (id: number) => void;
-  onAddCompare: (id: number) => void;
   onTrack: (name: string) => void;
 }) {
-  return (
+  return ( <Link
+      to={`/ProductDetails/Product${p.id}`}
+      className="block group cursor-pointer"
+      onClick={() => onTrack(p.name)}
+    >
     <Card className="product-card-fade group bg-card/90 border border-primary/10 shadow-float hover:shadow-glow transition-smooth overflow-hidden h-full rounded-2xl">
       {/* Image */}
       <div className="relative overflow-hidden">
@@ -172,24 +168,6 @@ function ProductCard({
           </div>
         )}
 
-        {/* actions */}
-        <div className="absolute top-3 right-3 flex gap-2">
-          <button
-            onClick={() => onToggleWishlist(p.id)}
-            className="bg-white/90 p-2 rounded-full hover:bg-white transition"
-            aria-label="Wishlist"
-          >
-            {isWishlisted ? "❤️" : "🤍"}
-          </button>
-          <button
-            onClick={() => onAddCompare(p.id)}
-            className="bg-white/90 p-2 rounded-full hover:bg-white transition"
-            aria-label="Compare"
-          >
-            ⚖️
-          </button>
-        </div>
-
         {/* rating */}
         <div className="absolute bottom-3 left-3">
           <span className="bg-success text-text-primary px-3 py-1 rounded-full text-xs font-medium">
@@ -199,38 +177,37 @@ function ProductCard({
 
         {/* type badge */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2">
-          <Badge className="bg-black/60 text-white border-white/30 backdrop-blur">{p.type}</Badge>
+          <Badge className="bg-black/60 text-white border-white/30 backdrop-blur">
+            {p.type}
+          </Badge>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="font-quicksand text-lg text-primary font-bold leading-tight">{p.name}</h3>
-        <p className="text-muted-foreground mt-1 mb-4 line-clamp-3">{p.description}</p>
+        <h3 className="font-quicksand text-lg text-primary font-bold leading-tight">
+          {p.name}
+        </h3>
+        <p className="text-muted-foreground mt-1 mb-4 line-clamp-3">
+          {p.description}
+        </p>
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <span className="text-2xl font-bold text-primary">€{p.price}</span>
-            {p.labels?.includes("Course Included") && (
-              <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">🎓 Course Included</span>
-            )}
-            {p.labels?.includes("Free Shipping") && (
-              <span className="bg-success/10 text-success-700 px-2 py-1 rounded-full text-xs font-medium">🚚 Free Shipping</span>
-            )}
           </div>
         </div>
 
         <div className="flex items-center justify-between">
-        <Link to={`/ProductDetails/Product${p.id}`}>
-          <Button variant="secondary" onClick={() => onTrack(p.name)}>
-            View Details
-          </Button>
-        </Link>
-
-</div>
-
+          <Link to={`/ProductDetails/Product${p.id}`}>
+            <Button variant="secondary" onClick={() => onTrack(p.name)}>
+              View Details
+            </Button>
+          </Link>
+        </div>
       </div>
     </Card>
+    </Link>
   );
 }
 
@@ -277,7 +254,9 @@ function AffiliateFilters({
                   key={key}
                   onClick={() => setCategory(key as Category)}
                   className={`text-xs sm:text-sm px-4 py-2 ${
-                    category === key ? "bg-pink-400 text-white shadow" : "bg-pink-100 text-pink-600 hover:bg-pink-200"
+                    category === key
+                      ? "bg-pink-400 text-white shadow"
+                      : "bg-pink-100 text-pink-600 hover:bg-pink-200"
                   }`}
                 >
                   {key.charAt(0).toUpperCase() + key.slice(1)}
@@ -287,7 +266,9 @@ function AffiliateFilters({
 
             {/* Price Dropdown */}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">Price:</span>
+              <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                Price:
+              </span>
               <select
                 value={priceBand}
                 onChange={(e) => setPriceBand(e.target.value as PriceBand)}
@@ -311,17 +292,11 @@ function AffiliateFilters({
    Main export: Affiliate view
 ========================= */
 export default function AffiliateProducts() {
-  // UI state
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<Category>("all");
   const [priceBand, setPriceBand] = useState<PriceBand>("all");
-  const [wishlist, setWishlist] = useState<number[]>([]);
-  const [compare, setCompare] = useState<number[]>([]);
-  const [showWishlist, setShowWishlist] = useState(false);
-  const [showCompare, setShowCompare] = useState(false);
   const toastRef = useRef<HTMLDivElement | null>(null);
 
-  // Derived list
   const products = useMemo(() => {
     return productsRaw.filter((p) => {
       if (category !== "all" && p.category !== category) return false;
@@ -335,11 +310,13 @@ export default function AffiliateProducts() {
 
       if (!search.trim()) return true;
       const term = search.toLowerCase();
-      return p.name.toLowerCase().includes(term) || p.description.toLowerCase().includes(term);
+      return (
+        p.name.toLowerCase().includes(term) ||
+        p.description.toLowerCase().includes(term)
+      );
     });
   }, [category, priceBand, search]);
 
-  // Toast helper
   const showToast = (msg: string) => {
     if (!toastRef.current) return;
     toastRef.current.textContent = msg;
@@ -351,7 +328,6 @@ export default function AffiliateProducts() {
     }, 2200);
   };
 
-  // Soft fade-in
   useEffect(() => {
     const cards = document.querySelectorAll(".product-card-fade");
     cards.forEach((el, i) => {
@@ -365,22 +341,8 @@ export default function AffiliateProducts() {
     });
   }, [products.length, category, priceBand, search]);
 
-  // Wishlist / Compare
-  const toggleWishlist = (id: number) => {
-    setWishlist((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
-    showToast(wishlist.includes(id) ? "Removed from wishlist" : "Added to wishlist 💕");
-  };
-  const addCompare = (id: number) => {
-    if (compare.includes(id)) return showToast("Item already in comparison");
-    if (compare.length >= 3) return showToast("You can compare up to 3 items");
-    setCompare((prev) => [...prev, id]);
-    showToast("Added to comparison ⚖️");
-  };
-  const removeCompare = (id: number) => setCompare((prev) => prev.filter((x) => x !== id));
-
   return (
     <>
-      {/* Filters (no tabs here) */}
       <AffiliateFilters
         search={search}
         setSearch={setSearch}
@@ -390,13 +352,15 @@ export default function AffiliateProducts() {
         setPriceBand={setPriceBand}
       />
 
-      {/* Grid */}
       <main id="featured" className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
-            <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">Featured Favorites 💕</h2>
+            <h2 className="font-quicksand text-4xl md:text-5xl text-primary mb-4">
+              Featured Favorites 💕
+            </h2>
             <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Items I absolutely can’t live without — curated for a cozy coastal vibe.
+              Items I absolutely can’t live without — curated for a cozy coastal
+              vibe.
             </p>
           </div>
 
@@ -405,15 +369,13 @@ export default function AffiliateProducts() {
               <ProductCard
                 key={p.id}
                 p={p}
-                isWishlisted={wishlist.includes(p.id)}
-                onToggleWishlist={toggleWishlist}
-                onAddCompare={addCompare}
-                onTrack={(name) => showToast(`Price tracking enabled for ${name} 📊`)}
+                onTrack={(name) =>
+                  showToast(`Price tracking enabled for ${name} 📊`)
+                }
               />
             ))}
           </div>
 
-          {/* Load more */}
           <div className="text-center mt-12">
             <Button
               variant="secondary"
@@ -426,106 +388,10 @@ export default function AffiliateProducts() {
         </div>
       </main>
 
-      {/* Wishlist Modal */}
-      <Modal open={showWishlist} onClose={() => setShowWishlist(false)} title="Your Wishlist 💕">
-        <div className="space-y-3 mb-6">
-          {wishlist.length === 0 ? (
-            <p className="text-text-secondary">Your wishlist is empty. Start adding items you love!</p>
-          ) : (
-            wishlist.map((id) => {
-              const item = productsRaw.find((x) => x.id === id)!;
-              return (
-                <div key={id} className="flex items-center justify-between p-3 bg-surface rounded-lg">
-                  <span className="text-text-primary">{item.name}</span>
-                  <button
-                    className="text-error-500 hover:text-error-700"
-                    onClick={() => setWishlist((prev) => prev.filter((x) => x !== id))}
-                  >
-                    Remove
-                  </button>
-                </div>
-              );
-            })
-          )}
-        </div>
-        <Button className="w-full" onClick={() => setShowWishlist(false)}>Close</Button>
-      </Modal>
-
-      {/* Compare Modal */}
-      <Modal open={showCompare} onClose={() => setShowCompare(false)} title="Product Comparison ⚖️">
-        <div className="space-y-3 mb-6">
-          {compare.length === 0 ? (
-            <p className="text-text-secondary">Add products to compare their features and prices!</p>
-          ) : (
-            compare.map((id) => {
-              const item = productsRaw.find((x) => x.id === id)!;
-              return (
-                <div key={id} className="flex items-center justify-between p-3 bg-surface rounded-lg">
-                  <div>
-                    <span className="text-text-primary font-medium">{item.name}</span>
-                    <span className="text-primary ml-2">€{item.price}</span>
-                  </div>
-                  <button className="text-error-500 hover:text-error-700" onClick={() => removeCompare(id)}>
-                    Remove
-                  </button>
-                </div>
-              );
-            })
-          )}
-        </div>
-        <Button className="w-full" onClick={() => setShowCompare(false)}>Close</Button>
-      </Modal>
-
-      {/* Quick action buttons (optional, keep here to keep it self-contained) */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col space-y-4">
-        <button onClick={() => setShowWishlist(true)} className="bg-secondary/90 backdrop-blur-sm p-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-110">
-          ❤️
-        </button>
-        <button onClick={() => setShowCompare(true)} className="bg-accent/90 backdrop-blur-sm p-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-110">
-          ⚖️
-        </button>
-        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-primary/90 backdrop-blur-sm p-3 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-110">
-          ↑
-        </button>
-      </div>
-
-      {/* Toast */}
       <div
         ref={toastRef}
         className="fixed top-24 right-6 bg-primary text-white px-5 py-3 rounded-full shadow-lg z-[65] transition-all duration-300 opacity-0 translate-y-2"
       />
     </>
-  );
-}
-
-/* Simple Modal component (local) */
-function Modal({
-  open,
-  onClose,
-  title,
-  children,
-}: {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-}) {
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl p-8 w-full max-w-xl shadow-lg">
-        <div className="text-center">
-          <h3 className="font-quicksand text-2xl text-primary mb-4">{title}</h3>
-          {children}
-        </div>
-        <button
-          aria-label="Close"
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-          onClick={onClose}
-        >
-          ✖
-        </button>
-      </div>
-    </div>
   );
 }

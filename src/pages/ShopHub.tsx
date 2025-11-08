@@ -167,12 +167,12 @@ export default function ShopHub() {
       <div className="grid md:grid-cols-4 gap-10">
         {/* SIDEBAR */}
         <aside className="md:col-span-1 space-y-6 md:sticky md:top-28 h-fit">
-          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-center shadow-md rounded-2xl border-2 border-pink-200 dark:border-gray-700 transition-colors duration-500">
+          <Card className="space-y-2 p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-center shadow-md rounded-2xl border-2 border-pink-200 dark:border-gray-700 transition-colors duration-500">
             <Sparkles className="mx-auto text-pink-400 w-6 h-6 mb-2" />
             <h3 className="font-quicksand text-lg font-bold text-primary dark:text-pink-300 mb-2 transition-colors duration-500">
               Curated for You
             </h3>
-            <p className="text-sm text-muted-foreground dark:text-gray-300 transition-colors duration-500">
+            <p className="space-y-2 p-3 text-sm text-muted-foreground dark:text-gray-300 transition-colors duration-500">
               Handpicked items I personally use and adore — with affiliate links for transparency 💖
             </p>
           </Card>
@@ -269,7 +269,7 @@ export default function ShopHub() {
                       onClick={() => setSelectedItem(item)}
                       className="rounded-full text-sm bg-pink-400 text-white hover:bg-pink-500 mx-auto"
                     >
-                      View More
+                      Coming Soon
                     </Button>
                   </Card>
                 ))}

@@ -21,13 +21,13 @@ const ShopSection = () => {
     },
     {
       id: 2,
-      name: "Classic Black Wool Coat",
-      description: "Wrap yourself in timeless elegance with this Classic Black Wool Coat. Perfect for any season, it adds that effortlessly 'put together' charm to every outfit — from casual strolls to city nights.",
+      name: "Butterfly Hair Clip",
+      description: "Add a touch of charm and elegance with this Butterfly Hair Clip. Designed to hold your hair gracefully in place, it’s the perfect blend of delicate beauty and everyday practicality — ideal for any occasion.",
       type: "Affiliate",
     },
     {
       id: 3,
-      name: "Travel Essentials Kit",
+      name: "Classic Black Wool Coat",
       description: "A wardrobe essential that never goes out of style. This classic black wool coat effortlessly elevates any outfit — whether you’re heading to class, a coffee date, or a chilly evening stroll. Its sleek silhouette and soft wool blend give that “put together” look with minimal effort.",
       type: "Favorite",
     },
