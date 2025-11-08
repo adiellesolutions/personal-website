@@ -297,12 +297,13 @@ const AboutPage = () => {
         {/* ====== CTA (boxed) ====== */}
         <section className="container mx-auto max-w-5xl">
           <Card className="gradient-ocean shadow-glow p-8 border-2 border-white/30 text-center rounded-3xl">
-            <h3 className="font-pacifico text-3xl text-white mb-4">
-              Want to See My Aesthetic World? 🌊
-            </h3>
-            <p className="text-white/90 mb-6 text-lg">
-              Check out my moodboard for all the dreamy vibes, quotes, and inspiration!
-            </p>
+          <h3 className="font-pacifico text-3xl text-neutral-900 dark:text-neutral-100 mb-4">
+            Want to See My Aesthetic World? 🌊
+          </h3>
+          <p className="text-neutral-800 dark:text-neutral-300 mb-6 text-lg">
+            Check out my moodboard for all the dreamy vibes, quotes, and inspiration!
+          </p>
+
             <Link to="/moodboard">
               <Button
                 size="lg"

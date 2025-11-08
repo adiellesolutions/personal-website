@@ -122,10 +122,11 @@ const BlogPost = () => {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button className="bg-white text-primary hover:bg-white/90 transition-bounce">
                   Connect With Me
                 </Button>
               </Link>
+
             </div>
           </Card>
         </div>

@@ -167,7 +167,7 @@ export default function ShopHub() {
         <div className="grid md:grid-cols-4 gap-10">
           {/* SIDEBAR */}
           <aside className="md:col-span-1 space-y-6 md:sticky md:top-28 h-fit">
-            <Card className="bg-white/80 backdrop-blur-md p-6 text-center shadow-md rounded-2xl border-2 border-pink-200">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-center shadow-md rounded-2xl border-2 border-pink-200">
               <Sparkles className="mx-auto text-pink-400 w-6 h-6 mb-2" />
               <h3 className="font-quicksand text-lg font-bold text-primary mb-2">
                 Curated for You
@@ -236,7 +236,7 @@ export default function ShopHub() {
 
                 {/* FLOATING FILTER BAR */}
                 <div className="sticky top-24 z-20 mb-8">
-                  <div className="bg-white/80 backdrop-blur-md border border-pink-200 rounded-full shadow-md px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-pink-200 rounded-full shadow-md px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                     {/* SEARCH */}
                     <div className="relative w-full sm:w-1/2">
                       <Search className="absolute left-3 top-3 text-muted-foreground w-5 h-5" />
@@ -245,7 +245,8 @@ export default function ShopHub() {
                         placeholder="Search digital items..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 border border-pink-200 rounded-full focus:ring-2 focus:ring-pink-300 bg-white/80"
+                        className="w-full pl-10 pr-4 py-2 border border-pink-200 rounded-full focus:ring-2 focus:ring-pink-300 bg-white/80 dark:bg-gray-800/80
+                        "
                       />
                     </div>
 
@@ -255,7 +256,8 @@ export default function ShopHub() {
                       <select
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
-                        className="pl-8 pr-4 py-2 w-full border border-pink-200 rounded-full bg-white/80 focus:ring-2 focus:ring-pink-300 text-sm"
+                        className="pl-8 pr-4 py-2 w-full border border-pink-200 rounded-full bg-white/80 dark:bg-gray-800/80
+                        focus:ring-2 focus:ring-pink-300 text-sm"
                       >
                         <option value="all">All Categories</option>
                         <option value="Course">Course</option>
@@ -272,7 +274,8 @@ export default function ShopHub() {
                   {filteredItems.map((item, i) => (
                     <Card
                       key={i}
-                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 backdrop-blur-sm flex flex-col justify-between p-6"
+                      className="overflow-hidden border border-pink-200 rounded-2xl hover:shadow-lg transition-all bg-white/80 dark:bg-gray-800/80
+                      backdrop-blur-sm flex flex-col justify-between p-6"
                     >
                       <h3 className="font-quicksand font-bold text-lg text-primary text-center mb-4">
                         {item.title}
@@ -290,7 +293,7 @@ export default function ShopHub() {
                 {/* FLOATING MODAL */}
                 {selectedItem && (
                         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50">
-                          <div className="bg-white/90 rounded-3xl p-8 w-[90%] max-w-lg relative shadow-xl border border-pink-200 overflow-y-auto max-h-[90vh]">
+                          <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-8 w-[90%] max-w-lg relative shadow-xl border border-pink-200 overflow-y-auto max-h-[90vh]">
                             <button
                               onClick={() => setSelectedItem(null)}
                               className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
@@ -416,7 +419,8 @@ export default function ShopHub() {
       </section>
 
       {/* CLOSING */}
-      <section className="py-16 text-center bg-gradient-to-r from-pink-100 to-purple-100">
+      <section className="py-16 text-center bg-gradient-to-r from-pink-100 to-purple-100 dark:from-gray-900 dark:to-gray-800">
+
         <h3 className="font-pacifico text-4xl text-primary mb-4">
           💝 Thank You for Visiting
         </h3>

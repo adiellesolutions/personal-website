@@ -6,8 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { Button } from "@/components/ui/button";
+
 const BlogHub = () => {
+
   useScrollToTop();
+
   const blogPosts = [
     {
       id: 1,

@@ -106,13 +106,15 @@ const Hero = () => {
               </h1>
             </div>
 
-            <p className="text-lg md:text-xl text-secondary font-semibold mb-3">
+            <p className="text-lg md:text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-200">
               — Filipina, Traveler, and Glow-Up Bestie
             </p>
 
-            <p className="text-white/90 max-w-2xl leading-relaxed mb-8">
+
+            <p className="text-neutral-900 dark:text-neutral-200 max-w-2xl leading-relaxed mb-8">
               Sharing my journey in Germany: study, self-care & adventures. ✨
             </p>
+
 
             <Button
               onClick={scrollToAbout}
